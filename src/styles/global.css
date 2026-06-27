@@ -6,10 +6,33 @@
 @tailwind utilities;
 
 
+:root {
+  --color-primary: #6D28D9;
+  --color-primary-hover: #5B21B6;
+  --color-secondary: #A78BFA;
+
+  --color-background: #F8FAFC;
+  --color-surface: #FFFFFF;
+
+  --color-text: #1F2937;
+  --color-text-light: #6B7280;
+
+  --color-border: #E5E7EB;
+
+  --color-success: #22C55E;
+  --color-error: #EF4444;
+
+  --font-primary: "Inter", sans-serif;
+}
+
+
 html, body, #root {
   height: 100%;
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: var(--font-primary);
+  background-color: var(--color-background);
+  color: var(--color-text);
+
 }
