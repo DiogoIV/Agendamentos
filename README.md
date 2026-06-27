@@ -1,3 +1,3 @@
 # React + Vite
 
-O Site: npx plugins add vercel/vercel-plugin
+O Site: https://agendamentos-sigma.vercel.app/
