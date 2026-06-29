@@ -20,62 +20,86 @@ function Header() {
                 </h1>
             </Link>
 
-            <button onClick={() => setOpen(!open)}>
+            <button className="md:hidden" onClick={() => setOpen(!open)}>
                 <TiThMenu size={35} />
             </button>
 
-            {open && (
-                <>
-                    <div onClick={() => setOpen(false)}
-                        className="fixed inset-0 bg-black/40">
-
-                    </div>
 
 
-                    <nav className="
-                    fixed top-0 right-0
+            {/* menu fixo */}
+
+            <nav className="hidden md:flex gap-6">
+                <NavLink to="/">Início</NavLink>
+                <NavLink to="/agendar">Agendar</NavLink>
+                <NavLink to="/login">Login</NavLink>
+            </nav>
+
+            {/*menu mobile*/}
+
+            <div onClick={() => setOpen(false)}
+                className={`fixed inset-0 bg-black/40 
+                    ${open ? "opacity-100" : "opacity-0  pointer-events-none "}`}>
+
+            </div>
+            <nav className={`fixed top-0 right-0
                     flex flex-col 
                     gap-2
                     w-[70%] h-screen
                     pt-6  
                     px-5
                     font-bold text-lg bg-[var(--color-primary)]
-                    z-50">
-                        <div className=" px-4 pb-4 border-b border-white/40">
-                            <h2 className="text-lg font-bold">
-                                Menu
-                            </h2>
-                        </div>
+                    z-50
+                    
+                    transform transition-transform duration-500 ease-in-out
+                    ${open ? "translate-x-0 " : "translate-x-full"}`}
+            >
+                <div className=" px-4 pb-4 border-b border-white/40">
+                    <h2 className="text-lg font-bold">
+                        Menu
+                    </h2>
+                </div>
 
-                        <NavLink to="/" className="
-                        flex items-center 
-                        gap-3 
-                        w-full 
-                        p-3 " onClick={()=> setOpen(false)}>
-                            <FaHome /> Início
-                        </NavLink>
+                <NavLink
+                    to="/"
+                    onClick={() => setOpen(false)}
+                    className={({ isActive }) =>
+                        `flex items-center gap-3 w-full p-3
+                    rounded
+                    transition-all duration-200
+                    hover:bg-white/10 hover:translate-x-3
+                    ${isActive ? "bg-white/20 translate-x-3" : ""}`
+                    }
+                >
+                    <FaHome /> Início
+                </NavLink>
 
-                        <NavLink to="/agendar" className="
-                        flex
-                        items-center 
-                        gap-3 
-                        w-full 
-                        p-3" onClick={()=> setOpen(false)}>
-                            <FaCalendarAlt />Agendar
-                        </NavLink>
+                <NavLink to="/agendar"
+                    onClick={() => setOpen(false)}
+                    className={({ isActive }) =>
+                        `flex items-center gap-3 w-full p-3
+                    rounded
+                    transition-all duration-200
+                    hover:bg-white/10 hover:translate-x-3
+                    ${isActive ? "bg-white/20 translate-x-3" : ""}`
+                    }
+                >
+                    <FaCalendarAlt />Agendar
+                </NavLink>
 
-                        <NavLink to="/login" className="
-                        flex
-                        items-center
-                        gap-3 
-                        w-full 
-                        p-3" onClick={()=> setOpen(false)}>
-                            <FaUser /> Login
-                        </NavLink>
-                    </nav>
-                </>
+                <NavLink to="/login"
+                    onClick={() => setOpen(false)}
+                    className={({ isActive }) =>
+                        `flex items-center gap-3 w-full p-3
+                    rounded
+                    transition-all duration-200
+                    hover:bg-white/10 hover:translate-x-3
+                    ${isActive ? "bg-white/20 translate-x-3" : ""}`
+                    }
+                >
+                    <FaUser /> Login
+                </NavLink>
+            </nav>
 
-            )}
 
         </header>
     )
