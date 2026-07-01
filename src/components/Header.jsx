@@ -20,7 +20,10 @@ function Header() {
                 </h1>
             </Link>
 
-            <button className="md:hidden" onClick={() => setOpen(!open)}>
+            <button className="md:hidden"
+                aria-label={open ? "Fechar menu": "Abrir menu"}
+                onClick={() => setOpen(!open)}
+                aria-expanded={open}>
                 <TiThMenu size={35} />
             </button>
 
