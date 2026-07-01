@@ -15,9 +15,9 @@ function Header() {
         bg-[var(--color-primary)]  text-[var(--color-secondary)] text-base ">
 
             <Link to="/" >
-                <h1 className="flex items-center gap-2 text-xl font-bold  ">
+                <span className="flex items-center gap-2 text-xl font-bold  ">
                     <Heart size={41} /> Agenda fácil
-                </h1>
+                </span>
             </Link>
 
             <button className="md:hidden"
