@@ -5,18 +5,36 @@ function Home() {
     return (
         <>  
             {/*sessão hero*/}
-            <section>
-                <h1>
-                    Seu sistema de agendamentos fácil
-                </h1>
+            <section className="flex flex-col md:flex-row items-center 
+            min-h-[70vh] gap-6">
 
-                <p>
-                    Escolha um horário e agende em poucos segundos
-                </p>
+                <div className="flex flex-col  gap-6 flex-[1.5]">
 
-                <Link to="/agendar">
-                    Agendar agora
-                </Link>
+                    <h1 className="text-3xl font-extrabold text-[var(--color-primary)] max-w-xl">
+                        Seu sistema de agendamentos fácil
+                    </h1>
+                    <p className="text-gray-600  max-w-md leading-relaxed">
+                        Escolha um horário e agende em poucos segundos
+                    </p>
+
+                    <Link to="/agendar" className="bg-[var(--color-primary)]
+                    p-4
+                    text-center text-white rounded-lg 
+                    font-bold shadow-sm
+                    
+                    ">
+                        Agendar agora
+                    </Link>
+                </div>
+
+                <div className=" w-full md:flex-1 ">
+                    <img src="src\assets\imagens\fundo_elefante.jpg" alt=""  
+                    className="w-full h-64 md-h-full 
+                    object-cover rounded-lg
+                    "/>
+                </div>
+
+
             </section>
 
             {/* sessão explicação*/}
