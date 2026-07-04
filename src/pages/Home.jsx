@@ -6,7 +6,7 @@ function Home() {
         <>
             {/*sessão hero*/}
             <section className="flex flex-col md:flex-row items-center 
-            min-h-[70vh] gap-4">
+            min-h-[70vh] gap-4 ">
 
                 <div className="flex flex-col  gap-6 flex-[1.5]">
 
@@ -27,11 +27,8 @@ function Home() {
                     </Link>
                 </div>
 
-                <div className=" w-full md:flex-1 ">
-                    <img src="src\assets\imagens\fundo_elefante.jpg" alt=""
-                        className="w-full h-64 md-h-full 
-                    object-cover rounded-lg
-                    "/>
+                <div className=" flex w-full md:flex-1 justify-center ">
+                    <img src="src\assets\imagens\layout-agendar-img.jpg" alt="" className="w-80 h-48 md:w-full   object-cover  shadow-md rounded-xl" />
                 </div>
 
 
@@ -63,7 +60,7 @@ function Home() {
                 <h2 className="text-2xl 
                 text-[var(--color-primary)] font-bold ">Sobre o Profissional</h2>
 
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-4 ">
 
                     <img src="src\assets\imagens\2a256a9e-f6aa-4c56-9059-2ca28e299f08.jpg" alt="" className="w-40 md:w-48 aspect-square object-cover rounded-xl shadow-md" />
 
@@ -98,16 +95,18 @@ function Home() {
             {/*Chamada final*/}
 
             <section className="flex flex-col gap-4
-            border rounded-md p-4 md:pb-8
+            border rounded-md p-5 md:pb-8
             shadow-md">
 
-                <h2 className="text-2xl 
-                text-[var(--color-primary)] font-bold">pronta para agendar seu horário?</h2>
+                <h2 className="text-xl 
+                text-[var(--color-primary)] font-bold ">Pronto para agendar seu horário?</h2>
+
+                <p className="text-[var(--color-text-light)]  leading-relaxed ">Agende em poucos minutos, de forma simples e rápida.</p>
 
                 <Link to="/agendar" className="bg-[var(--color-primary)]
-                    p-4
+                    p-3
                     text-center text-white rounded-lg 
-                    font-bold shadow-sm">
+                    font-normal shadow-sm">
                     Agendar agora
                 </Link>
             </section>
