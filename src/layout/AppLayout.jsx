@@ -9,7 +9,7 @@ function AppLayout() {
     return (
         <>
             <Header/>
-            <main className="flex flex-col gap-8
+            <main className="flex flex-col gap-y-16
             p-4 pt-16 bg-[#fafafa] ">
                 <Outlet/>
             </main>

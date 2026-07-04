@@ -1,6 +1,6 @@
-/*icons do header*/
 
-export { Heart } from "lucide-react";
+
+export { Heart, Calendar, CheckCircle, Clock } from "lucide-react";
 
 export { TiThMenu } from "react-icons/ti";
 
