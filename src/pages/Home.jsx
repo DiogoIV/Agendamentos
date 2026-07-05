@@ -68,7 +68,7 @@ function Home() {
 
                         <h3 className="text-lg font-semibold text-[var(--color-primary)]">Tiago Rodrigues </h3>
 
-                        <p className="text-base font-normal leading-relaxed ">Atendimento com profissional qualificado, com foco em qualidade e pontualidade.</p>
+                        <p className="text-base font-normal leading-relaxed  ">Atendimento com profissional qualificado e formado, com foco em qualidade e pontualidade.</p>
                     </div>
                 </div>
 
