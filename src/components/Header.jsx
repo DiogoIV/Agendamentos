@@ -12,7 +12,7 @@ function Header() {
         relative
         flex justify-between items-center 
         h-20 px-8 py-4 
-        bg-[var(--color-primary)]  text-[var(--color-secondary)] text-base ">
+        bg-[var(--color-primary)]  text-[var(--color-secondary)]  ">
 
             <Link to="/" >
                 <span className="flex items-center gap-2 text-xl font-bold  ">
@@ -31,10 +31,40 @@ function Header() {
 
             {/* menu fixo */}
 
-            <nav className="hidden md:flex gap-6">
-                <NavLink to="/">Início</NavLink>
-                <NavLink to="/agendar">Agendar</NavLink>
-                <NavLink to="/login">Login</NavLink>
+            <nav className="hidden 
+            md:flex gap-6 
+            
+            lg:text-lg
+            
+            font-semibold
+            
+            ">
+                <NavLink to="/" className="
+                relative 
+                after:content-[''] after:absolute after:bg-[var(--color-secondary)] after:h-[1px] after:w-full
+                after:-bottom-1 after:left-0 
+                after:scale-x-0 hover:after:scale-x-100
+                after:transition-transform
+                hover:opacity-70 transition
+                
+                 ">Início</NavLink>
+
+                <NavLink to="/agendar" className="relative 
+                after:content-[''] after:absolute after:bg-[var(--color-secondary)] after:h-[1px] after:w-full
+                after:-bottom-1 after:left-0 
+                after:scale-x-0 hover:after:scale-x-100
+                after:transition-transform
+                hover:opacity-70 transition">Agendar</NavLink>
+
+                <NavLink to="/login" className="relative
+                after:content-['']
+                after:absolute after:h-[1px] after:w-full
+                after:bg-[var(--color-secondary)] 
+                after:scale-x-0 hover:after:scale-x-100
+                after:-bottom-1 after:left-0
+                after:transition-transform
+                hover:opacity-70 transition
+                ">Login</NavLink>
             </nav>
 
             {/*menu mobile*/}
