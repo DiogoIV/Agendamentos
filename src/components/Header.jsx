@@ -4,6 +4,19 @@ import { Heart, TiThMenu, FaHome, FaCalendarAlt, FaUser } from "../assets/icons"
 import { Link, NavLink } from "react-router-dom"
 
 function Header() {
+    const estiloLink = `relative 
+                after:content-[''] after:absolute after:bg-[var(--color-secondary)] after:h-[1px] after:w-full
+                after:-bottom-1 after:left-0 
+                after:scale-x-0 hover:after:scale-x-100
+                after:transition-transform
+                hover:opacity-70 transition`
+    const mobileLinkStyle = `
+    flex items-center gap-3 w-full p-3
+    rounded
+    transition-all duration-200
+    hover:bg-white/10
+    hover:translate-x-3
+`
 
     const [open, setOpen] = useState(false)
 
@@ -15,13 +28,13 @@ function Header() {
         bg-[var(--color-primary)]  text-[var(--color-secondary)]  ">
 
             <Link to="/" >
-                <span className="flex items-center gap-2 text-xl font-bold  ">
-                    <Heart size={41} /> Agenda fácil
+                <span className="flex items-center gap-2 text-xl font-bold ">
+                    <Heart size={41} className="transition-transform hover:scale-105" /> Agenda fácil
                 </span>
             </Link>
 
             <button className="md:hidden"
-                aria-label={open ? "Fechar menu": "Abrir menu"}
+                aria-label={open ? "Fechar menu" : "Abrir menu"}
                 onClick={() => setOpen(!open)}
                 aria-expanded={open}>
                 <TiThMenu size={35} />
@@ -35,42 +48,23 @@ function Header() {
             md:flex gap-6 
             
             lg:text-lg
-            
+            lg:gap-8
             font-semibold
             
             ">
-                <NavLink to="/" className="
-                relative 
-                after:content-[''] after:absolute after:bg-[var(--color-secondary)] after:h-[1px] after:w-full
-                after:-bottom-1 after:left-0 
-                after:scale-x-0 hover:after:scale-x-100
-                after:transition-transform
-                hover:opacity-70 transition
-                
-                 ">Início</NavLink>
+                <NavLink to="/" className={estiloLink}>Início</NavLink>
 
-                <NavLink to="/agendar" className="relative 
-                after:content-[''] after:absolute after:bg-[var(--color-secondary)] after:h-[1px] after:w-full
-                after:-bottom-1 after:left-0 
-                after:scale-x-0 hover:after:scale-x-100
-                after:transition-transform
-                hover:opacity-70 transition">Agendar</NavLink>
+                <NavLink to="/agendar" className={estiloLink}>Agendar</NavLink>
 
-                <NavLink to="/login" className="relative
-                after:content-['']
-                after:absolute after:h-[1px] after:w-full
-                after:bg-[var(--color-secondary)] 
-                after:scale-x-0 hover:after:scale-x-100
-                after:-bottom-1 after:left-0
-                after:transition-transform
-                hover:opacity-70 transition
-                ">Login</NavLink>
+                <NavLink to="/login" className={estiloLink}>Login</NavLink>
             </nav>
 
             {/*menu mobile*/}
 
             <div onClick={() => setOpen(false)}
                 className={`fixed inset-0 bg-black/40 
+                    transition-opacity
+                    duration-300
                     ${open ? "opacity-100" : "opacity-0  pointer-events-none "}`}>
 
             </div>
@@ -96,11 +90,8 @@ function Header() {
                     to="/"
                     onClick={() => setOpen(false)}
                     className={({ isActive }) =>
-                        `flex items-center gap-3 w-full p-3
-                    rounded
-                    transition-all duration-200
-                    hover:bg-white/10 hover:translate-x-3
-                    ${isActive ? "bg-white/20 translate-x-3" : ""}`
+                        `${mobileLinkStyle}
+                        ${isActive ? " bg-white/15 " : ""}`
                     }
                 >
                     <FaHome /> Início
@@ -109,11 +100,8 @@ function Header() {
                 <NavLink to="/agendar"
                     onClick={() => setOpen(false)}
                     className={({ isActive }) =>
-                        `flex items-center gap-3 w-full p-3
-                    rounded
-                    transition-all duration-200
-                    hover:bg-white/10 hover:translate-x-3
-                    ${isActive ? "bg-white/20 translate-x-3" : ""}`
+                        `${mobileLinkStyle}
+                        ${isActive ? "bg-white/15" : ""}`
                     }
                 >
                     <FaCalendarAlt />Agendar
@@ -122,11 +110,8 @@ function Header() {
                 <NavLink to="/login"
                     onClick={() => setOpen(false)}
                     className={({ isActive }) =>
-                        `flex items-center gap-3 w-full p-3
-                    rounded
-                    transition-all duration-200
-                    hover:bg-white/10 hover:translate-x-3
-                    ${isActive ? "bg-white/20 translate-x-3" : ""}`
+                        `${mobileLinkStyle}
+                        ${isActive ? "bg-white/15" : ""}`
                     }
                 >
                     <FaUser /> Login
