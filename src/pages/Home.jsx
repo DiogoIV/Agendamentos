@@ -5,38 +5,100 @@ function Home() {
     return (
         <>
             {/*sessão hero*/}
-            <section className="flex flex-col md:flex-row items-center 
-            min-h-[70vh] gap-4 ">
+            <section className="
+                flex flex-col gap-8
+                
+                py-16 md:py-24
+                items-center
+                md:flex-row
+                md:max-w-[1200px]
+                
+                md:mx-auto
+                md:gap-10
+            ">
 
-                <div className="flex flex-col  gap-6 flex-[1.5]">
+                <div className="
+                    flex flex-col gap-6
+                    flex-1
+                    md:flex-[1.5]
+                ">
 
-                    <h1 className="text-3xl font-extrabold text-[var(--color-primary)] max-w-xl">
+                    <h1 className="
+                        text-3xl
+                        
+                        md:text-4xl
+                        font-extrabold
+                        text-[var(--color-primary)]
+                        max-w-xl
+                        
+                        leading-tight
+                    ">
                         Seu sistema de agendamentos fácil
                     </h1>
-                    <p className="text-[var(--color-text-light)]  max-w-md leading-relaxed">
+
+                    <p className="
+                        text-[var(--color-text-light)]
+                        max-w-md
+                        leading-relaxed
+                    ">
                         Escolha um horário e agende em poucos segundos
                     </p>
 
-                    <Link to="/agendar" className="bg-[var(--color-primary)]
-                    p-4
-                    text-center text-white rounded-lg 
-                    font-bold shadow-sm
-                    
-                    ">
+                    <Link
+                        to="/agendar"
+                        className="
+                        bg-[var(--color-primary)]
+                        text-white
+                        font-bold
+                        text-center
+                        rounded-lg
+                        py-3 px-6
+                        shadow-md
+                        transition
+                        hover:opacity-90
+                        
+                        w-full
+                        md:w-fit
+                        
+                    "
+                    >
                         Agendar agora
                     </Link>
+
                 </div>
 
-                <div className=" flex w-full md:flex-1 justify-center ">
-                    <img src="src\assets\imagens\layout-agendar-img.jpg" alt="" className="w-80 h-48 md:w-full   object-cover  shadow-md rounded-xl" />
-                </div>
 
+                <div className="
+                    flex-1
+                    w-full
+                    flex
+                    justify-center
+                ">
+
+                    <img
+                        src="src/assets/imagens/layout-agendar-img.jpg"
+                        alt="Imagem ilustrativa de agendamento"
+                        className="
+                        w-full
+                        max-w-md
+                        md:max-w-xl
+                        
+                        aspect-[4/3]
+                        object-cover
+                        rounded-xl
+                        shadow-md
+                    "
+                    />
+
+                </div>
 
             </section>
 
             {/* sessão explicação*/}
 
             <section className=" flex flex-col gap-4
+            md:max-w-[1200px]
+            
             border rounded-md p-4 md:pb-8
             shadow-md">
 
@@ -44,7 +106,7 @@ function Home() {
                 text-[var(--color-primary)] font-bold">Como funciona?</h2>
 
                 <ol className="flex flex-col gap-4 
-                md:flex-row" >
+                md:flex-row justify-between" >
                     <li className="flex gap-4 items-center "><Calendar size={22} />Escolha um horário disponível</li>
                     <li className="flex gap-4 items-center"><CheckCircle size={22} /> Confirme o agendamento</li>
                     <li className="flex gap-4 items-center"><Clock size={22} /> Pronto, seu horário está marcado</li>

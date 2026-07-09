@@ -28,8 +28,8 @@ function Header() {
         bg-[var(--color-primary)]  text-[var(--color-secondary)]  ">
 
             <Link to="/" >
-                <span className="flex items-center gap-2 text-xl font-bold ">
-                    <Heart size={41} className="transition-transform hover:scale-105" /> Agenda fácil
+                <span className="flex items-center gap-2  text-xl lg:text-2xl font-bold ">
+                    <Heart size={45} className="transition-transform hover:scale-105" /> Agenda fácil
                 </span>
             </Link>
 
@@ -47,7 +47,7 @@ function Header() {
             <nav className="hidden 
             md:flex gap-6 
             
-            lg:text-lg
+            lg:text-xl
             lg:gap-8
             font-semibold
             
