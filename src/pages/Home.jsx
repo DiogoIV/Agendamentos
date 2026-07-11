@@ -100,7 +100,7 @@ function Home() {
             md:max-w-[1200px]
             
             border rounded-md p-4 md:pb-8
-            shadow-md">
+            shadow-md md:m-auto">
 
                 <h2 className="text-2xl 
                 text-[var(--color-primary)] font-bold">Como funciona?</h2>
@@ -124,7 +124,7 @@ function Home() {
 
                 <div className="flex flex-col gap-4 ">
 
-                    <img src="src\assets\imagens\2a256a9e-f6aa-4c56-9059-2ca28e299f08.jpg" alt="" className="w-40 md:w-48 aspect-square object-cover rounded-xl shadow-md" />
+                    <img src="src\assets\imagens\2a256a9e-f6a a-4c56-9059-2ca28e299f08.jpg" alt="" className="w-40 md:w-48 aspect-square object-cover rounded-xl shadow-md" />
 
                     <div className="flex flex-col gap-4">
 
