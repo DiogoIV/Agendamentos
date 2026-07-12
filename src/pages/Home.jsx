@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom"
+
 import { Calendar, CheckCircle, Clock } from '../assets/icons'
+
+import { imagemDoProfissional, layoutAgendar } from "../assets/imagens"
 
 function Home() {
     return (
-        <>
+        <div className="flex flex-col gap-20">
             {/*sessão hero*/}
             <section className="
                 flex flex-col gap-8
@@ -76,7 +79,7 @@ function Home() {
                 ">
 
                     <img
-                        src="src/assets/imagens/layout-agendar-img.jpg"
+                        src={layoutAgendar}
                         alt="Imagem ilustrativa de agendamento"
                         className="
                         w-full
@@ -124,7 +127,14 @@ function Home() {
 
                 <div className="flex flex-col gap-4 md:flex-row md:gap-10">
 
-                    <img src="src\assets\imagens\2a256a9e-f6a a-4c56-9059-2ca28e299f08.jpg" alt="" className="w-40 md:w-48 aspect-square object-cover rounded-xl shadow-md flex-[0.2]"/>
+                    <img src={imagemDoProfissional} alt="" className="
+                    w-40
+                    md:w-56
+                    aspect-square
+                    object-cover
+                    rounded-xl
+                    shadow-md
+                    "/>
 
                     <div className="flex flex-col gap-4 flex-1">
 
@@ -179,7 +189,7 @@ function Home() {
                     Agendar agora
                 </Link>
             </section>
-        </>
+        </div>
     )
 }
 
