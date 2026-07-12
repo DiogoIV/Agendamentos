@@ -8,7 +8,7 @@ function Home() {
             <section className="
                 flex flex-col gap-8
                 
-                py-16 md:py-24
+                md:py-20
                 items-center
                 md:flex-row
                 md:max-w-[1200px]
@@ -122,11 +122,11 @@ function Home() {
                 <h2 className="text-2xl 
                 text-[var(--color-primary)] font-bold ">Sobre o Profissional</h2>
 
-                <div className="flex flex-col gap-4 ">
+                <div className="flex flex-col gap-4 md:flex-row md:gap-10">
 
-                    <img src="src\assets\imagens\2a256a9e-f6a a-4c56-9059-2ca28e299f08.jpg" alt="" className="w-40 md:w-48 aspect-square object-cover rounded-xl shadow-md" />
+                    <img src="src\assets\imagens\2a256a9e-f6a a-4c56-9059-2ca28e299f08.jpg" alt="" className="w-40 md:w-48 aspect-square object-cover rounded-xl shadow-md flex-[0.2]"/>
 
-                    <div className="flex flex-col gap-4">
+                    <div className="flex flex-col gap-4 flex-1">
 
                         <h3 className="text-lg font-semibold text-[var(--color-primary)]">Tiago Rodrigues </h3>
 
@@ -157,10 +157,17 @@ function Home() {
             {/*Chamada final*/}
 
             <section className="flex flex-col gap-4
-            border rounded-md p-5 md:pb-8
+            border rounded-md p-8 md:pb-8
+            
+            text-center
+            md:max-w-2xl
+            md:w-full
+            mx-auto
+            
+            
             shadow-md">
 
-                <h2 className="text-xl 
+                <h2 className="text-xl md:text-2xl
                 text-[var(--color-primary)] font-bold ">Pronto para agendar seu horário?</h2>
 
                 <p className="text-[var(--color-text-light)]  leading-relaxed ">Agende em poucos minutos, de forma simples e rápida.</p>
