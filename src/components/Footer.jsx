@@ -8,7 +8,7 @@ function Footer() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 px-4 
             
-            py-10
+            pt-10
             max-w-[1200px]
             mx-auto">
                 <section className="flex flex-col space-y-2 ">

@@ -10,7 +10,7 @@ function AppLayout() {
         <>
             <Header/>
             <main className="flex flex-col 
-            pt-16 bg-[#fafafa] text-pretty tracking-wider p-4 
+            pt-10 bg-[#fafafa] text-pretty tracking-wider p-4 
             py-16 md:py-24
             flex-1">
                 <Outlet/>
