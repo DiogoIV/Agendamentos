@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom"
 
-import { Calendar, CheckCircle, Clock } from '../assets/icons'
+import { Calendar, CheckCircle, Clock } from '../../assets/icons'
 
-import { imagemDoProfissional, layoutAgendar } from "../assets/imagens"
+import { imagemDoProfissional, layoutAgendar } from "../../assets/imagens"
 
 function Home() {
     return (

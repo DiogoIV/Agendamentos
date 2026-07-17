@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import { Heart } from "lucide-react"
 
-function Login() {
+function EsqueciSenha() {
     return (
 
 
@@ -29,7 +29,7 @@ function Login() {
                 <Heart size={42} /> <span>Agenda Fácil</span>
             </div>
 
-            <h1 className="text-xl">Entrar na conta</h1>
+            <h1 className="text-xl">Recuperar senha</h1>
 
             <form action="" method="post" className="            
             flex
@@ -39,34 +39,29 @@ function Login() {
             ">
 
                 <div className="flex flex-col gap-4">
-                    <label htmlFor="email" className="sr-only">Email</label>
+                    
+                    <label htmlFor="email" className="sr-only">email</label>
 
                     <input type="text" name="" id="email" className="
                     w-full rounded-lg
-                    h-10
+                    h-12
                     px-4
                     border
                     outline-none
+
+                    bg-gray-50
+
+                    transition
                     focus:border-white
                     focus:ring-2
                     focus:ring-white/30
                     text-black
-                    " placeholder="Digite seu email"/>
-
-                    <label htmlFor="senha" className="sr-only">Senha</label>
-
-                    <input type="number" id="senha" className="
-                    w-full rounded-lg
-                    h-10
-                    px-4
-                    border-2
                     
-                    outline-none
-                    focus:border-white
-                    focus:ring-2
-                    focus:ring-white/30
-                    text-black
-                    " placeholder="Digite sua Senha"/>
+                    placeholder:text-gray-400
+                    placeholder:text-sm
+
+                    " placeholder="Digite seu email" />
+
                 </div>
 
                 <div className="flex flex-col gap-2">
@@ -74,24 +69,40 @@ function Login() {
 
                     <div className="flex flex-col gap-4">
 
-                        <button type="submit" className="bg-[var(--color-secondary)]
-                        p-4
+                        <Link to="" type="submit" className="bg-white
+                        text-[var(--color-primary)]
+                        font-bold
+                        
+                        py-3
+                        text-center
                         rounded-lg
-                        text-inherit
-                        font-normal
-                        text-lg
+                        
+                        shadow-md
+                        transition
+                        hover:opacity-90
+                        hover:shadow-md
+                        hover:scale-[1.02]
                         ">
-                            Entrar
-                        </button>
-
-                        <Link to="">
-                            Esqueceu a Senha?
+                            Enviar
                         </Link>
+
+
                     </div>
 
-                    <div>
-                        <p>Ainda não tem conta?</p>
-                        <Link to="">Cadraste-se</Link>
+                    <div className="
+                    flex gap-2
+                    border-t
+                  border-gray-200
+                    pt-4
+                    mt-4
+                    ">
+                        <p>Lembrou da senha?</p>
+
+                        <Link to="/login" className="font-semibold
+                        
+                        hover:underline">
+                            Entrar
+                        </Link>
                     </div>
                 </div>
 
@@ -106,4 +117,4 @@ function Login() {
     )
 }
 
-export default Login
+export default EsqueciSenha
