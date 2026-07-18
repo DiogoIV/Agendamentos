@@ -1,4 +1,4 @@
-import { Heart, Mail } from "../../assets/icons/"
+
 
 export {
     Heart,

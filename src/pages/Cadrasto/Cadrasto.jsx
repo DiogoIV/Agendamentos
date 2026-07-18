@@ -1,4 +1,4 @@
-import { Heart, Mail, Eye, EyeOff, User, lock  } from "../../assets/icons/"
+import { Heart, Mail, Eye, EyeOff, User, Lock  } from "../../assets/icons/"
 import { Link } from "react-router-dom"
 
 
