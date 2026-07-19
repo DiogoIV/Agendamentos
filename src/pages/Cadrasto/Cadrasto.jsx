@@ -7,7 +7,7 @@ function Cadrasto () {
     const estiloInputs = `
                     w-full rounded-lg
                     h-12
-                    px-4
+                    pl-12
                     border
                     outline-none
 
@@ -20,7 +20,7 @@ function Cadrasto () {
                     text-black
                     
                     placeholder:text-gray-400
-                    placeholder:text-sm
+                    
 
                     `
 
@@ -59,8 +59,25 @@ function Cadrasto () {
             ">
 
                 <div className="flex flex-col gap-4">
-                    <label htmlFor="usuario" className="sr-only">Usuario</label>
-                    <input type="text"  id="usuario" className={estiloInputs} placeholder="Digite seu Nome"/>
+
+
+                    <div>
+
+                        <div>
+                            <label htmlFor="usuario" className="sr-only">Usuario</label>
+                        </div>
+                        
+                        <div className="relative">
+
+                            <User className="
+                            absolute
+                            top-1/2 -translate-y-1/2 left-3
+                            text-gray-400
+                            "/>
+
+                            <input type="text"  id="usuario" className={estiloInputs} placeholder="Digite seu Nome"/>
+                        </div>
+                    </div>
 
                     <label htmlFor="email" className="sr-only">Email</label>
                     <input type="text" name="" id="email" className={estiloInputs}placeholder="Digite seu email"/>
