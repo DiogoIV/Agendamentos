@@ -73,20 +73,79 @@ function Cadrasto () {
                             absolute
                             top-1/2 -translate-y-1/2 left-3
                             text-gray-400
-                            "/>
+                            "
+                            size={25}/>
 
-                            <input type="text"  id="usuario" className={estiloInputs} placeholder="Digite seu Nome"/>
+                            <input type="text"  id="usuario" className={estiloInputs} placeholder="Digite seu nome"/>
                         </div>
                     </div>
 
-                    <label htmlFor="email" className="sr-only">Email</label>
-                    <input type="text" name="" id="email" className={estiloInputs}placeholder="Digite seu email"/>
+                    <div>
+                        <div>
+                            <label htmlFor="email" className="sr-only">Email</label>
+                        </div>
 
-                    <label htmlFor="senha" className="sr-only">Senha</label>
-                    <input type="password" id="senha" className={estiloInputs}placeholder="Digite sua Senha"/>
 
-                    <label htmlFor="newsenha" className="sr-only">Senha</label>
-                    <input type="password" id="newsenha" className={estiloInputs}placeholder="Repita a Senha"/>
+                        <div className="relative">
+
+                            <Mail className="absolute
+                            top-1/2 -translate-y-1/2 left-3
+                            text-gray-400" size={25}/>
+
+                            <input type="text" name="" id="email" className={estiloInputs}placeholder="Digite seu email"/>
+                        </div>
+                    </div>
+
+                    <div>
+
+                        <div>
+                            
+                            <label htmlFor="senha" className="sr-only">
+                                Senha
+                            </label>
+                        </div>
+
+                        <div className="relative">
+                            <Lock className="absolute
+                            top-1/2 -translate-y-1/2 left-3
+                            text-gray-400" size={25}/>
+
+                            <input type="password" id="senha" className={estiloInputs}placeholder="Crie sua senha"/>
+
+                            <EyeOff className="
+                            absolute
+                            text-gray-400
+                            top-1/2
+                            -translate-y-1/2
+                            right-2
+                            " size={25}/>
+                        </div>
+                    </div>
+
+                    <div>
+
+                        <div>
+                            <label htmlFor="newsenha" className="sr-only">Senha</label>
+                        </div>
+
+                        <div className="relative">
+
+                            <Lock className="absolute
+                            top-1/2 -translate-y-1/2 left-3
+                            text-gray-400" size={25}/>
+
+                            <input type="password" id="newsenha" className={estiloInputs}placeholder="Confirmar senha"/>
+
+                            <EyeOff className="
+                            absolute
+                            text-gray-400
+                            top-1/2
+                            -translate-y-1/2
+                            right-2
+                            " size={25}/>
+                        </div>
+                    </div>
+                    
                 </div>
 
                 <div className="flex flex-col gap-2">
@@ -108,7 +167,7 @@ function Cadrasto () {
                         hover:shadow-md
                         hover:scale-[1.02]
                         ">
-                            Registra-se
+                            Criar conta
                         </Link>
              
                     </div>

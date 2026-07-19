@@ -66,7 +66,8 @@ function Login() {
                             
                             placeholder:text-gray-400
                             
-                            " placeholder="Digite seu email"/>
+                            " placeholder="Digite seu email"
+                            />
                         </div>
 
                     </div>
@@ -82,7 +83,9 @@ function Login() {
                             absolute
                             top-1/2 -translate-y-1/2 left-3
                             text-gray-400
+                            
                             "
+                            size={25}
                             />
                             <input type="number" id="senha" className="
                             w-full rounded-lg
@@ -146,6 +149,7 @@ function Login() {
 
                     <div className="
                     flex gap-2
+                    
                     border-t
                   border-gray-200
                     pt-4

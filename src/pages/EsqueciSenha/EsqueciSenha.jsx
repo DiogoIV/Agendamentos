@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom"
-import { Heart } from "lucide-react"
+import { Heart, Mail } from "../../assets/icons/"
 
 function EsqueciSenha() {
     return (
@@ -38,29 +38,36 @@ function EsqueciSenha() {
             w-full
             ">
 
-                <div className="flex flex-col gap-4">
-                    
-                    <label htmlFor="email" className="sr-only">email</label>
+                <div>
 
-                    <input type="text" name="" id="email" className="
-                    w-full rounded-lg
-                    h-12
-                    px-4
-                    border
-                    outline-none
+                    <div>
+                        <label htmlFor="email" className="sr-only">email</label>
+                    </div>
 
-                    bg-gray-50
+                    <div className="relative">
+                        <Mail className="absolute
+                                top-1/2 -translate-y-1/2 left-3
+                                text-gray-400" size={25} 
+                        />
 
-                    transition
-                    focus:border-white
-                    focus:ring-2
-                    focus:ring-white/30
-                    text-black
-                    
-                    placeholder:text-gray-400
-                    placeholder:text-sm
-
-                    " placeholder="Digite seu email" />
+                        <input type="text" name="" id="email" className="
+                                w-full rounded-lg
+                                h-12
+                                pl-12
+                                border
+                                outline-none
+                                bg-gray-50
+                                transition
+                                focus:border-white
+                                focus:ring-2
+                                focus:ring-white/30
+                                text-black
+                        
+                                placeholder:text-gray-400
+                        
+                                " placeholder="Digite seu email"
+                        />
+                    </div>
 
                 </div>
 
