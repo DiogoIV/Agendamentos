@@ -1,6 +1,35 @@
-
+import { useEffect, useState } from "react";
+import buscarHorarios from "../../api/horarios";
 
 function Agendamento() {
+
+    const [horarios, setHorarios] = useState([]);
+
+    const dadosHoras = horarios.map(el => (
+        <button className="bg-[var(--color-primary)] text-white rounded-lg px-5 py-3">
+            {el.horario}
+        </button>
+        )
+    )
+
+    console.log(horarios)
+
+    useEffect(() => {
+
+        async function carregar() {
+
+            const horas = await buscarHorarios();
+
+            setHorarios(horas);
+
+
+        }
+
+        carregar();
+
+    }, []);
+
+
     return (
 
         <div className="
@@ -62,13 +91,13 @@ function Agendamento() {
 
 
                 {/* Agendamento */}
-                
+
                 <div className="
                     flex flex-col
                     gap-6
                 ">
 
-                     <h2 className="
+                    <h2 className="
                         text-2xl
                         font-bold
                         text-[var(--color-primary)]
@@ -116,21 +145,8 @@ function Agendamento() {
                             flex-wrap
                             gap-3
                         ">
-                            <button className="bg-[var(--color-primary)] text-white rounded-lg px-5 py-3">
-                                09:00
-                            </button>
+                            {dadosHoras}
 
-                            <button className="bg-[var(--color-primary)] text-white rounded-lg px-5 py-3">
-                                10:00
-                            </button>
-
-                            <button className="bg-[var(--color-primary)] text-white rounded-lg px-5 py-3">
-                                11:00
-                            </button>
-
-                            <button className="bg-[var(--color-primary)] text-white rounded-lg px-5 py-3">
-                                14:00
-                            </button>
                         </div>
 
                     </div>
