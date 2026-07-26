@@ -37,6 +37,12 @@ app.get('/horarios', (req, res)=> {
     res.json(horarios)
 })
 
+/**/
+
+app.post('/agendamentos', (req, res)=> {
+    
+})
+
 
 
 app.listen(3000, ()=> {
