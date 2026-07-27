@@ -3,45 +3,17 @@ import dotenv from 'dotenv/config'
 import cors from 'cors';
 
 const app = express();
+
 app.use(cors());
-app.use(express.json())
-
-const horarios = [
-    {
-        data: "20/07/2026",
-        horario: "10:00",
-        disponivel: true
-    },
-
-    {
-        data: "20/07/2026",
-        horario: "12:00",
-        disponivel: false
-    },
-
-    {
-        data: "20/07/2026",
-        horario: "13:00",
-        disponivel: true
-    },
-
-    {
-        data: "20/07/2026",
-        horario: "15:00",
-        disponivel: false
-    }
-]
+app.use(express.json());
 
 
-app.get('/horarios', (req, res)=> {
-    res.json(horarios)
-})
 
-/**/
+import horariosRoutes from './routes/horarios.js';
+import authRoutes from './routes/auth.js';
+import agendamentosRoutes from './routes/agendamentos.js';
 
-app.post('/agendamentos', (req, res)=> {
-    
-})
+app.use(horariosRoutes)
 
 
 
