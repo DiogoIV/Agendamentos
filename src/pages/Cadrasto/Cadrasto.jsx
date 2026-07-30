@@ -1,8 +1,15 @@
+import { useState } from "react"
 import { Heart, Mail, Eye, EyeOff, User, Lock  } from "../../assets/icons/"
 import { Link } from "react-router-dom"
 
 
 function Cadrasto () {
+    const  [inputs, setInputs] = useState({
+        nome: '',
+        email: '',
+        senha: '',
+        confirmarsenha: ''
+    })
 
     const estiloInputs = `
                     w-full rounded-lg
@@ -76,7 +83,10 @@ function Cadrasto () {
                             "
                             size={25}/>
 
-                            <input type="text"  id="usuario" className={estiloInputs} placeholder="Digite seu nome"/>
+                            <input type="text"  id="usuario" className={estiloInputs} placeholder="Digite seu nome" onChange={(el)=> 
+                            setInputs({...inputs, 
+                                nome: el.target.value
+                            })}/>
                         </div>
                     </div>
 
@@ -92,7 +102,11 @@ function Cadrasto () {
                             top-1/2 -translate-y-1/2 left-3
                             text-gray-400" size={25}/>
 
-                            <input type="text" name="" id="email" className={estiloInputs}placeholder="Digite seu email"/>
+                            <input type="text" name="" id="email" className={estiloInputs}placeholder="Digite seu email"
+                            onChange={(el)=> 
+                            setInputs({...inputs, 
+                                email: el.target.value
+                            })}/>
                         </div>
                     </div>
 
@@ -110,7 +124,11 @@ function Cadrasto () {
                             top-1/2 -translate-y-1/2 left-3
                             text-gray-400" size={25}/>
 
-                            <input type="password" id="senha" className={estiloInputs}placeholder="Crie sua senha"/>
+                            <input type="password" id="senha" className={estiloInputs}placeholder="Crie sua senha"
+                            onChange={(el)=> 
+                            setInputs({...inputs, 
+                                senha: el.target.value
+                            })}/>
 
                             <EyeOff className="
                             absolute
@@ -134,7 +152,12 @@ function Cadrasto () {
                             top-1/2 -translate-y-1/2 left-3
                             text-gray-400" size={25}/>
 
-                            <input type="password" id="newsenha" className={estiloInputs}placeholder="Confirmar senha"/>
+                            <input type="password" id="newsenha" className={estiloInputs}placeholder="Confirmar senha"
+                            onChange={(el)=> 
+                            setInputs({...inputs, 
+                                confirmarsenha: el.target.value
+                            })}
+                            />
 
                             <EyeOff className="
                             absolute
@@ -153,7 +176,7 @@ function Cadrasto () {
 
                     <div className="flex flex-col gap-4">
 
-                        <Link to="" type="submit" className="bg-white
+                        <button to="" type="submit" className="bg-white
                         text-[var(--color-primary)]
                         font-bold
                         
@@ -168,7 +191,7 @@ function Cadrasto () {
                         hover:scale-[1.02]
                         ">
                             Criar conta
-                        </Link>
+                        </button>
              
                     </div>
 

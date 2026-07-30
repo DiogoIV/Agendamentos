@@ -1,4 +1,3 @@
-/*Api Agendamentos*/
 
 
 async function buscarHorarios() {
