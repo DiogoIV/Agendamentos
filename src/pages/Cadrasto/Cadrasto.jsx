@@ -4,12 +4,15 @@ import { Link } from "react-router-dom"
 
 
 function Cadrasto () {
+    
     const  [inputs, setInputs] = useState({
         nome: '',
         email: '',
         senha: '',
         confirmarsenha: ''
     })
+
+    
 
     const estiloInputs = `
                     w-full rounded-lg
