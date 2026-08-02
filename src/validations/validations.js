@@ -1,53 +1,57 @@
 
 const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-const regexSenha = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*\W)\S+$/
+const regexSenhaMinuscula = /[a-z]/
+const regexSenhaMaiuscula = /[A-Z]/
+const regexSenhaNumero = /[0-9]/
+const regexSenhaEspecial = /[^a-zA-Z0-9]/
 
 function validarNome(nome) {
 
     const nomeLimpo = nome.trim()
 
-    if(nomeLimpo === "") {
+    if (nomeLimpo === "") {
         return 'Preecha os dados corretamente'
     }
 
-    if(nomeLimpo.length < 3) {
+    if (nomeLimpo.length < 3) {
         return '"O nome deve ter pelo menos 3 caracterese'
     }
 }
 
-function validarEmail (email) {
+function validarEmail(email) {
 
-    if(email.trim() === "") {
+    if (email.trim() === "") {
         return 'Preecha os dados corretamente'
     }
-    if(!regexEmail.test(email)) {
+    if (!regexEmail.test(email)) {
         return 'email invalido! '
     }
 
 
 }
 
-function validarSenha (senha, confirmarSenha) {
+function validarSenha(senha, confirmarSenha) {
 
     const senhaLimpa = senha.trim()
     const confirmarLimpa = confirmarSenha.trim()
 
-    if( senhaLimpa === "" || confirmarLimpa === "") {
+    if (senhaLimpa === "" || confirmarLimpa === "") {
         return 'Capo vazio'
     }
 
-    if(!regexSenha.test(senhaLimpa)) {
-        return "A senha deve conter pelo menos uma letra maiúscula, uma letra minúscula, um número e um caractere especial."
+    if (senhaLimpa !== confirmarLimpa) {
+        return 'As senhas não coincidem.'
     }
 
-    if(senhaLimpa.length < 8) {
-        return "Mínimo de 8 caracteres";
+    const validacoes = {
+        temMaiscula: regexSenhaMaiuscula.test(senha),
+        temMinuscula: regexSenhaMinuscula.test(senha),
+        temNumero: regexSenhaNumero.test(senha),
+        temEspecial: regexSenhaEspecial.test(senha),
+        tamanhoSenha: senhaLimpa.length > 8 ? true : false
     }
 
+    return validacoes
 
-    if(senhaLimpa !== confirmarLimpa) {
-        return 'Senhas iguais.'
-    }
 
-    
 }
