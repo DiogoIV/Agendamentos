@@ -16,6 +16,8 @@ function validarNome(nome) {
     if (nomeLimpo.length < 3) {
         return '"O nome deve ter pelo menos 3 caracterese'
     }
+
+    return null
 }
 
 function validarEmail(email) {
@@ -55,3 +57,5 @@ function validarSenha(senha, confirmarSenha) {
 
 
 }
+
+export {validarNome, validarEmail, validarSenha}

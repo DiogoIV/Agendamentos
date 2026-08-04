@@ -2,6 +2,8 @@ import { useState } from "react"
 import { Heart, Mail, Eye, EyeOff, User, Lock  } from "../../assets/icons/"
 import { Link } from "react-router-dom"
 
+import {validarNome, validarEmail, validarSenha} from '../../validations/validations'
+
 
 function Cadrasto () {
     
@@ -12,7 +14,13 @@ function Cadrasto () {
         confirmarsenha: ''
     })
 
+    const [erroNome, setErroNome] = useState(null)
     
+    setErroNome(validarNome(inputs.nome))
+    
+
+    console.log(inputs.nome)
+
 
     const estiloInputs = `
                     w-full rounded-lg
@@ -66,7 +74,7 @@ function Cadrasto () {
             flex-col
             gap-6
             w-full
-            ">
+            " onSubmit={(el) => el.preventDefault()}>
 
                 <div className="flex flex-col gap-4">
 
@@ -192,7 +200,7 @@ function Cadrasto () {
                         hover:opacity-90
                         hover:shadow-md
                         hover:scale-[1.02]
-                        ">
+                        " onClick={()=> validarNome(inputs.nome)}>
                             Criar conta
                         </button>
              
