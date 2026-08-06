@@ -10,11 +10,11 @@ function validarNome(nome) {
     const nomeLimpo = nome.trim()
 
     if (nomeLimpo === "") {
-        return 'Preecha os dados corretamente'
+        return 'Campo obrigatório.'
     }
 
     if (nomeLimpo.length < 3) {
-        return 'O nome deve ter pelo menos 3 caracterese'
+        return ' O nome deve ter pelo menos 3 caracteres'
     }
 
     return null
@@ -23,13 +23,16 @@ function validarNome(nome) {
 function validarEmail(email) {
 
     if (email.trim() === "") {
-        return 'Preecha os dados corretamente'
+        
+        return 'Campo obrigatório.'
+        
     }
     if (!regexEmail.test(email)) {
-        return 'email invalido! '
+        
+        return 'Formato de email inválido! '
     }
 
-
+    return null
 }
 
 function validarSenha(senha, confirmarSenha) {

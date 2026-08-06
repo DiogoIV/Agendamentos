@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Heart, Mail, Eye, EyeOff, User, Lock } from "../../assets/icons/"
+import { Heart, Mail, Eye, EyeOff, User, Lock, TriangleAlert} from "../../assets/icons/"
 import { Link } from "react-router-dom"
 
 import { validarNome, validarEmail, validarSenha } from '../../validations/validations'
@@ -27,11 +27,17 @@ function Cadrasto() {
     function handleCadastro() {
         
         
-        return setErro((prev) => ({
+        setErro((prev) => ({
             ...prev,
             nome: validarNome(inputs.nome)
         }))
 
+        setErro((prev) => ({
+            ...prev,
+            email: validarEmail(inputs.email)
+        }))
+
+        return 
         
     }
 
@@ -113,7 +119,23 @@ function Cadrasto() {
                                     nome: el.target.value
                                 })} />                          
                         </div>
-                        <span>{erros.nome}</span>
+
+                        {erros.nome && (                              
+                            <div className="                           flex  gap-2
+                            items-center
+                            pt-2                
+                            text-sm
+                            pl-2
+                            text-red-400
+                            ">
+                                <TriangleAlert size={19}/>
+                                <span>
+                                    {erros.nome}
+                                </span>
+                            </div>
+                                
+                        )}
+                            
                     </div>
 
                     <div>
@@ -134,7 +156,24 @@ function Cadrasto() {
                                         ...inputs,
                                         email: el.target.value
                                     })} />
+
+                            
                         </div>
+                        {erros.email && (                              
+                            <div className="                           flex  gap-2
+                            items-center
+                            pt-2                
+                            text-sm
+                            pl-2
+                            text-red-400
+                            ">
+                                <TriangleAlert size={19}/>
+                                <span>
+                                    {erros.email}
+                                </span>
+                            </div>
+                                
+                        )}
                     </div>
 
                     <div>

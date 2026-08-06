@@ -11,6 +11,7 @@ export {
     Eye,
     EyeOff,
     ArrowLeft,
+    TriangleAlert
     
 } from "lucide-react";
 
