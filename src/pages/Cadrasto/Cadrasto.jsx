@@ -1,8 +1,8 @@
 import { useState } from "react"
-import { Heart, Mail, Eye, EyeOff, User, Lock, TriangleAlert} from "../../assets/icons/"
+import { Heart, Mail, Eye, EyeOff, User, Lock, TriangleAlert } from "../../assets/icons/"
 import { Link } from "react-router-dom"
 
-import { validarNome, validarEmail, validarSenha } from '../../validations/validations'
+import { validarNome, validarEmail, validarSenha, ValidarDigitarSenha } from '../../validations/validations'
 
 
 function Cadrasto() {
@@ -21,12 +21,23 @@ function Cadrasto() {
         senha: null,
         confirmarsenha: null
     })
-    
-    
+
+    const [validacoesSenha, setValidacoesSenha] = useState({
+        RegexSenhas: ValidarDigitarSenha(inputs.senha)
+    })
+
+    const [senhaEmFoco, setSenhaEmFoco] = useState(false)
+
+
+
+    function handleCadatroChange(el) {
+
+
+        setValidacoesSenha()
+    }
 
     function handleCadastro() {
-        
-        
+
         setErro((prev) => ({
             ...prev,
             nome: validarNome(inputs.nome)
@@ -37,9 +48,19 @@ function Cadrasto() {
             email: validarEmail(inputs.email)
         }))
 
-        return 
-        
+        setErro((prev) => (
+            {
+                ...prev,
+                senha: validarSenha(inputs.senha, inputs.confirmarsenha)
+            }
+
+        ))
+
+        return
+
     }
+
+
 
     const estiloInputs = `
                     w-full rounded-lg
@@ -113,14 +134,16 @@ function Cadrasto() {
                             "
                                 size={25} />
 
-                            <input type="text" id="usuario" className={estiloInputs} placeholder="Digite seu nome" onChange={(el) =>
-                                setInputs({
-                                    ...inputs,
-                                    nome: el.target.value
-                                })} />                          
+                            <input type="text" id="usuario" className={estiloInputs} placeholder="Digite seu nome"
+                                onChange={(el) =>
+                                    setInputs({
+                                        ...inputs,
+                                        nome: el.target.value
+                                    })
+                                } />
                         </div>
 
-                        {erros.nome && (                              
+                        {erros.nome && (
                             <div className="                           flex  gap-2
                             items-center
                             pt-2                
@@ -128,14 +151,14 @@ function Cadrasto() {
                             pl-2
                             text-red-400
                             ">
-                                <TriangleAlert size={19}/>
+                                <TriangleAlert size={19} />
                                 <span>
                                     {erros.nome}
                                 </span>
                             </div>
-                                
+
                         )}
-                            
+
                     </div>
 
                     <div>
@@ -157,9 +180,9 @@ function Cadrasto() {
                                         email: el.target.value
                                     })} />
 
-                            
+
                         </div>
-                        {erros.email && (                              
+                        {erros.email && (
                             <div className="                           flex  gap-2
                             items-center
                             pt-2                
@@ -167,12 +190,12 @@ function Cadrasto() {
                             pl-2
                             text-red-400
                             ">
-                                <TriangleAlert size={19}/>
+                                <TriangleAlert size={19} />
                                 <span>
                                     {erros.email}
                                 </span>
                             </div>
-                                
+
                         )}
                     </div>
 
@@ -191,11 +214,12 @@ function Cadrasto() {
                             text-gray-400" size={25} />
 
                             <input type="password" id="senha" className={estiloInputs} placeholder="Crie sua senha"
+                                onFocus={() => setSenhaEmFoco(true)}
+                                onBlur={() => setSenhaEmFoco(false)}
                                 onChange={(el) =>
-                                    setInputs({
-                                        ...inputs,
-                                        senha: el.target.value
-                                    })} />
+                                    handleCadatroChange(el.target.value)
+                                    }
+                            />
 
                             <EyeOff className="
                             absolute
@@ -205,6 +229,19 @@ function Cadrasto() {
                             right-2
                             " size={25} />
                         </div>
+
+                        {senhaEmFoco && (
+                            <ul className="flex flex-col gap-2">
+                                <li>{!validacoesSenha.RegexSenhas.temMaiuscula && 'Necessario maiúscula'}</li>
+                                <li>{!validacoesSenha.RegexSenhas.temMinuscula && 'Necessario minúscula'}</li>
+                                <li>{!validacoesSenha.RegexSenhas.temNumero && 'Pelo menos um número'}</li>
+                                <li>{!validacoesSenha.RegexSenhas.temEspecial && 'Necessario caractér especial'}</li>
+                                <li>{!validacoesSenha.RegexSenhas.tamanhoSenha && 'Minímo 8 caracteres'}</li>
+                            </ul>
+                        )}
+
+
+
                     </div>
 
                     <div>
@@ -244,7 +281,7 @@ function Cadrasto() {
 
                     <div className="flex flex-col gap-4">
 
-                        <button to="" type="submit" className="bg-white
+                        <button type="submit" className="bg-white
                         text-[var(--color-primary)]
                         font-bold
                         
@@ -257,7 +294,7 @@ function Cadrasto() {
                         hover:opacity-90
                         hover:shadow-md
                         hover:scale-[1.02]
-                        " onClick={() =>  handleCadastro()}>
+                        " onClick={() => handleCadastro()}>
                             Criar conta
                         </button>
 

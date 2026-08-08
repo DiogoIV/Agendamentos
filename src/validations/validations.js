@@ -35,21 +35,12 @@ function validarEmail(email) {
     return null
 }
 
-function validarSenha(senha, confirmarSenha) {
+function ValidarDigitarSenha(senha) {
 
     const senhaLimpa = senha.trim()
-    const confirmarLimpa = confirmarSenha.trim()
-
-    if (senhaLimpa === "" || confirmarLimpa === "") {
-        return 'Capo vazio'
-    }
-
-    if (senhaLimpa !== confirmarLimpa) {
-        return 'As senhas não coincidem.'
-    }
 
     const validacoes = {
-        temMaiscula: regexSenhaMaiuscula.test(senha),
+        temMaiuscula: regexSenhaMaiuscula.test(senha),
         temMinuscula: regexSenhaMinuscula.test(senha),
         temNumero: regexSenhaNumero.test(senha),
         temEspecial: regexSenhaEspecial.test(senha),
@@ -57,8 +48,23 @@ function validarSenha(senha, confirmarSenha) {
     }
 
     return validacoes
+}
 
+function validarSenha(senha, confirmarSenha) {
+
+    const senhaLimpa = senha.trim()
+    const confirmarLimpa = confirmarSenha.trim()
+
+    if (senhaLimpa === "" || confirmarLimpa === "") {
+        return 'Campo obrigatório'
+    }
+
+    if (senhaLimpa !== confirmarLimpa) {
+        return 'As senhas não coincidem.'
+    }
+
+    
 
 }
 
-export {validarNome, validarEmail, validarSenha}
+export {validarNome, validarEmail, validarSenha, ValidarDigitarSenha}
