@@ -18,8 +18,7 @@ function Cadrasto() {
     const [erros, setErro] = useState({
         nome: null,
         email: null,
-        senha: null,
-        confirmarsenha: null
+        senha: null
     })
 
     const [validacoesSenha, setValidacoesSenha] = useState({
@@ -29,11 +28,20 @@ function Cadrasto() {
     const [senhaEmFoco, setSenhaEmFoco] = useState(false)
 
 
+    const validacoesSenhaArray = Object.values(validacoesSenha.RegexSenhas)
+
+    const validarArraySenha = validacoesSenhaArray.some((num) => num === false)
 
     function handleCadatroChange(el) {
+        setValidacoesSenha({
+            RegexSenhas: ValidarDigitarSenha(el)
+        })
 
+        setInputs((prev) => ({
+            ...prev,
+            senha: el
+        }))
 
-        setValidacoesSenha()
     }
 
     function handleCadastro() {
@@ -218,7 +226,7 @@ function Cadrasto() {
                                 onBlur={() => setSenhaEmFoco(false)}
                                 onChange={(el) =>
                                     handleCadatroChange(el.target.value)
-                                    }
+                                }
                             />
 
                             <EyeOff className="
@@ -230,7 +238,7 @@ function Cadrasto() {
                             " size={25} />
                         </div>
 
-                        {senhaEmFoco && (
+                        {senhaEmFoco && validarArraySenha ? (
                             <ul className="flex flex-col gap-2">
                                 <li>{!validacoesSenha.RegexSenhas.temMaiuscula && 'Necessario maiúscula'}</li>
                                 <li>{!validacoesSenha.RegexSenhas.temMinuscula && 'Necessario minúscula'}</li>
@@ -238,6 +246,12 @@ function Cadrasto() {
                                 <li>{!validacoesSenha.RegexSenhas.temEspecial && 'Necessario caractér especial'}</li>
                                 <li>{!validacoesSenha.RegexSenhas.tamanhoSenha && 'Minímo 8 caracteres'}</li>
                             </ul>
+                        ) :
+                            ''
+                        }
+
+                        {erros.senha && (
+                            <span>{erros.senha.campoSenha}</span>
                         )}
 
 
@@ -272,6 +286,18 @@ function Cadrasto() {
                             right-2
                             " size={25} />
                         </div>
+                        {erros.senha && (
+                            <div className="flex flex-col gap-1">
+                                <span>
+                                    {erros.senha.campoConfirmarSenha}
+                                </span>
+
+                                <span>
+                                    {erros.senha.senhaDiferenca}
+                                </span>
+                            </div>
+
+                        )}
                     </div>
 
                 </div>

@@ -55,13 +55,13 @@ function validarSenha(senha, confirmarSenha) {
     const senhaLimpa = senha.trim()
     const confirmarLimpa = confirmarSenha.trim()
 
-    if (senhaLimpa === "" || confirmarLimpa === "") {
-        return 'Campo obrigatório'
+    const campoSenha = {
+        campoSenha: senha === '' ? 'Campo obrigatório': null,
+        campoConfirmarSenha: confirmarLimpa === '' ? 'Campo obrigatório': null,
+        senhaDiferenca: senhaLimpa !== '' && confirmarLimpa !== '' && senhaLimpa !== confirmarLimpa ? 'senhas não batem': null 
     }
 
-    if (senhaLimpa !== confirmarLimpa) {
-        return 'As senhas não coincidem.'
-    }
+    return campoSenha
 
     
 
