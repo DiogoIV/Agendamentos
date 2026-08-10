@@ -44,7 +44,7 @@ function ValidarDigitarSenha(senha) {
         temMinuscula: regexSenhaMinuscula.test(senha),
         temNumero: regexSenhaNumero.test(senha),
         temEspecial: regexSenhaEspecial.test(senha),
-        tamanhoSenha: senhaLimpa.length > 8 ? true : false
+        tamanhoSenha: senhaLimpa.length >= 8 ? true : false
     }
 
     return validacoes
@@ -56,7 +56,7 @@ function validarSenha(senha, confirmarSenha) {
     const confirmarLimpa = confirmarSenha.trim()
 
     const campoSenha = {
-        campoSenha: senha === '' ? 'Campo obrigatório': null,
+        campoSenhas: senhaLimpa === '' ? 'Campo obrigatório': null,
         campoConfirmarSenha: confirmarLimpa === '' ? 'Campo obrigatório': null,
         senhaDiferenca: senhaLimpa !== '' && confirmarLimpa !== '' && senhaLimpa !== confirmarLimpa ? 'senhas não batem': null 
     }

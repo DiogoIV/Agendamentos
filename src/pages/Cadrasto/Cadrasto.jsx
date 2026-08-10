@@ -7,6 +7,8 @@ import { validarNome, validarEmail, validarSenha, ValidarDigitarSenha } from '..
 
 function Cadrasto() {
 
+    /*Estados*/
+
     const [inputs, setInputs] = useState({
         nome: '',
         email: '',
@@ -69,6 +71,19 @@ function Cadrasto() {
     }
 
 
+    /*Estilos*/
+
+    const estiloAviso = `
+            flex 
+            gap-2
+            items-center
+            pt-2                
+            text-sm
+            pl-2
+            text-red-400
+            `
+
+    const estiloLista = `flex items-center gap-2`
 
     const estiloInputs = `
                     w-full rounded-lg
@@ -152,13 +167,8 @@ function Cadrasto() {
                         </div>
 
                         {erros.nome && (
-                            <div className="                           flex  gap-2
-                            items-center
-                            pt-2                
-                            text-sm
-                            pl-2
-                            text-red-400
-                            ">
+                            <div className={estiloAviso}
+                            >
                                 <TriangleAlert size={19} />
                                 <span>
                                     {erros.nome}
@@ -191,13 +201,7 @@ function Cadrasto() {
 
                         </div>
                         {erros.email && (
-                            <div className="                           flex  gap-2
-                            items-center
-                            pt-2                
-                            text-sm
-                            pl-2
-                            text-red-400
-                            ">
+                            <div className={estiloAviso}>
                                 <TriangleAlert size={19} />
                                 <span>
                                     {erros.email}
@@ -239,19 +243,93 @@ function Cadrasto() {
                         </div>
 
                         {senhaEmFoco && validarArraySenha ? (
-                            <ul className="flex flex-col gap-2">
-                                <li>{!validacoesSenha.RegexSenhas.temMaiuscula && 'Necessario maiúscula'}</li>
-                                <li>{!validacoesSenha.RegexSenhas.temMinuscula && 'Necessario minúscula'}</li>
-                                <li>{!validacoesSenha.RegexSenhas.temNumero && 'Pelo menos um número'}</li>
-                                <li>{!validacoesSenha.RegexSenhas.temEspecial && 'Necessario caractér especial'}</li>
-                                <li>{!validacoesSenha.RegexSenhas.tamanhoSenha && 'Minímo 8 caracteres'}</li>
+                            
+                            <ul className="                        flex flex-col gap-2
+                           
+                            pt-2                
+                            text-sm
+                            pl-2
+                            text-red-400
+                            ">
+                                {!validacoesSenha.RegexSenhas.temMaiuscula && (
+                                    <li className={estiloLista}>
+                                        <span>
+                                            <TriangleAlert size={19} />
+                                        </span>
+
+                                        <span>
+                                            Necessario Maiúscula
+                                        </span>
+                                    </li>
+                                )}
+
+                                {!validacoesSenha.RegexSenhas.temMinuscula && (
+                                    <li className={estiloLista}>
+                                        <span>
+                                            <TriangleAlert size={19} />
+                                        </span>
+
+                                        <span>
+                                            Necessario Minúscula
+                                        </span>
+                                    </li>
+                                )}
+                                {!validacoesSenha.RegexSenhas.temNumero && (
+                                    <li className={estiloLista}>
+                                        <span>
+                                            <TriangleAlert size={19} />
+                                        </span>
+
+                                        <span>
+                                            Pelo menos um número
+                                        </span>
+                                    </li>
+                                )}
+
+                                {!validacoesSenha.RegexSenhas.temEspecial && (
+                                    <li className={estiloLista}>
+                                        <span>
+                                            <TriangleAlert size={19}/>
+                                        </span>
+
+                                        <span>
+                                           Necessario caractér especial(.@-_etc.)
+                                        </span>
+                                    </li>                        
+                                )}
+
+                                {!validacoesSenha.RegexSenhas.tamanhoSenha && (
+                                    <li className={estiloLista}>
+                                        <span>
+                                            <TriangleAlert size={19}/>
+                                        </span>
+
+                                        <span>
+                                           Minímo 8 caracteres
+                                        </span>
+                                    </li>                        
+                                )}
+
                             </ul>
                         ) :
                             ''
                         }
 
                         {erros.senha && (
-                            <span>{erros.senha.campoSenha}</span>
+                            <div className={estiloAviso}
+                            >
+                                
+                                
+                                    {erros.senha.campoSenhas && (
+                                        <div className={estiloLista}>
+                                            <TriangleAlert size={19} />
+                                            {
+                                                erros.senha.campoSenhas
+                                            }
+                                        </div>
+                                    )}
+                                
+                            </div>
                         )}
 
 
@@ -287,15 +365,30 @@ function Cadrasto() {
                             " size={25} />
                         </div>
                         {erros.senha && (
-                            <div className="flex flex-col gap-1">
-                                <span>
-                                    {erros.senha.campoConfirmarSenha}
-                                </span>
+                            <div className={estiloAviso}>
+                                
+                                
+                                    
+                                    {erros.senha.campoConfirmarSenha && (
+                                        <div className={estiloLista}>
+                                            <TriangleAlert size={19} />
+                                            <span>
+                                                {erros.senha.campoConfirmarSenha}
+                                            </span>
+                                        </div>
+                                    )}
+                                
 
-                                <span>
-                                    {erros.senha.senhaDiferenca}
-                                </span>
+                                {erros.senha.senhaDiferenca && (
+                                        <div className={estiloLista}>
+                                            <TriangleAlert size={19} />
+                                            <span>
+                                                {erros.senha.senhaDiferenca}
+                                            </span>
+                                        </div>
+                                    )}
                             </div>
+
 
                         )}
                     </div>
