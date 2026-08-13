@@ -7,7 +7,7 @@ import { validarNome, validarEmail, validarSenha, ValidarDigitarSenha } from '..
 
 function Cadrasto() {
 
-    /*Estados*/
+    /*Estados Regex e validações*/
 
     const [inputs, setInputs] = useState({
         nome: '',
@@ -33,6 +33,15 @@ function Cadrasto() {
     const validacoesSenhaArray = Object.values(validacoesSenha.RegexSenhas)
 
     const validarArraySenha = validacoesSenhaArray.some((num) => num === false)
+
+    /*Estados exibir Senha */
+
+    const [exibirSenha, setExibirSenha] = useState(false)
+
+    const [exibirConfirmarSenha, setExibirConfirmarSenha] = useState(false)
+
+
+    /*Funcões*/
 
     function handleCadatroChange(el) {
         setValidacoesSenha({
@@ -83,6 +92,7 @@ function Cadrasto() {
             text-red-400
             `
 
+
     const estiloLista = `flex items-center gap-2`
 
     const estiloInputs = `
@@ -105,6 +115,16 @@ function Cadrasto() {
 
                     `
 
+    const estiloIconeExibir = `absolute
+                                text-gray-400
+                                top-1/2
+                                -translate-y-1/2
+                                right-2`
+
+
+
+
+                                
     return (
         <section className="
             flex
@@ -225,7 +245,7 @@ function Cadrasto() {
                             top-1/2 -translate-y-1/2 left-3
                             text-gray-400" size={25} />
 
-                            <input type="password" id="senha" className={estiloInputs} placeholder="Crie sua senha"
+                            <input type={exibirSenha ? "text" : "password"} id="senha" className={estiloInputs} placeholder="Crie sua senha"
                                 onFocus={() => setSenhaEmFoco(true)}
                                 onBlur={() => setSenhaEmFoco(false)}
                                 onChange={(el) =>
@@ -233,17 +253,22 @@ function Cadrasto() {
                                 }
                             />
 
-                            <EyeOff className="
-                            absolute
-                            text-gray-400
-                            top-1/2
-                            -translate-y-1/2
-                            right-2
-                            " size={25} />
+                            {!exibirSenha ? (
+                                <EyeOff className={estiloIconeExibir} size={25} 
+                                onMouseDown={(e) => e.preventDefault()}
+                                onClick={() => setExibirSenha(!exibirSenha)} 
+                                />
+                            ) :
+                                <Eye className={estiloIconeExibir}size={25} 
+                                onMouseDown={(e) => e.preventDefault()}
+                                onClick={() => setExibirSenha(!exibirSenha)} />
+                            }
+
+
                         </div>
 
                         {senhaEmFoco && validarArraySenha ? (
-                            
+
                             <ul className="                        flex flex-col gap-2
                            
                             pt-2                
@@ -289,25 +314,25 @@ function Cadrasto() {
                                 {!validacoesSenha.RegexSenhas.temEspecial && (
                                     <li className={estiloLista}>
                                         <span>
-                                            <TriangleAlert size={19}/>
+                                            <TriangleAlert size={19} />
                                         </span>
 
                                         <span>
-                                           Necessario caractér especial(.@-_etc.)
+                                            Necessario caractér especial(.@-_etc.)
                                         </span>
-                                    </li>                        
+                                    </li>
                                 )}
 
                                 {!validacoesSenha.RegexSenhas.tamanhoSenha && (
                                     <li className={estiloLista}>
                                         <span>
-                                            <TriangleAlert size={19}/>
+                                            <TriangleAlert size={19} />
                                         </span>
 
                                         <span>
-                                           Minímo 8 caracteres
+                                            Minímo 8 caracteres
                                         </span>
-                                    </li>                        
+                                    </li>
                                 )}
 
                             </ul>
@@ -318,17 +343,17 @@ function Cadrasto() {
                         {erros.senha && (
                             <div className={estiloAviso}
                             >
-                                
-                                
-                                    {erros.senha.campoSenhas && (
-                                        <div className={estiloLista}>
-                                            <TriangleAlert size={19} />
-                                            {
-                                                erros.senha.campoSenhas
-                                            }
-                                        </div>
-                                    )}
-                                
+
+
+                                {erros.senha.campoSenhas && (
+                                    <div className={estiloLista}>
+                                        <TriangleAlert size={19} />
+                                        {
+                                            erros.senha.campoSenhas
+                                        }
+                                    </div>
+                                )}
+
                             </div>
                         )}
 
@@ -348,7 +373,7 @@ function Cadrasto() {
                             top-1/2 -translate-y-1/2 left-3
                             text-gray-400" size={25} />
 
-                            <input type="password" id="newsenha" className={estiloInputs} placeholder="Confirmar senha"
+                            <input type={exibirConfirmarSenha ? "text" : "password"} id="newsenha" className={estiloInputs} placeholder="Confirmar senha"
                                 onChange={(el) =>
                                     setInputs({
                                         ...inputs,
@@ -356,37 +381,41 @@ function Cadrasto() {
                                     })}
                             />
 
-                            <EyeOff className="
-                            absolute
-                            text-gray-400
-                            top-1/2
-                            -translate-y-1/2
-                            right-2
-                            " size={25} />
+                            {!exibirConfirmarSenha ? (
+
+                                <EyeOff className={estiloIconeExibir} size={25}
+                                    onClick={() => setExibirConfirmarSenha(!exibirConfirmarSenha)}
+                                />
+                            ) :
+
+                                <Eye className={estiloIconeExibir} size={25}
+                                    onClick={() => setExibirConfirmarSenha(!exibirConfirmarSenha)}
+                                />
+
+                            }
+
                         </div>
+
                         {erros.senha && (
                             <div className={estiloAviso}>
-                                
-                                
-                                    
-                                    {erros.senha.campoConfirmarSenha && (
-                                        <div className={estiloLista}>
-                                            <TriangleAlert size={19} />
-                                            <span>
-                                                {erros.senha.campoConfirmarSenha}
-                                            </span>
-                                        </div>
-                                    )}
-                                
+                                {erros.senha.campoConfirmarSenha && (
+                                    <div className={estiloLista}>
+                                        <TriangleAlert size={19} />
+                                        <span>
+                                            {erros.senha.campoConfirmarSenha}
+                                        </span>
+                                    </div>
+                                )}
+
 
                                 {erros.senha.senhaDiferenca && (
-                                        <div className={estiloLista}>
-                                            <TriangleAlert size={19} />
-                                            <span>
-                                                {erros.senha.senhaDiferenca}
-                                            </span>
-                                        </div>
-                                    )}
+                                    <div className={estiloLista}>
+                                        <TriangleAlert size={19} />
+                                        <span>
+                                            {erros.senha.senhaDiferenca}
+                                        </span>
+                                    </div>
+                                )}
                             </div>
 
 
