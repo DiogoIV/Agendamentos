@@ -1,4 +1,4 @@
-
+/*Validação Cadrasto*/
 const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const regexSenhaMinuscula = /[a-z]/
 const regexSenhaMaiuscula = /[A-Z]/
@@ -67,4 +67,19 @@ function validarSenha(senha, confirmarSenha) {
 
 }
 
-export {validarNome, validarEmail, validarSenha, ValidarDigitarSenha}
+
+
+/* validação login*/
+
+function validarCampoSenha(senha) {
+
+    const SenhaLimpa = senha.trim()
+    if (SenhaLimpa === '') {
+        return 'Campo obrigatório'
+    }
+
+    return null
+}
+
+
+export {validarNome, validarEmail, validarSenha, ValidarDigitarSenha, validarCampoSenha}

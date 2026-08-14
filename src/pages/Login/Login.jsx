@@ -1,25 +1,40 @@
 import { Link } from "react-router-dom"
-import { Heart, Mail, Eye, EyeOff,Lock   } from "../../assets/icons/"
+import { Heart, Mail, Eye, EyeOff,Lock, TriangleAlert   } from "../../assets/icons/"
+
+import { estiloSection, estiloAviso } from "../../styles/Estilos"
+
+import { validarCampoSenha, validarEmail } from "../../validations/validations"
+import { useState } from "react"
 
 function Login() {
+
+    const [input, setInputs] = useState({
+        email: '',
+        senha: ''
+    })
+
+    console.log('minha Senha', input.senha)
+
+    const [erro, setErro] = useState({
+        email: '',
+        senha: ''
+    })
+
+    console.log('aaa',validarCampoSenha( input.senha))
+
+    function handleLogin (e) {
+        e.preventDefault()
+
+        setErro({  
+            email: validarEmail(input.email),
+            senha: validarCampoSenha(input.senha)
+
+        })
+    }
+
     return (
 
-
-        <section className="
-            flex
-            flex-col
-            justify-center
-            items-center
-            gap-8
-            bg-[var(--color-primary)]
-            rounded-lg
-            min-h-96
-            max-w-md
-            w-full
-            p-10
-            mx-auto
-            text-white
-            ">
+        <section className={estiloSection}>
 
             <div className="
                 flex items-center 
@@ -31,12 +46,13 @@ function Login() {
 
             <h1 className="text-xl">Entrar na conta</h1>
 
-            <form action="" method="post" className="            
+            <form action=""  className="            
             flex
             flex-col
             gap-6
             w-full
-            ">
+            "
+            onSubmit={handleLogin}>
 
                 <div className="flex flex-col gap-4">
                     <div>
@@ -67,8 +83,19 @@ function Login() {
                             placeholder:text-gray-400
                             
                             " placeholder="Digite seu email"
+                            onChange={(e)=> setInputs({
+                                ...input,
+                                email: e.target.value
+                            })}
                             />
                         </div>
+                        {erro.email && (
+                            <div className={estiloAviso}>
+                                <TriangleAlert size={19} />
+                                {erro.email}
+
+                            </div>
+                        )}
 
                     </div>
 
@@ -87,7 +114,7 @@ function Login() {
                             "
                             size={25}
                             />
-                            <input type="number" id="senha" className="
+                            <input type="password" id="senha" className="
                             w-full rounded-lg
                             h-12
                             pl-12
@@ -101,7 +128,12 @@ function Login() {
                             focus:ring-2
                             focus:ring-white/30
                             text-black
-                            " placeholder="Digite sua Senha"/>
+                            " placeholder="Digite sua Senha"
+                            onChange={(e)=> setInputs({
+                                ...input,
+                                senha: e.target.value
+                            })}
+                            />
 
                             <EyeOff className="
                             absolute
@@ -112,6 +144,13 @@ function Login() {
                             "/>
                         </div>
 
+                        {erro.senha && (
+                            <div className={estiloAviso}>
+                                <TriangleAlert size={19}/>
+                                {erro.senha}
+                            </div>
+                        )}
+
                     </div>
                 </div>
 
@@ -120,7 +159,7 @@ function Login() {
 
                     <div className="flex flex-col gap-4">
 
-                        <Link to="" type="submit" className="bg-white
+                        <button  type="submit" className="bg-white
                         text-[var(--color-primary)]
                         font-bold
                         
@@ -135,7 +174,7 @@ function Login() {
                         hover:scale-[1.02]
                         ">
                             Entrar
-                        </Link>
+                        </button>
 
                         <p className="mt-2">
                             <Link to="/esquecisenha" className="
@@ -157,7 +196,7 @@ function Login() {
                     ">
                         <p>Ainda não tem conta?</p>
 
-                        <Link to="/cadrasto" className="font-semibold
+                        <Link to="/cadastro" className="font-semibold
                         
                         hover:underline">
                             Cadraste-se

@@ -1,11 +1,13 @@
 import { useState } from "react"
-import { Heart, Mail, Eye, EyeOff, User, Lock, TriangleAlert } from "../../assets/icons/"
+import { Heart, Mail, Eye, EyeOff, User, Lock, TriangleAlert } from "../../assets/icons"
 import { Link } from "react-router-dom"
+
+import { estiloSection, estiloAviso } from "../../styles/Estilos"
 
 import { validarNome, validarEmail, validarSenha, ValidarDigitarSenha } from '../../validations/validations'
 
 
-function Cadrasto() {
+function Cadastro() {
 
     /*Estados Regex e validações*/
 
@@ -82,15 +84,7 @@ function Cadrasto() {
 
     /*Estilos*/
 
-    const estiloAviso = `
-            flex 
-            gap-2
-            items-center
-            pt-2                
-            text-sm
-            pl-2
-            text-red-400
-            `
+    
 
 
     const estiloLista = `flex items-center gap-2`
@@ -126,21 +120,7 @@ function Cadrasto() {
 
                                 
     return (
-        <section className="
-            flex
-            flex-col
-            justify-center
-            items-center
-            gap-8
-            bg-[var(--color-primary)]
-            rounded-lg
-            min-h-96
-            max-w-md
-            w-full
-            p-10
-            mx-auto
-            text-white
-            ">
+        <section className={estiloSection}>
 
             <div className="
                 flex items-center 
@@ -471,4 +451,4 @@ function Cadrasto() {
     )
 }
 
-export default Cadrasto
+export default Cadastro

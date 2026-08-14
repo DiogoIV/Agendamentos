@@ -1,25 +1,13 @@
 import { Link } from "react-router-dom"
 import { Heart, Mail } from "../../assets/icons/"
 
+import { estiloSection } from "../../styles/Estilos"
+
 function EsqueciSenha() {
     return (
 
 
-        <section className="
-            flex
-            flex-col
-            justify-center
-            items-center
-            gap-8
-            bg-[var(--color-primary)]
-            rounded-lg
-            min-h-96
-            max-w-md
-            w-full
-            p-10
-            mx-auto
-            text-white
-            ">
+        <section className={estiloSection}>
 
             <div className="
                 flex items-center 
