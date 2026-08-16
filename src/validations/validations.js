@@ -1,5 +1,6 @@
 /*Validação Cadrasto*/
 const regexEmail = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+const regexNome = /^(?:\p{L}{2,})(?:\s\p{L}{2,})*$/u
 const regexSenhaMinuscula = /[a-z]/
 const regexSenhaMaiuscula = /[A-Z]/
 const regexSenhaNumero = /[0-9]/
@@ -15,6 +16,10 @@ function validarNome(nome) {
 
     if (nomeLimpo.length < 3) {
         return ' O nome deve ter pelo menos 3 caracteres'
+    }
+
+    if(!regexNome.test(nome)) {
+        return 'Preencha o nome corretamente'
     }
 
     return null

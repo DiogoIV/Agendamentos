@@ -1,19 +1,29 @@
 
 
-async function Cadrasto (){
-    try {
-        
-        const res = fetch('http://localhost:3000/Cadrasto', {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body : JSON.stringify({})
-        })
+async function Cadastrar(inputs) {
 
-    } catch(erro) {
 
-        console.log(erro, 'erro ao enviar dados do Cadrasto')
+    const res = await fetch('http://localhost:3000/Cadrasto', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nome: inputs.nome, email: inputs.email, senha: inputs.senha, confirmarSenha: inputs.confirmarSenha })
+
+    })
+
+    const dados = await res.json()
+
+    if (res.ok) {
+
+        return dados.mensagem || 'Cadastrado com sucesso!'
+
+    } else {
+
+        return dados.mensagem || 'Erro ao cadastrar'
+
     }
 
-} 
 
-export default Cadrasto
+
+}
+
+export default Cadastrar

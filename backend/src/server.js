@@ -8,12 +8,11 @@ app.use(cors());
 app.use(express.json());
 
 
-
 import horariosRoutes from './routes/horarios.js';
 import authRoutes from './routes/auth.js';
 import agendamentosRoutes from './routes/agendamentos.js';
 
-app.use(horariosRoutes)
+
 
 
 

@@ -5,6 +5,7 @@ import { Link } from "react-router-dom"
 import { estiloSection, estiloAviso, estiloInputs, estiloIconeExibir } from "../../styles/Estilos"
 
 import { validarNome, validarEmail, validarSenha, ValidarDigitarSenha } from '../../validations/validations'
+import Cadastrar from "../../api/auth"
 
 
 function Cadastro() {
@@ -46,6 +47,7 @@ function Cadastro() {
     /*Funcões*/
 
     function handleCadatroChange(el) {
+
         setValidacoesSenha({
             RegexSenhas: ValidarDigitarSenha(el)
         })
@@ -57,7 +59,7 @@ function Cadastro() {
 
     }
 
-    function handleCadastro() {
+    async function handleCadastro() {
 
         setErro((prev) => ({
             ...prev,
@@ -77,7 +79,19 @@ function Cadastro() {
 
         ))
 
-        return
+        try {
+
+            const mensagem = await Cadastrar(inputs)
+
+        } catch(erro) {
+
+            console.error(erro, 'Erro ao cadastrar os dados ')
+
+        }
+
+        
+
+        
 
     }
 
