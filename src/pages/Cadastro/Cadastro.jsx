@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Heart, Mail, Eye, EyeOff, User, Lock, TriangleAlert } from "../../assets/icons"
 import { Link } from "react-router-dom"
 
-import { estiloSection, estiloAviso } from "../../styles/Estilos"
+import { estiloSection, estiloAviso, estiloInputs, estiloIconeExibir } from "../../styles/Estilos"
 
 import { validarNome, validarEmail, validarSenha, ValidarDigitarSenha } from '../../validations/validations'
 
@@ -84,41 +84,11 @@ function Cadastro() {
 
     /*Estilos*/
 
-    
-
-
     const estiloLista = `flex items-center gap-2`
 
-    const estiloInputs = `
-                    w-full rounded-lg
-                    h-12
-                    pl-12
-                    border
-                    outline-none
-
-                    bg-gray-50
-
-                    transition
-                    focus:border-white
-                    focus:ring-2
-                    focus:ring-white/30
-                    text-black
-                    
-                    placeholder:text-gray-400
-                    
-
-                    `
-
-    const estiloIconeExibir = `absolute
-                                text-gray-400
-                                top-1/2
-                                -translate-y-1/2
-                                right-2`
 
 
 
-
-                                
     return (
         <section className={estiloSection}>
 
@@ -234,14 +204,14 @@ function Cadastro() {
                             />
 
                             {!exibirSenha ? (
-                                <EyeOff className={estiloIconeExibir} size={25} 
-                                onMouseDown={(e) => e.preventDefault()}
-                                onClick={() => setExibirSenha(!exibirSenha)} 
+                                <EyeOff className={estiloIconeExibir} size={25}
+                                    onMouseDown={(e) => e.preventDefault()}
+                                    onClick={() => setExibirSenha(!exibirSenha)}
                                 />
                             ) :
-                                <Eye className={estiloIconeExibir}size={25} 
-                                onMouseDown={(e) => e.preventDefault()}
-                                onClick={() => setExibirSenha(!exibirSenha)} />
+                                <Eye className={estiloIconeExibir} size={25}
+                                    onMouseDown={(e) => e.preventDefault()}
+                                    onClick={() => setExibirSenha(!exibirSenha)} />
                             }
 
 
@@ -363,12 +333,12 @@ function Cadastro() {
 
                             {!exibirConfirmarSenha ? (
 
-                                <EyeOff className={estiloIconeExibir} size={25}
+                                <EyeOff className={estiloIconeExibir}
                                     onClick={() => setExibirConfirmarSenha(!exibirConfirmarSenha)}
                                 />
                             ) :
 
-                                <Eye className={estiloIconeExibir} size={25}
+                                <Eye className={estiloIconeExibir}
                                     onClick={() => setExibirConfirmarSenha(!exibirConfirmarSenha)}
                                 />
 

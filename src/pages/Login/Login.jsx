@@ -1,31 +1,35 @@
 import { Link } from "react-router-dom"
-import { Heart, Mail, Eye, EyeOff,Lock, TriangleAlert   } from "../../assets/icons/"
+import { Heart, Mail, Eye, EyeOff, Lock, TriangleAlert } from "../../assets/icons/"
 
-import { estiloSection, estiloAviso } from "../../styles/Estilos"
+import { estiloSection, estiloAviso, estiloInputs, estiloIconeExibir } from "../../styles/Estilos"
 
 import { validarCampoSenha, validarEmail } from "../../validations/validations"
 import { useState } from "react"
 
 function Login() {
 
+    /*States*/
+
+
     const [input, setInputs] = useState({
         email: '',
         senha: ''
     })
-
-    console.log('minha Senha', input.senha)
 
     const [erro, setErro] = useState({
         email: '',
         senha: ''
     })
 
-    console.log('aaa',validarCampoSenha( input.senha))
+    const [exibir, setExibir] = useState(false)
 
-    function handleLogin (e) {
+
+    /*Funções*/
+
+    function handleLogin(e) {
         e.preventDefault()
 
-        setErro({  
+        setErro({
             email: validarEmail(input.email),
             senha: validarCampoSenha(input.senha)
 
@@ -46,19 +50,21 @@ function Login() {
 
             <h1 className="text-xl">Entrar na conta</h1>
 
-            <form action=""  className="            
+            <form action="" className="            
             flex
             flex-col
             gap-6
             w-full
             "
-            onSubmit={handleLogin}>
+                onSubmit={handleLogin}>
+
+                {/*Campo email*/}
 
                 <div className="flex flex-col gap-4">
                     <div>
                         <div>
                             <label htmlFor="email" className="sr-only">Email</label>
-                            
+
                         </div>
 
                         <div className="relative">
@@ -67,26 +73,12 @@ function Login() {
                             text-gray-400
                             absolute top-1/2 -translate-y-1/2 left-3"/>
 
-                            <input type="text" name="" id="email" className="
-                            w-full rounded-lg
-                            h-12
-                            pl-12
-                            border
-                            outline-none
-                            bg-gray-50
-                            transition
-                            focus:border-white
-                            focus:ring-2
-                            focus:ring-white/30
-                            text-black
-                            
-                            placeholder:text-gray-400
-                            
-                            " placeholder="Digite seu email"
-                            onChange={(e)=> setInputs({
-                                ...input,
-                                email: e.target.value
-                            })}
+                            <input type="text" name="" id="email" className={estiloInputs} placeholder="Digite seu email"
+                                onChange={(e) => setInputs({
+                                    ...input,
+                                    email: e.target.value
+
+                                })}
                             />
                         </div>
                         {erro.email && (
@@ -99,54 +91,47 @@ function Login() {
 
                     </div>
 
+                    {/*Campo Senha*/}
+
                     <div>
 
                         <div>
                             <label htmlFor="senha" className="sr-only">Senha</label>
                         </div>
-                        
+
                         <div className="relative">
+
                             <Lock className="
                             absolute
                             top-1/2 -translate-y-1/2 left-3
                             text-gray-400
                             
                             "
-                            size={25}
+                                size={25}
                             />
-                            <input type="password" id="senha" className="
-                            w-full rounded-lg
-                            h-12
-                            pl-12
-                            border
-                            
-                            bg-gray-50
-                            placeholder:text-gray-400                           
-                            outline-none
-                            transition
-                            focus:border-white
-                            focus:ring-2
-                            focus:ring-white/30
-                            text-black
-                            " placeholder="Digite sua Senha"
-                            onChange={(e)=> setInputs({
-                                ...input,
-                                senha: e.target.value
-                            })}
+                            <input type={exibir ? 'text' : 'password'} id="senha" className={estiloInputs}
+                                placeholder="Digite sua Senha"
+                                onChange={(e) => setInputs({
+                                    ...input,
+                                    senha: e.target.value
+                                })}
                             />
+                            {!exibir ?
+                                (
+                                    <EyeOff className={estiloIconeExibir}
+                                        onClick={() => setExibir(!exibir)} />
 
-                            <EyeOff className="
-                            absolute
-                            text-gray-400
-                            top-1/2
-                            -translate-y-1/2
-                            right-2
-                            "/>
+                                ) : (
+                                    <Eye className={estiloIconeExibir}
+                                        onClick={() => setExibir(!exibir)} />
+                                )
+                            }
+
                         </div>
 
                         {erro.senha && (
                             <div className={estiloAviso}>
-                                <TriangleAlert size={19}/>
+                                <TriangleAlert size={19} />
                                 {erro.senha}
                             </div>
                         )}
@@ -159,7 +144,7 @@ function Login() {
 
                     <div className="flex flex-col gap-4">
 
-                        <button  type="submit" className="bg-white
+                        <button type="submit" className="bg-white
                         text-[var(--color-primary)]
                         font-bold
                         

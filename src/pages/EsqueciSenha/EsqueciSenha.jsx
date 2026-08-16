@@ -1,10 +1,25 @@
 import { Link } from "react-router-dom"
-import { Heart, Mail } from "../../assets/icons/"
+import { Heart, Mail, TriangleAlert } from "../../assets/icons/"
+import { useState } from "react"
 
-import { estiloSection } from "../../styles/Estilos"
+import { estiloSection, estiloInputs, estiloAviso } from "../../styles/Estilos"
+
+import { validarEmail } from "../../validations/validations"
 
 function EsqueciSenha() {
+
+    const [input, setInput] = useState('')
+
+    const [erro, setErro] = useState('')
+
+    function handleEsqueci(e) {
+        e.preventDefault()
+
+        setErro(validarEmail(input))
+    }
+
     return (
+
 
 
         <section className={estiloSection}>
@@ -19,12 +34,14 @@ function EsqueciSenha() {
 
             <h1 className="text-xl">Recuperar senha</h1>
 
-            <form action="" method="post" className="            
+            <form action="" className="            
             flex
             flex-col
             gap-6
             w-full
-            ">
+            "
+                onSubmit={(e) => handleEsqueci(e)}
+            >
 
                 <div>
 
@@ -33,29 +50,27 @@ function EsqueciSenha() {
                     </div>
 
                     <div className="relative">
+
                         <Mail className="absolute
                                 top-1/2 -translate-y-1/2 left-3
-                                text-gray-400" size={25} 
+                                text-gray-400" size={25}
                         />
 
-                        <input type="text" name="" id="email" className="
-                                w-full rounded-lg
-                                h-12
-                                pl-12
-                                border
-                                outline-none
-                                bg-gray-50
-                                transition
-                                focus:border-white
-                                focus:ring-2
-                                focus:ring-white/30
-                                text-black
-                        
-                                placeholder:text-gray-400
-                        
-                                " placeholder="Digite seu email"
+                        <input type="text" name="" id="email" className={estiloInputs} placeholder="Digite seu email"
+                            onChange={(e) => setInput(e.target.value)}
                         />
+
+
+
                     </div>
+
+                    
+                    {erro && (
+                        <div className={estiloAviso}>
+                            <TriangleAlert size={19} />
+                            {erro}
+                        </div>
+                    )}
 
                 </div>
 
@@ -64,7 +79,7 @@ function EsqueciSenha() {
 
                     <div className="flex flex-col gap-4">
 
-                        <Link to="" type="submit" className="bg-white
+                        <button to="" type="submit" className="bg-white
                         text-[var(--color-primary)]
                         font-bold
                         
@@ -79,7 +94,7 @@ function EsqueciSenha() {
                         hover:scale-[1.02]
                         ">
                             Enviar
-                        </Link>
+                        </button>
 
 
                     </div>
