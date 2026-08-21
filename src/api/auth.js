@@ -2,7 +2,7 @@
 
 async function Cadastrar(inputs) {
 
-
+    
     const res = await fetch('http://localhost:3000/Cadrasto', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

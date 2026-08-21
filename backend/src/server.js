@@ -8,6 +8,7 @@ app.use(cors());
 app.use(express.json());
 
 
+
 import horariosRoutes from './routes/horarios.js';
 import authRoutes from './routes/auth.js';
 import agendamentosRoutes from './routes/agendamentos.js';
@@ -16,6 +17,6 @@ import agendamentosRoutes from './routes/agendamentos.js';
 
 
 
-app.listen(3000, ()=> {
-    console.log('Executando')
+app.listen(process.env.PORT, ()=> {
+    console.log(`Rodando o servidor!, porta ${process.env.PORT}`)
 });
