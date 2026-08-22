@@ -1,6 +1,6 @@
 import { Router } from 'express';
 
-import { validarNome, validarSenha, validarEmail } from '../validations/validacao';
+import { validarNome, validarSenha, validarEmail } from '../validations/validacao.js'
 
 const router = Router();
 
@@ -8,7 +8,7 @@ const BancoDados = []
 
 /*Cadastro*/
 
-router.get('/cadastro', async (req, res) => {
+router.post('/cadastro', async (req, res) => {
 
     const { nome, email, senha, confirmarSenha } = req.body
 
@@ -24,7 +24,7 @@ router.get('/cadastro', async (req, res) => {
 
     if (senha !== confirmarSenha) {
         return res.status(400).json({
-            mensagem: 'Dados inválidos'
+            mensagem: 'As senhas não coincidem'
         });
     }
 
@@ -34,7 +34,9 @@ router.get('/cadastro', async (req, res) => {
         senha: senha
     })
 
-    res.status(201).json({ mensagem: 'Cadastrado com sucesso!!!' })
+    res.status(201).json({
+        mensagem: 'Cadastrado com sucesso!!!'
+    })
 
 })
 

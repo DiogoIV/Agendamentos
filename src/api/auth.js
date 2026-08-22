@@ -2,24 +2,20 @@
 
 async function Cadastrar(inputs) {
 
-    
-    const res = await fetch('http://localhost:3000/Cadrasto', {
+
+    const res = await fetch('http://localhost:3000/auth/cadastro', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ nome: inputs.nome, email: inputs.email, senha: inputs.senha, confirmarSenha: inputs.confirmarSenha })
+        body: JSON.stringify({ nome: inputs.nome, email: inputs.email, senha: inputs.senha, confirmarSenha: inputs.confirmarsenha })
 
     })
 
     const dados = await res.json()
 
-    if (res.ok) {
-
-        return dados.mensagem || 'Cadastrado com sucesso!'
-
-    } else {
-
-        return dados.mensagem || 'Erro ao cadastrar'
-
+    return {
+        ok: res.ok,
+        codigo: dados.codigo,
+        mensagem: dados.mensagem
     }
 
 

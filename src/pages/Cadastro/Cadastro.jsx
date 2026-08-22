@@ -32,6 +32,9 @@ function Cadastro() {
 
     const [senhaEmFoco, setSenhaEmFoco] = useState(false)
 
+    const [dadosApi, setDadosApi] = useState('')
+
+    console.log('dadps', dadosApi)
 
     const validacoesSenhaArray = Object.values(validacoesSenha.RegexSenhas)
 
@@ -61,37 +64,41 @@ function Cadastro() {
 
     async function handleCadastro() {
 
-        setErro((prev) => ({
-            ...prev,
-            nome: validarNome(inputs.nome)
-        }))
+        const novosErros = {
+            nome: validarNome(inputs.nome),
+            email: validarEmail(inputs.email),
+            senha: validarSenha(inputs.senha, inputs.confirmarsenha)
+        }
 
-        setErro((prev) => ({
-            ...prev,
-            email: validarEmail(inputs.email)
-        }))
+        setErro(novosErros)
 
-        setErro((prev) => (
-            {
-                ...prev,
-                senha: validarSenha(inputs.senha, inputs.confirmarsenha)
-            }
+        const validarSenhaArray = Object.values(novosErros.senha);
+        
+        const senhaValidacao =  validarSenhaArray.some(el => el === false)
+        
+        console.log(novosErros.senha)
 
-        ))
-
-        try {
-
-            const mensagem = await Cadastrar(inputs)
-
-        } catch(erro) {
-
-            console.error(erro, 'Erro ao cadastrar os dados ')
-
+        if (novosErros.nome || novosErros.email || senhaValidacao) {
+            return
         }
 
         
 
-        
+        try {
+
+            const dados = await Cadastrar(inputs)
+            setDadosApi(dados)
+
+        } catch (erro) {
+
+            console.error(erro, 'Erro ao cadastrar os dados ')
+
+
+        }
+
+
+
+
 
     }
 
@@ -409,6 +416,12 @@ function Cadastro() {
                         " onClick={() => handleCadastro()}>
                             Criar conta
                         </button>
+
+                        {dadosApi && (
+                            <span className={dadosApi.ok ? `text-green-500`: `text-red-500`}>
+                                {dadosApi.mensagem}
+                            </span>
+                        )}
 
                     </div>
 
