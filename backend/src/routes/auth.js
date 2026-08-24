@@ -6,15 +6,19 @@ const router = Router();
 
 const BancoDados = []
 
+
+
 /*Cadastro*/
 
 router.post('/cadastro', async (req, res) => {
 
     const { nome, email, senha, confirmarSenha } = req.body
+    const senhaHash = await bcrypt.hash(senha, 10)
 
     const erroNome = validarNome(nome)
     const erroEmail = validarEmail(email)
     const erroSenha = validarSenha(senha)
+    
 
     if (erroNome || erroEmail || erroSenha) {
         return res.status(400).json({
@@ -31,7 +35,7 @@ router.post('/cadastro', async (req, res) => {
     BancoDados.push({
         nome: nome,
         email: email,
-        senha: senha
+        senha: senhaHash
     })
 
     res.status(201).json({
@@ -40,6 +44,7 @@ router.post('/cadastro', async (req, res) => {
 
 })
 
+console.log(BancoDados)
 
 
 
