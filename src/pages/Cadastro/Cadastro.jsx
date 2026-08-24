@@ -34,7 +34,7 @@ function Cadastro() {
 
     const [dadosApi, setDadosApi] = useState('')
 
-    console.log('dadps', dadosApi)
+    
 
     const validacoesSenhaArray = Object.values(validacoesSenha.RegexSenhas)
 
@@ -64,25 +64,25 @@ function Cadastro() {
 
     async function handleCadastro() {
 
+        setDadosApi('')
+
         const novosErros = {
             nome: validarNome(inputs.nome),
             email: validarEmail(inputs.email),
             senha: validarSenha(inputs.senha, inputs.confirmarsenha)
         }
-
-        setErro(novosErros)
-
+              
         const validarSenhaArray = Object.values(novosErros.senha);
         
-        const senhaValidacao =  validarSenhaArray.some(el => el === false)
-        
-        console.log(novosErros.senha)
+        const senhaValidacao =  validarSenhaArray.some(el => el !== null)
 
-        if (novosErros.nome || novosErros.email || senhaValidacao) {
+        setErro(novosErros)
+        
+        
+        if (novosErros.nome || novosErros.email ||senhaValidacao ) {
             return
         }
-
-        
+                
 
         try {
 

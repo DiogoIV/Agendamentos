@@ -22,4 +22,8 @@ async function Cadastrar(inputs) {
 
 }
 
+async function Logar () {
+
+}
+
 export default Cadastrar

@@ -1,10 +1,13 @@
 import { Router } from 'express';
-
+import bcrypt from 'bcrypt'
 import { validarNome, validarSenha, validarEmail } from '../validations/validacao.js'
+
+
 
 const router = Router();
 
 const BancoDados = []
+
 
 
 
@@ -38,13 +41,16 @@ router.post('/cadastro', async (req, res) => {
         senha: senhaHash
     })
 
+    
+
     res.status(201).json({
         mensagem: 'Cadastrado com sucesso!!!'
     })
 
 })
 
-console.log(BancoDados)
+
+/*Login*/
 
 
 

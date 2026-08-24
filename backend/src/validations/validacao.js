@@ -72,4 +72,5 @@ function validarSenha(senha) {
     return null;
 }
 
+
 export {validarNome, validarSenha, validarEmail}
