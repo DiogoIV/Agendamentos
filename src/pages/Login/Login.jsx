@@ -5,6 +5,7 @@ import { estiloSection, estiloAviso, estiloInputs, estiloIconeExibir } from "../
 
 import { validarCampoSenha, validarEmail } from "../../validations/validations"
 import { useState } from "react"
+import { Logar } from "../../api/auth"
 
 function Login() {
 
@@ -21,12 +22,14 @@ function Login() {
         senha: ''
     })
 
+    const [mensagem, setMensagem] = useState('')
+
     const [exibir, setExibir] = useState(false)
 
 
     /*Funções*/
 
-    function handleLogin(e) {
+    async function handleLogin(e) {
         e.preventDefault()
 
         setErro({
@@ -34,6 +37,22 @@ function Login() {
             senha: validarCampoSenha(input.senha)
 
         })
+
+        try {
+            const mensagem = await Logar(input.email, input.senha)
+
+            setMensagem(mensagem)
+            
+        } catch(erro)
+
+        {
+            console.error('Erro ao consultar dados', erro)
+            
+        }
+
+        
+
+
     }
 
     return (
