@@ -1,5 +1,5 @@
 
-
+/* Cadastrar */
 async function Cadastrar(inputs) {
 
 
@@ -22,6 +22,10 @@ async function Cadastrar(inputs) {
 
 }
 
+
+
+/* Logar */
+
 async function Logar(email, senha) {
 
     const res = await fetch('http://localhost:3000/auth/login', {
@@ -32,6 +36,7 @@ async function Logar(email, senha) {
             senha: senha
         })  
     })
+    
 
     const dados = await res.json()
 
@@ -42,5 +47,7 @@ async function Logar(email, senha) {
     }
 
 }
+
+
 
 export { Cadastrar, Logar }
