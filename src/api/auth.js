@@ -26,14 +26,14 @@ async function Cadastrar(inputs) {
 
 /* Logar */
 
-async function Logar(email, senha) {
+async function Logar(inputs) {
 
     const res = await fetch('http://localhost:3000/auth/login', {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
         body: JSON.stringify({
-            email: email,
-            senha: senha
+            email: inputs.email,
+            senha: inputs.senha
         })  
     })
     

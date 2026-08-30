@@ -45,7 +45,7 @@ router.post('/cadastro', async (req, res) => {
         senha: senhaHash
     })
 
-
+    console.log(BancoDados)
 
     res.status(201).json({
         mensagem: 'Cadastrado com sucesso!!!'
@@ -63,9 +63,9 @@ router.post('/login', async (req, res) => {
     /*  Validações */
 
     const erroEmail = validarEmail(email)
-    const erroSenha = validarSenha(senha)
+    
 
-    if (erroEmail || erroSenha) {
+    if (erroEmail) {
         return res.status(400).json({
             mensagem: 'Dados inválidos'
         });
@@ -86,17 +86,18 @@ router.post('/login', async (req, res) => {
         const senhaCorreta = await bcrypt.compare(senha, usuario.senha)
 
         if(!senhaCorreta) {
-            
-            return res.status(409).json({mensagem: 'E-mail ou senha inválidos.'})
-
+           
+            return res.status(401).json({mensagem: 'E-mail ou senha inválidos.'})
 
         } 
+
+        return res.status(200).json({mensagem: 'Login realizado com sucesso!'})
 
     } catch(erro) {
         
         console.error('erro na conexão do Banco')
 
-        res.status(500).json({mensagem: 'Dados invalídos'})
+        return res.status(500).json({mensagem: 'Dados invalídos'})
     }
 
     

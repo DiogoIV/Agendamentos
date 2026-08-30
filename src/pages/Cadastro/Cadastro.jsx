@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 import { estiloSection, estiloAviso, estiloInputs, estiloIconeExibir } from "../../styles/Estilos"
 
 import { validarNome, validarEmail, validarSenha, ValidarDigitarSenha } from '../../validations/validations'
-import Cadastrar from "../../api/auth"
+import {Cadastrar} from "../../api/auth"
 
 
 function Cadastro() {

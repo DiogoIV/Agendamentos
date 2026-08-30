@@ -22,7 +22,11 @@ function Login() {
         senha: ''
     })
 
-    const [mensagem, setMensagem] = useState('')
+    const [mensagem, setMensagem] = useState({
+        ok: '',
+        codigo: '',
+        mensagem: ''
+    })
 
     const [exibir, setExibir] = useState(false)
 
@@ -39,18 +43,16 @@ function Login() {
         })
 
         try {
-            const mensagem = await Logar(input.email, input.senha)
+            const dados = await Logar(input)
 
-            setMensagem(mensagem)
-            
-        } catch(erro)
+            setMensagem(dados)
 
-        {
+        } catch (erro) {
             console.error('Erro ao consultar dados', erro)
-            
+
         }
 
-        
+
 
 
     }
@@ -149,10 +151,12 @@ function Login() {
                         </div>
 
                         {erro.senha && (
+
                             <div className={estiloAviso}>
                                 <TriangleAlert size={19} />
                                 {erro.senha}
                             </div>
+                            
                         )}
 
                     </div>
@@ -179,6 +183,8 @@ function Login() {
                         ">
                             Entrar
                         </button>
+
+                        {mensagem.ok && <div className={estiloAviso}>{mensagem.mensagem}</div>}
 
                         <p className="mt-2">
                             <Link to="/esquecisenha" className="
