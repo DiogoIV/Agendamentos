@@ -184,7 +184,7 @@ function Login() {
                             Entrar
                         </button>
 
-                        {mensagem.ok && <div className={estiloAviso}>{mensagem.mensagem}</div>}
+                        {mensagem.mensagem && <div className={estiloAviso}>{mensagem.mensagem}</div>}
 
                         <p className="mt-2">
                             <Link to="/esquecisenha" className="

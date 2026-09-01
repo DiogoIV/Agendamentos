@@ -79,7 +79,7 @@ router.post('/login', async (req, res) => {
 
         if(!usuario) {
 
-            return res.status(404).json({mensagem: 'E-mail ou senha inválidos.!'})
+            return res.status(401).json({mensagem: 'E-mail ou senha inválidos.!'})
 
         }
 

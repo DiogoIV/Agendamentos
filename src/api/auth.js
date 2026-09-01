@@ -32,8 +32,10 @@ async function Logar(inputs) {
         method: 'POST',
         headers: {'Content-Type':'application/json'},
         body: JSON.stringify({
+
             email: inputs.email,
             senha: inputs.senha
+            
         })  
     })
     
