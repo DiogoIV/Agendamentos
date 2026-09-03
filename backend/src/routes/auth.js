@@ -1,5 +1,7 @@
 import { Router } from 'express';
 import bcrypt from 'bcrypt'
+import jwt from 'jsonwebtoken'
+
 import { validarNome, validarSenha, validarEmail } from '../validations/validacao.js'
 
 
@@ -40,6 +42,7 @@ router.post('/cadastro', async (req, res) => {
     /*Banco de dados*/
 
     BancoDados.push({
+        id: 1,
         nome: nome,
         email: email,
         senha: senhaHash
@@ -63,7 +66,7 @@ router.post('/login', async (req, res) => {
     /*  Validações */
 
     const erroEmail = validarEmail(email)
-    
+
 
     if (erroEmail) {
         return res.status(400).json({
@@ -77,30 +80,39 @@ router.post('/login', async (req, res) => {
 
         const usuario = BancoDados.find(el => el.email === email)
 
-        if(!usuario) {
+        if (!usuario) {
 
-            return res.status(401).json({mensagem: 'E-mail ou senha inválidos.!'})
+            return res.status(401).json({ mensagem: 'E-mail ou senha inválidos.!' })
 
         }
 
         const senhaCorreta = await bcrypt.compare(senha, usuario.senha)
 
-        if(!senhaCorreta) {
-           
-            return res.status(401).json({mensagem: 'E-mail ou senha inválidos.'})
+        if (!senhaCorreta) {
 
-        } 
+            return res.status(401).json({ mensagem: 'E-mail ou senha inválidos.' })
 
-        return res.status(200).json({mensagem: 'Login realizado com sucesso!'})
+        }
 
-    } catch(erro) {
-        
+
+        const token = jwt.sign(
+            { id: usuario.id },
+            process.env.JWT_SECRET
+        )
+
+        return res.status(200).json({
+            mensagem: 'Login realizado com sucesso!',
+            token: token
+        })
+
+    } catch (erro) {
+
         console.error('erro na conexão do Banco')
 
-        return res.status(500).json({mensagem: 'Dados invalídos'})
+        return res.status(500).json({ mensagem: 'Dados invalídos' })
     }
 
-    
+
 
 })
 
