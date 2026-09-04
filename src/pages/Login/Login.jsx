@@ -1,10 +1,13 @@
-import { Link } from "react-router-dom"
-import { Heart, Mail, Eye, EyeOff, Lock, TriangleAlert } from "../../assets/icons/"
+import { Link, useNavigate } from "react-router-dom"
+import { Heart, Mail, Eye, EyeOff, Lock, TriangleAlert} from "../../assets/icons/"
 
 import { estiloSection, estiloAviso, estiloInputs, estiloIconeExibir } from "../../styles/Estilos"
 
+/*Crie o container para o perfil já logado*/
+
 import { validarCampoSenha, validarEmail } from "../../validations/validations"
 import { useState } from "react"
+
 import { Logar } from "../../api/auth"
 
 function Login() {
@@ -24,6 +27,7 @@ function Login() {
 
     const [mensagem, setMensagem] = useState({
         ok: '',
+        token: '',
         codigo: '',
         mensagem: ''
     })
@@ -32,6 +36,8 @@ function Login() {
 
 
     /*Funções*/
+
+    const navigate = useNavigate()
 
     async function handleLogin(e) {
         e.preventDefault()
@@ -43,9 +49,20 @@ function Login() {
         })
 
         try {
-            const dados = await Logar(input)
 
+            const dados = await Logar(input)
+            
+            
             setMensagem(dados)
+            
+            if(dados.codigo === 'Logado') {
+                
+                localStorage.setItem('token', dados.token)
+
+                navigate('/')
+            }
+
+
 
         } catch (erro) {
             console.error('Erro ao consultar dados', erro)
@@ -53,7 +70,7 @@ function Login() {
         }
 
 
-
+        return 
 
     }
 

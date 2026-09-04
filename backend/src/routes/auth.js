@@ -101,8 +101,10 @@ router.post('/login', async (req, res) => {
         )
 
         return res.status(200).json({
-            mensagem: 'Login realizado com sucesso!',
-            token: token
+            token: token,
+            codigo: 'Logado',
+            mensagem: 'Login realizado com sucesso!'
+            
         })
 
     } catch (erro) {

@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Heart, TiThMenu, FaHome, FaCalendarAlt, FaUser } from "../assets/icons"
+import { Heart, TiThMenu, FaHome, FaCalendarAlt, FaUser, CircleUserRound } from "../assets/icons"
 
 import { Link, NavLink } from "react-router-dom"
 
@@ -19,6 +19,8 @@ function Header() {
 `
 
     const [open, setOpen] = useState(false)
+
+    const token = localStorage.getItem('token')
 
     return (
         <header className="
@@ -56,7 +58,17 @@ function Header() {
 
                 <NavLink to="/agendar" className={estiloLink}>Agendar</NavLink>
 
-                <NavLink to="/login" className={estiloLink}>Login</NavLink>
+                {token ? (
+                    <NavLink to="/" className={estiloLink}>
+                        <CircleUserRound size={29} />
+                    </NavLink>
+                ) :
+                    (
+                        <NavLink to="/login" className={estiloLink}>Login</NavLink>
+                    )
+
+                }
+
             </nav>
 
             {/*menu mobile*/}
@@ -107,15 +119,29 @@ function Header() {
                     <FaCalendarAlt />Agendar
                 </NavLink>
 
-                <NavLink to="/login"
-                    onClick={() => setOpen(false)}
-                    className={({ isActive }) =>
-                        `${mobileLinkStyle}
+                {!token ? (
+                    <NavLink to="/login"
+                        onClick={() => setOpen(false)}
+                        className={({ isActive }) =>
+                            `${mobileLinkStyle}
                         ${isActive ? "bg-white/15" : ""}`
-                    }
-                >
-                    <FaUser /> Login
-                </NavLink>
+                        }
+                    >
+                        <FaUser /> Login
+                    </NavLink>
+                ) :
+                    (
+                        <NavLink to="/agendar"
+                        onClick={() => setOpen(false)}
+                        className={({ isActive }) =>
+                            `${mobileLinkStyle}
+                        ${isActive ? "bg-white/15" : ""}`
+                        }
+                    >
+                        <CircleUserRound  />User
+                    </NavLink>
+                )}
+
             </nav>
 
 

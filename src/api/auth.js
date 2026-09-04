@@ -44,6 +44,7 @@ async function Logar(inputs) {
 
     return {
         ok: res.ok,
+        token: dados.token,
         codigo: dados.codigo,
         mensagem: dados.mensagem
     }
