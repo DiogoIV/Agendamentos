@@ -60,7 +60,7 @@ function Header() {
 
                 {token ? (
                     <NavLink to="/" className={estiloLink}>
-                        <CircleUserRound size={29} />
+                        <CircleUserRound size={25} />
                     </NavLink>
                 ) :
                     (
@@ -81,8 +81,7 @@ function Header() {
 
             </div>
             <nav className={`fixed top-0 right-0
-                    flex flex-col 
-                    gap-2
+                                  
                     w-[70%] h-screen
                     pt-6  
                     px-5
@@ -92,55 +91,99 @@ function Header() {
                     transform transition-transform duration-500 ease-in-out
                     ${open ? "translate-x-0 " : "translate-x-full"}`}
             >
-                <div className=" px-4 pb-4 border-b border-white/40">
-                    <h2 className="text-lg font-bold">
-                        Menu
-                    </h2>
-                </div>
+                <ul className="flex flex-col gap-2
+                ">
 
-                <NavLink
-                    to="/"
-                    onClick={() => setOpen(false)}
-                    className={({ isActive }) =>
-                        `${mobileLinkStyle}
-                        ${isActive ? " bg-white/15 " : ""}`
-                    }
-                >
-                    <FaHome /> Início
-                </NavLink>
+                    <li className=" px-4 pb-4  border-b border-white/40">
+                        <h2 className="text-lg font-bold">
+                            Menu
+                        </h2>
+                    </li>
 
-                <NavLink to="/agendar"
-                    onClick={() => setOpen(false)}
-                    className={({ isActive }) =>
-                        `${mobileLinkStyle}
-                        ${isActive ? "bg-white/15" : ""}`
-                    }
-                >
-                    <FaCalendarAlt />Agendar
-                </NavLink>
+                    <li className="pl-2">
+                        <NavLink
+                            to="/"
+                            onClick={() => setOpen(false)}
+                            className={({ isActive }) =>
+                                `${mobileLinkStyle}
+                                ${isActive ? " bg-white/15 " : ""}
+                                mt-2`
+                            }
+                        >
+                            <FaHome /> Início
+                        </NavLink>
+                    </li>
 
-                {!token ? (
-                    <NavLink to="/login"
-                        onClick={() => setOpen(false)}
-                        className={({ isActive }) =>
-                            `${mobileLinkStyle}
-                        ${isActive ? "bg-white/15" : ""}`
-                        }
-                    >
-                        <FaUser /> Login
-                    </NavLink>
-                ) :
-                    (
+                    <li className="pl-2">
                         <NavLink to="/agendar"
-                        onClick={() => setOpen(false)}
-                        className={({ isActive }) =>
-                            `${mobileLinkStyle}
-                        ${isActive ? "bg-white/15" : ""}`
-                        }
-                    >
-                        <CircleUserRound  />User
-                    </NavLink>
-                )}
+                            onClick={() => setOpen(false)}
+                            className={({ isActive }) =>
+                                `${mobileLinkStyle}
+                                ${isActive ? "bg-white/15" : ""}`
+                            }
+                        >
+                            <FaCalendarAlt />Agendar
+                        </NavLink>
+                    </li>
+
+                    {!token ? (
+                        <li className="pl-2">
+
+                            <NavLink to="/login"
+                                onClick={() => setOpen(false)}
+                                className={({ isActive }) =>
+                                    `${mobileLinkStyle}
+                            ${isActive ? "bg-white/15" : ""}`
+                                }
+                            >
+                                <FaUser /> Login
+                            </NavLink>
+
+                        </li>
+                    ) :
+                        (
+
+                            <li className=" 
+                                pt-5  
+                                pl-3 border-t border-white/40"
+                                >
+
+                                <h2 className="flex items-center gap-1"> <CircleUserRound /> Olá, Diogo</h2>
+
+                                <ul>
+                                    
+                                    <li>
+                                        <NavLink to="/minha-conta">
+                                            Minha conta
+                                        </NavLink>
+                                    </li>
+
+                                    <li>
+                                        <NavLink to="/minha-conta/meus-dados">
+                                            Meus dados
+                                        </NavLink>
+                                    </li>
+
+                                    <li>
+                                        <NavLink to="/minha-conta/meus-agendamentos">
+                                            Meus agendamentos
+                                        </NavLink>
+                                    </li>
+
+                                    <li>
+                                        <button>
+                                            Sair
+                                        </button>
+                                    </li>
+                                    
+                                </ul>
+
+                            </li>
+                        )}
+
+                </ul>
+
+
 
             </nav>
 
