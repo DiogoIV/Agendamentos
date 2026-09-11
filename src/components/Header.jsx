@@ -1,5 +1,5 @@
-import { useState } from "react"
-import { Heart, TiThMenu, FaHome, FaCalendarAlt, FaUser, CircleUserRound } from "../assets/icons"
+import { useEffect, useState } from "react"
+import { Heart, TiThMenu, FaHome, FaCalendarAlt, FaUser, CircleUserRound, UserRound } from "../assets/icons"
 
 import { Link, NavLink } from "react-router-dom"
 
@@ -20,7 +20,48 @@ function Header() {
 
     const [open, setOpen] = useState(false)
 
-    const token = localStorage.getItem('token')
+    const [token, setToken] = useState(false)
+
+    function GerenciarToken () {
+
+        const tokenNavigate = localStorage.getItem('token')
+
+        if(tokenNavigate) {
+
+            return setToken(true)
+
+        } else {
+
+            return setToken(false)
+
+        }
+    }
+
+    
+    
+
+    useEffect(() => {
+
+        function handleResize() {
+
+            if (window.innerWidth >= 768) {
+                setOpen(false)
+            }
+        }
+
+        
+
+        window.addEventListener('resize', handleResize)
+
+        GerenciarToken ()
+
+        return () => {
+            window.removeEventListener('resize', handleResize)
+        }
+
+    }, [])
+
+    
 
     return (
         <header className="
@@ -46,21 +87,25 @@ function Header() {
 
             {/* menu fixo */}
 
-            <nav className="hidden 
-            md:flex gap-6 
-            
-            lg:text-xl
-            lg:gap-8
-            font-semibold
-            
-            ">
+            <nav className={`
+                hidden 
+                md:flex 
+                md:gap-6
+                md:text-lg
+                items-center   
+                lg:text-xl
+                lg:gap-8
+                font-semibold
+            `
+
+            }>
                 <NavLink to="/" className={estiloLink}>Início</NavLink>
 
                 <NavLink to="/agendar" className={estiloLink}>Agendar</NavLink>
 
                 {token ? (
                     <NavLink to="/" className={estiloLink}>
-                        <CircleUserRound size={25} />
+                        <UserRound size={26} />
                     </NavLink>
                 ) :
                     (
@@ -80,6 +125,7 @@ function Header() {
                     ${open ? "opacity-100" : "opacity-0  pointer-events-none "}`}>
 
             </div>
+
             <nav className={`fixed top-0 right-0
                                   
                     w-[70%] h-screen
@@ -91,7 +137,7 @@ function Header() {
                     transform transition-transform duration-500 ease-in-out
                     ${open ? "translate-x-0 " : "translate-x-full"}`}
             >
-                <ul className="flex flex-col gap-2
+                <ul className="flex flex-col gap-3
                 ">
 
                     <li className=" px-4 pb-4  border-b border-white/40">
@@ -143,40 +189,78 @@ function Header() {
                     ) :
                         (
 
-                            <li className=" 
+                            <li className="
+                                flex
+                                flex-col
+                                gap-4
                                 pt-5  
                                 pl-3 border-t border-white/40"
-                                >
+                            >
 
-                                <h2 className="flex items-center gap-1"> <CircleUserRound /> Olá, Diogo</h2>
+                                <h2 className="flex items-center gap-1"> <CircleUserRound size={28}/> Olá, Diogo</h2>
 
-                                <ul>
-                                    
+                                <ul className="
+                                    flex
+                                    flex-col
+                                    gap-1
+                                    pl-8
+                                    pb-2
+                                ">
+
                                     <li>
-                                        <NavLink to="/minha-conta">
+                                        <NavLink to="/minhaconta"
+                                            className={
+                                                ({ isActive }) =>
+                                                    `
+                                            ${isActive ? "text-[#8B5CF6]" : ""}
+                                            `
+                                            }>
                                             Minha conta
                                         </NavLink>
                                     </li>
 
                                     <li>
-                                        <NavLink to="/minha-conta/meus-dados">
+                                        <NavLink to="/minha-conta/meus-dados"
+                                            className={
+                                                ({ isActive }) =>
+                                                    `
+                                            ${isActive ? "text-[#8B5CF6]" : ""}
+                                            `
+                                            }
+                                        >
                                             Meus dados
                                         </NavLink>
                                     </li>
 
                                     <li>
-                                        <NavLink to="/minha-conta/meus-agendamentos">
+                                        <NavLink to="/minha-conta/meus-agendamentos"
+                                            className={
+                                                ({ isActive }) =>
+                                                    `
+                                            ${isActive ? "text-[#8B5CF6]" : ""}
+                                            `
+                                            }
+                                        >
                                             Meus agendamentos
                                         </NavLink>
                                     </li>
-
-                                    <li>
-                                        <button>
-                                            Sair
-                                        </button>
-                                    </li>
-                                    
                                 </ul>
+
+                                <button className="
+                                    bg-[var(--color-secondary)]
+                                    text-[var(--color-primary)]                 
+                                    font-bold
+                                    py-2
+                                    rounded
+                                " onClick={()=> 
+                                    {localStorage.removeItem('token')
+                                    GerenciarToken()   
+
+                                }
+
+                                }>
+                                    Sair
+                                </button>
 
                             </li>
                         )}

@@ -12,7 +12,8 @@ export {
     EyeOff,
     ArrowLeft,
     CircleUserRound,
-    TriangleAlert
+    TriangleAlert,
+    UserRound
     
 } from "lucide-react";
 
