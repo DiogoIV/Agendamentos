@@ -1,12 +1,14 @@
 import { useEffect, useState, useContext } from "react"
 import { Link, NavLink } from "react-router-dom"
-import { Heart, TiThMenu, FaHome, FaCalendarAlt, FaUser, CircleUserRound, UserRound } from "../assets/icons"
+import { Heart, TiThMenu, FaHome, FaCalendarAlt, FaUser, UserRound, ChevronDown, ChevronUp } from "../assets/icons"
 
 import { AuthContext } from "../contexts/AuthContext"
 
 
 function Header() {
-    const estiloLink = `relative 
+    const estiloLink = `
+                flex items-center
+                relative 
                 after:content-[''] after:absolute after:bg-[var(--color-secondary)] after:h-[1px] after:w-full
                 after:-bottom-1 after:left-0 
                 after:scale-x-0 hover:after:scale-x-100
@@ -22,15 +24,10 @@ function Header() {
 
     const [open, setOpen] = useState(false)
 
+    const [exibirDrop, setExibirDrop] = useState(false)
+
 
     const { isAuthenticated, LoggedOut } = useContext(AuthContext)
-
-
-
-
-
-
-
 
     useEffect(() => {
 
@@ -45,7 +42,7 @@ function Header() {
 
         window.addEventListener('resize', handleResize)
 
-       
+
 
         return () => {
             window.removeEventListener('resize', handleResize)
@@ -96,9 +93,96 @@ function Header() {
                 <NavLink to="/agendar" className={estiloLink}>Agendar</NavLink>
 
                 {isAuthenticated ? (
-                    <button className={estiloLink}>
-                        <UserRound size={26} />
-                    </button>
+
+                    <div className="relative">
+
+                        <button className={estiloLink} onClick={() => setExibirDrop(!exibirDrop)}>
+                            <UserRound size={26} />
+                            {exibirDrop ? <ChevronDown /> : <ChevronUp />}
+                        </button>
+
+                        {exibirDrop && (
+
+                            <ul className="
+                            absolute
+                            right-0
+                            top-full
+                            mt-4
+                            w-64
+                            flex flex-col gap-1
+                            py-3 px-2
+                            rounded-lg
+                            bg-[var(--color-primary)]
+                            border border-white/15
+                            shadow-xl
+                            text-lg font-normal
+                           ">
+
+
+                                <li>
+                                    <h2 className="flex gap-2
+                                        items-center ">
+                                        <FaUser />Olá, Diogo
+                                    </h2>
+                                </li>
+
+
+                                <li>
+                                    <NavLink className="
+                                        block
+                                        px-4 py-2
+                                        rounded-md
+                                        text-[var(--color-secondary)]
+                                        transition
+                                        hover:bg-white/10
+                                        hover:opacity-70 
+                                    ">
+                                        Minha conta
+                                    </NavLink>
+                                </li>
+
+                                <li>
+                                    <NavLink className="
+                                    block
+                                    px-4 py-2
+                                    rounded-md
+                                    text-[var(--color-secondary)]
+                                    transition
+                                    hover:bg-white/10
+                                    hover:opacity-70
+                                ">
+                                        Meus dados
+                                    </NavLink>
+                                </li>
+
+                                <li>
+                                    <NavLink className="
+                                    block
+                                    px-4 py-2
+                                    rounded-md
+                                    text-[var(--color-secondary)]
+                                    transition
+                                    hover:bg-white/10
+                                    hover:opacity-70
+                                ">
+                                        Meus agendamentos
+                                    </NavLink>
+                                </li>
+
+                                <li>
+                                    <button>
+                                        Sair
+                                    </button>
+                                </li>
+                            </ul>
+                            
+
+
+
+                        )}
+
+                    </div>
+
                 ) :
                     (
                         <NavLink to="/login" className={estiloLink}>Login</NavLink>
@@ -248,17 +332,17 @@ function Header() {
                                         LoggedOut
                                     }
                                 >
-                                Sair
-                            </button>
+                                    Sair
+                                </button>
 
                             </li>
                         )}
 
-            </ul>
+                </ul>
 
 
 
-        </nav>
+            </nav>
 
 
         </header >

@@ -13,7 +13,9 @@ export {
     ArrowLeft,
     CircleUserRound,
     TriangleAlert,
-    UserRound
+    UserRound,
+    ChevronDown,
+    ChevronUp
     
 } from "lucide-react";
 
