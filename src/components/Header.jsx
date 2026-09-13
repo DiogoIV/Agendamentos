@@ -1,7 +1,9 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useContext } from "react"
+import { Link, NavLink } from "react-router-dom"
 import { Heart, TiThMenu, FaHome, FaCalendarAlt, FaUser, CircleUserRound, UserRound } from "../assets/icons"
 
-import { Link, NavLink } from "react-router-dom"
+import { AuthContext } from "../contexts/AuthContext"
+
 
 function Header() {
     const estiloLink = `relative 
@@ -20,25 +22,15 @@ function Header() {
 
     const [open, setOpen] = useState(false)
 
-    const [token, setToken] = useState(false)
 
-    function GerenciarToken () {
+    const { isAuthenticated, LoggedOut } = useContext(AuthContext)
 
-        const tokenNavigate = localStorage.getItem('token')
 
-        if(tokenNavigate) {
 
-            return setToken(true)
 
-        } else {
 
-            return setToken(false)
 
-        }
-    }
 
-    
-    
 
     useEffect(() => {
 
@@ -49,11 +41,11 @@ function Header() {
             }
         }
 
-        
+
 
         window.addEventListener('resize', handleResize)
 
-        GerenciarToken ()
+       
 
         return () => {
             window.removeEventListener('resize', handleResize)
@@ -61,7 +53,7 @@ function Header() {
 
     }, [])
 
-    
+
 
     return (
         <header className="
@@ -103,10 +95,10 @@ function Header() {
 
                 <NavLink to="/agendar" className={estiloLink}>Agendar</NavLink>
 
-                {token ? (
-                    <NavLink to="/" className={estiloLink}>
+                {isAuthenticated ? (
+                    <button className={estiloLink}>
                         <UserRound size={26} />
-                    </NavLink>
+                    </button>
                 ) :
                     (
                         <NavLink to="/login" className={estiloLink}>Login</NavLink>
@@ -172,7 +164,7 @@ function Header() {
                         </NavLink>
                     </li>
 
-                    {!token ? (
+                    {!isAuthenticated ? (
                         <li className="pl-2">
 
                             <NavLink to="/login"
@@ -197,7 +189,7 @@ function Header() {
                                 pl-3 border-t border-white/40"
                             >
 
-                                <h2 className="flex items-center gap-1"> <CircleUserRound size={28}/> Olá, Diogo</h2>
+                                <h2 className="flex items-center gap-1"> <UserRound size={28} /> Olá, Diogo</h2>
 
                                 <ul className="
                                     flex
@@ -208,7 +200,7 @@ function Header() {
                                 ">
 
                                     <li>
-                                        <NavLink to="/minhaconta"
+                                        <NavLink to="/minha-conta"
                                             className={
                                                 ({ isActive }) =>
                                                     `
@@ -252,27 +244,24 @@ function Header() {
                                     font-bold
                                     py-2
                                     rounded
-                                " onClick={()=> 
-                                    {localStorage.removeItem('token')
-                                    GerenciarToken()   
-
-                                }
-
-                                }>
-                                    Sair
-                                </button>
+                                " onClick={
+                                        LoggedOut
+                                    }
+                                >
+                                Sair
+                            </button>
 
                             </li>
                         )}
 
-                </ul>
+            </ul>
 
 
 
-            </nav>
+        </nav>
 
 
-        </header>
+        </header >
     )
 }
 

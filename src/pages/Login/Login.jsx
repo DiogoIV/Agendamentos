@@ -1,14 +1,13 @@
 import { Link, useNavigate } from "react-router-dom"
+import { useState, useContext } from "react"
+
 import { Heart, Mail, Eye, EyeOff, Lock, TriangleAlert} from "../../assets/icons/"
-
 import { estiloSection, estiloAviso, estiloInputs, estiloIconeExibir } from "../../styles/Estilos"
-
-/*Crie o container para o perfil já logado*/
+import { Logar } from "../../api/auth"
 
 import { validarCampoSenha, validarEmail } from "../../validations/validations"
-import { useState } from "react"
+import { AuthContext } from "../../contexts/AuthContext"
 
-import { Logar } from "../../api/auth"
 
 function Login() {
 
@@ -38,6 +37,8 @@ function Login() {
     /*Funções*/
 
     const navigate = useNavigate()
+    
+    const {isAuthenticated, LoggedIn} = useContext(AuthContext)
 
     async function handleLogin(e) {
         e.preventDefault()
@@ -59,6 +60,8 @@ function Login() {
                 
                 localStorage.setItem('token', dados.token)
 
+                LoggedIn()
+                
                 navigate('/')
             }
 
