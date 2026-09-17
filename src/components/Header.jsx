@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext } from "react"
+import { useEffect, useState, useContext, useRef } from "react"
 import { Link, NavLink } from "react-router-dom"
 import { Heart, TiThMenu, FaHome, FaCalendarAlt, FaUser, UserRound, ChevronDown, ChevronUp } from "../assets/icons"
 
@@ -6,6 +6,8 @@ import { AuthContext } from "../contexts/AuthContext"
 
 
 function Header() {
+    const { isAuthenticated, LoggedOut } = useContext(AuthContext)
+
     const estiloLink = `
                 flex items-center
                 relative 
@@ -27,7 +29,7 @@ function Header() {
     const [exibirDrop, setExibirDrop] = useState(false)
 
 
-    const { isAuthenticated, LoggedOut } = useContext(AuthContext)
+    const containerRef = useRef()
 
     useEffect(() => {
 
@@ -49,6 +51,26 @@ function Header() {
         }
 
     }, [])
+
+    useEffect(()=> {
+
+        
+
+        window.addEventListener('click', verificarclique)
+
+        function verificarclique (event) {
+
+            if(!containerRef.current.contains(event.target)) {
+                setExibirDrop(false)
+            }
+
+        }
+
+        return ()=> {
+            window.removeEventListener('click', verificarclique)
+        }
+
+    },[])
 
 
 
@@ -96,7 +118,7 @@ function Header() {
 
                     <div className="relative">
 
-                        <button className={estiloLink} onClick={() => setExibirDrop(!exibirDrop)}>
+                        <button className={estiloLink} onClick={() => setExibirDrop(!exibirDrop)} ref={containerRef}>
                             <UserRound size={26} />
                             {exibirDrop ? <ChevronDown /> : <ChevronUp />}
                         </button>
@@ -110,18 +132,21 @@ function Header() {
                             mt-4
                             w-64
                             flex flex-col gap-1
-                            py-3 px-2
+                            pt-4 pb-2 px-2
                             rounded-lg
                             bg-[var(--color-primary)]
-                            border border-white/15
+                            border border-white/50
                             shadow-xl
                             text-lg font-normal
-                           ">
+                            
+                           "
+                           
+                           >
 
 
                                 <li>
                                     <h2 className="flex gap-2
-                                        items-center ">
+                                        items-center border-b pb-3 justify-center">
                                         <FaUser />Olá, Diogo
                                     </h2>
                                 </li>
@@ -170,7 +195,16 @@ function Header() {
                                 </li>
 
                                 <li>
-                                    <button>
+                                    <button className="
+                                    block
+                                    px-4 py-2
+                                    rounded-md
+                                    text-[var(--color-secondary)]
+                                    transition
+                                    hover:bg-white/10
+                                    hover:opacity-70
+                                    w-full
+                                ">
                                         Sair
                                     </button>
                                 </li>
@@ -268,7 +302,7 @@ function Header() {
                             <li className="
                                 flex
                                 flex-col
-                                gap-4
+                                gap-5
                                 pt-5  
                                 pl-3 border-t border-white/40"
                             >
@@ -278,7 +312,7 @@ function Header() {
                                 <ul className="
                                     flex
                                     flex-col
-                                    gap-1
+                                    gap-2
                                     pl-8
                                     pb-2
                                 ">
