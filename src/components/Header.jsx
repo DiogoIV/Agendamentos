@@ -52,25 +52,28 @@ function Header() {
 
     }, [])
 
-    useEffect(()=> {
+    useEffect(() => {
 
-        
+        console.log('executando')
 
         window.addEventListener('click', verificarclique)
 
-        function verificarclique (event) {
+        function verificarclique(event) {
 
-            if(!containerRef.current.contains(event.target)) {
+            console.log("ref:", containerRef.current)
+            console.log("alvo:", event.target)
+            console.log("contém:", containerRef.current.contains(event.target))
+            if (!containerRef.current.contains(event.target)) {
                 setExibirDrop(false)
             }
 
         }
 
-        return ()=> {
+        return () => {
             window.removeEventListener('click', verificarclique)
         }
 
-    },[])
+    }, [])
 
 
 
@@ -116,11 +119,12 @@ function Header() {
 
                 {isAuthenticated ? (
 
-                    <div className="relative">
+                    <div className="relative" ref={containerRef}>
 
-                        <button className={estiloLink} onClick={() => setExibirDrop(!exibirDrop)} ref={containerRef}>
+                        <button className={estiloLink} onClick={() => setExibirDrop(prev => !prev)} >
                             <UserRound size={26} />
-                            {exibirDrop ? <ChevronDown /> : <ChevronUp />}
+                            {exibirDrop && <ChevronUp />}
+                            {!exibirDrop && <ChevronDown />}
                         </button>
 
                         {exibirDrop && (
@@ -140,8 +144,8 @@ function Header() {
                             text-lg font-normal
                             
                            "
-                           
-                           >
+
+                            >
 
 
                                 <li>
@@ -161,7 +165,8 @@ function Header() {
                                         transition
                                         hover:bg-white/10
                                         hover:opacity-70 
-                                    ">
+                                    "
+                                        onClick={() => setExibirDrop(false)}>
                                         Minha conta
                                     </NavLink>
                                 </li>
@@ -175,7 +180,9 @@ function Header() {
                                     transition
                                     hover:bg-white/10
                                     hover:opacity-70
-                                ">
+                                "
+                                        to='agendar'
+                                        onClick={() => setExibirDrop(false)}>
                                         Meus dados
                                     </NavLink>
                                 </li>
@@ -189,7 +196,9 @@ function Header() {
                                     transition
                                     hover:bg-white/10
                                     hover:opacity-70
-                                ">
+                                "
+                                        onClick={() => setExibirDrop(false)}
+                                    >
                                         Meus agendamentos
                                     </NavLink>
                                 </li>
@@ -209,7 +218,7 @@ function Header() {
                                     </button>
                                 </li>
                             </ul>
-                            
+
 
 
 
