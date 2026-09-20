@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom"
 import { Heart, TiThMenu, FaHome, FaCalendarAlt, FaUser, UserRound, ChevronDown, ChevronUp } from "../assets/icons"
 
 import { AuthContext } from "../contexts/AuthContext"
+import { ChevronsDownUp } from "lucide-react"
 
 
 function Header() {
@@ -28,6 +29,7 @@ function Header() {
 
     const [exibirDrop, setExibirDrop] = useState(false)
 
+   
 
     const containerRef = useRef()
 
@@ -60,11 +62,9 @@ function Header() {
 
         function verificarclique(event) {
 
-            console.log("ref:", containerRef.current)
-            console.log("alvo:", event.target)
-            console.log("contém:", containerRef.current.contains(event.target))
+
             if (!containerRef.current.contains(event.target)) {
-                setExibirDrop(false)
+               setExibirDrop(false)
             }
 
         }
@@ -123,9 +123,10 @@ function Header() {
 
                         <button className={estiloLink} onClick={() => setExibirDrop(prev => !prev)} >
                             <UserRound size={26} />
-                            {exibirDrop && <ChevronUp />}
-                            {!exibirDrop && <ChevronDown />}
+                            <ChevronDown/>
                         </button>
+
+                        
 
                         {exibirDrop && (
 
