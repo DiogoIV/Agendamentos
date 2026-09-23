@@ -6,7 +6,10 @@ import { imagemDoProfissional, layoutAgendar } from "../../assets/imagens"
 
 function Home() {
     return (
-        <div className="flex flex-col gap-20">
+        <div className="flex flex-col gap-20      
+        
+        ">
+            
             {/*sessão hero*/}
             <section className="
                 flex flex-col gap-8

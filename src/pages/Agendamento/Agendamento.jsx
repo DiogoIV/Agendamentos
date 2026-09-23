@@ -12,7 +12,7 @@ function Agendamento() {
         )
     )
 
-    console.log(horarios)
+
 
     useEffect(() => {
 

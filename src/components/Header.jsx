@@ -29,7 +29,8 @@ function Header() {
 
     const [exibirDrop, setExibirDrop] = useState(false)
 
-   
+
+
 
     const containerRef = useRef()
 
@@ -55,8 +56,14 @@ function Header() {
     }, [])
 
     useEffect(() => {
+        if (!isAuthenticated) {
+            setExibirDrop(false)
+        }
+    }, [isAuthenticated])
 
-        console.log('executando')
+    useEffect(() => {
+
+
 
         window.addEventListener('click', verificarclique)
 
@@ -64,7 +71,7 @@ function Header() {
 
 
             if (!containerRef.current.contains(event.target)) {
-               setExibirDrop(false)
+                setExibirDrop(false)
             }
 
         }
@@ -123,10 +130,10 @@ function Header() {
 
                         <button className={estiloLink} onClick={() => setExibirDrop(prev => !prev)} >
                             <UserRound size={26} />
-                            <ChevronDown/>
+                            <ChevronDown />
                         </button>
 
-                        
+
 
                         {exibirDrop && (
 
@@ -167,7 +174,9 @@ function Header() {
                                         hover:bg-white/10
                                         hover:opacity-70 
                                     "
-                                        onClick={() => setExibirDrop(false)}>
+                                        onClick={() => setExibirDrop(false)}
+                                        to='/minha-conta'
+                                    >
                                         Minha conta
                                     </NavLink>
                                 </li>
@@ -181,8 +190,8 @@ function Header() {
                                     transition
                                     hover:bg-white/10
                                     hover:opacity-70
-                                "
-                                        to='agendar'
+                                    "
+                                        to='/minha-conta/meus-dados'
                                         onClick={() => setExibirDrop(false)}>
                                         Meus dados
                                     </NavLink>
@@ -198,6 +207,7 @@ function Header() {
                                     hover:bg-white/10
                                     hover:opacity-70
                                 "
+                                        to='/minha-conta/meus-agendamentos'
                                         onClick={() => setExibirDrop(false)}
                                     >
                                         Meus agendamentos
@@ -214,7 +224,9 @@ function Header() {
                                     hover:bg-white/10
                                     hover:opacity-70
                                     w-full
-                                ">
+                                "
+                                        onClick={LoggedOut}
+                                    >
                                         Sair
                                     </button>
                                 </li>
