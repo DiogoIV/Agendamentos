@@ -11,8 +11,7 @@ function AppLayout() {
             <Header/>
             <main className="flex flex-col 
             bg-[#fafafa] text-pretty tracking-wider p-4 
-            md:py-14
-            py-16
+            
             flex-1">
                 <Outlet/>
             </main>

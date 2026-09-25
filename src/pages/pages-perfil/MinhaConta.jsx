@@ -3,7 +3,13 @@
 
 function MinhaConta () {
     return (
-        <h1>Bem-vindo</h1>
+
+        <section className="
+        
+        ">
+                <h1>Minha conta</h1>
+        </section>
+
     )
 }
 

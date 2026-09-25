@@ -37,6 +37,8 @@ function Agendamento() {
             mx-auto
             flex flex-col
             gap-8
+            md:py-14
+            py-16
         ">
 
             <h1 className="

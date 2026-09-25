@@ -13,6 +13,7 @@ import EsqueciSenha from "../pages/EsqueciSenha/EsqueciSenha";
 import MinhaConta from "../pages/pages-perfil/MinhaConta"
 import MeusDados from "../pages/pages-perfil/MeusDados"
 import MeusAgendamentos from "../pages/pages-perfil/MeusAgendamentos"
+import MinhaContaLayout from "../layout/MinhaContaLayout";
 
 
 const router = createBrowserRouter([
@@ -25,10 +26,10 @@ const router = createBrowserRouter([
       { path: "login", element: <Login /> },
       { path: "cadastro", element: <Cadastro/>},
       { path: "esquecisenha", element: <EsqueciSenha/>},
-      {path: "minha-conta", element: <MinhaConta/>},
-      {path: "minha-conta/meus-dados", element: <MeusDados/>},
-      {path: "minha-conta/meus-agendamentos", element: <MeusDados/>}
+      { path: "minha-conta", element: <MinhaContaLayout/>}
+  
     ],
+    
   },
 ]);
 
