@@ -1,17 +1,37 @@
-import { NavLink, Outlet } from "react-router-dom"
-
-
+import { NavLink, Outlet, useLocation } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 
 function MinhaContaLayout() {
 
+    /*broadcast */
+
+    const location = useLocation();
+
+    const dadosLocation = location.pathname.split("/")
+
+    const nomes = {
+        "minha-conta": "Minha conta",
+        "meus-dados": "Meus dados",
+        "agendamentos": "Meus agendamentos"
+    };
+
+
+    const dados = dadosLocation.filter(el => el !== "").map(part => (
+        <li className="
+        after:content-['>'] last:after:content-['']
+        ">{nomes[part]}</li>
+    )
+    )
+
     return (
-        <section>
+        <section className="flex flex-col gap-4">
 
             <nav aria-label="Breadcrumb">
-                <ol>
-                    <li>Home</li>
-                    <li>Minha conta</li>
-                    <li>Meus dados</li>
+                <ol className="flex font-bold text-sm text-gray-400">
+                    <li className="after:content-['>'] after:mx-2">Home</li>
+                    {dados}
+
+
                 </ol>
             </nav>
 
@@ -34,9 +54,9 @@ function MinhaContaLayout() {
                 </ul>
 
             </section>
-                   
+
             <section>
-                 <Outlet/>
+                <Outlet />
             </section>
 
         </section>

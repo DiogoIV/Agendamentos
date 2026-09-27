@@ -15,7 +15,8 @@ export {
     TriangleAlert,
     UserRound,
     ChevronDown,
-    ChevronUp
+    ChevronUp,
+    ArrowRight
     
 } from "lucide-react";
 
