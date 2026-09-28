@@ -19,7 +19,7 @@ function Home() {
                 items-center
                 md:flex-row
                 md:max-w-[1200px]
-                
+                h-full
                 md:mx-auto
                 md:gap-10
             ">
@@ -107,7 +107,7 @@ function Home() {
             md:max-w-[1200px]
             
             border rounded-md p-4 md:pb-8
-            shadow-md md:m-auto">
+            shadow-md md:mx-auto">
 
                 <h2 className="text-2xl 
                 text-[var(--color-primary)] font-bold">Como funciona?</h2>

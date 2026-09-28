@@ -24,42 +24,51 @@ function MinhaContaLayout() {
     )
 
     return (
-        <section className="flex flex-col gap-4">
+
+        <div className="
+        flex flex-col 2 h-full 
+        ">
 
             <nav aria-label="Breadcrumb">
                 <ol className="flex font-bold text-sm text-gray-400">
                     <li className="after:content-['>'] after:mx-2">Home</li>
                     {dados}
-
-
                 </ol>
             </nav>
 
-            <section>
+            <article className="
+            flex gap-4 m-auto
+            bg-blue-200 p-2
+            ">
 
-                <h1>Menu Lateral</h1>
+                <section className="">
 
-                <ul>
-                    <li>
-                        <NavLink>Minha conta</NavLink>
-                    </li>
+                    <h1>Olá, Diogo</h1>
 
-                    <li>
-                        <NavLink>Meus dados</NavLink>
-                    </li>
+                    <ul>
+                        <li>
+                            <NavLink>Minha conta</NavLink>
+                        </li>
+                        <li>
+                            <NavLink>Meus dados</NavLink>
+                        </li>
+                        <li>
+                            <NavLink>Meus agendamentos</NavLink>
+                        </li>
+                    </ul>
 
-                    <li>
-                        <NavLink>Meus agendamentos</NavLink>
-                    </li>
-                </ul>
+                </section>
 
-            </section>
+                <section>
 
-            <section>
-                <Outlet />
-            </section>
+                    <Outlet />
 
-        </section>
+                </section>
+
+            </article>
+
+        </div>
+
     )
 
 }
