@@ -79,7 +79,7 @@ function Login() {
 
     return (
 
-        <section className={estiloSection}>
+        <section className={`${estiloSection}`}>
 
             <div className="
                 flex items-center 

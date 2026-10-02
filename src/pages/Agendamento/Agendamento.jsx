@@ -33,12 +33,15 @@ function Agendamento() {
     return (
 
         <div className="
+            
             max-w-4xl
             mx-auto
             flex flex-col
+            justify-center
+            flex-1
             gap-8
-            md:py-14
-            py-16
+            
+            
         ">
 
             <h1 className="
@@ -62,6 +65,7 @@ function Agendamento() {
                 gap-8
                 md:grid
                 md:grid-cols-2
+                
             ">
 
                 {/* Informações */}

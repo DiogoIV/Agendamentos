@@ -10,8 +10,8 @@ function AppLayout() {
         <>
             <Header/>
             <main className="flex flex-col 
-            bg-[#fafafa] text-pretty tracking-wider p-4 
-            
+            bg-[#fafafa] text-pretty tracking-wider
+            min-h-dvh
             flex-1">
                 <Outlet/>
             </main>

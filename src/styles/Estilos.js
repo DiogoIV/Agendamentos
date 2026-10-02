@@ -10,7 +10,7 @@ const estiloSection = `flex
             max-w-md
             w-full
             p-10
-            mx-auto
+            m-auto
             text-white`
 
 const estiloAviso = `

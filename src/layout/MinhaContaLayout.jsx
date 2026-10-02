@@ -27,6 +27,7 @@ function MinhaContaLayout() {
 
         <div className="
         flex flex-col 2 h-full 
+        flex-1
         ">
 
             <nav aria-label="Breadcrumb">
@@ -39,6 +40,7 @@ function MinhaContaLayout() {
             <article className="
             flex gap-4 m-auto
             bg-blue-200 p-2
+            
             ">
 
                 <section className="">
