@@ -1,21 +1,31 @@
 Agendamento
 
-Projeto em desenvolvimento para gerenciamento dos agendamentos realizados pelos clientes do meu irmão.
+Projeto em desenvolvimento para permitir que clientes realizem agendamentos online e facilitar o gerenciamento dos horários pelo responsável.
 
-O sistema tem como objetivo facilitar a organização dos horários e o gerenciamento dos agendamentos.
+O sistema está sendo desenvolvido para uso real no negócio do meu irmão, permitindo organizar os agendamentos de forma mais prática.
 
 Tecnologias utilizadas
 
+Frontend
+
 React
-
-Node.js
-
-MySQL
 
 Tailwind CSS
 
+Vite
+
+Backend
+
+Node.js
+
 API REST
 
-Site
+Banco de dados
 
-https://agendamentos-sigma.vercel.app/
+MySQL
+
+Autenticação e segurança
+
+JWT
+
+bcrypt
