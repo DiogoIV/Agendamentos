@@ -26,7 +26,13 @@ const router = createBrowserRouter([
       { path: "login", element: <Login /> },
       { path: "cadastro", element: <Cadastro/>},
       { path: "esquecisenha", element: <EsqueciSenha/>},
-      { path: "minha-conta", element: <MinhaContaLayout/>}
+      { path: "minha-conta", element: <MinhaContaLayout/>, 
+        children: [
+          {index: true, element: <MinhaConta/>},
+          {path: "meus-dados", element: <MeusDados/>},
+          {path: "meus-agendamentos", element: <MeusAgendamentos/>}
+        ]
+      }
   
     ],
     
