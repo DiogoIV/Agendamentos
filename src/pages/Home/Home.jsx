@@ -7,7 +7,7 @@ import { imagemDoProfissional, layoutAgendar } from "../../assets/imagens"
 function Home() {
     return (
         <div className="flex flex-col gap-20      
-        
+        px-6
         py-16
         md:pb-32
         h-full
