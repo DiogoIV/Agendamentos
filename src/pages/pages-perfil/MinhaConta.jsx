@@ -50,8 +50,15 @@ function MinhaConta() {
     return (
 
         <section className="
+        
+        flex flex-col
+        gap-2
         ">
-            <h2>Minha conta</h2>
+            <h2 className="
+            text-lg
+            font-medium
+            
+            ">Minha conta</h2>
 
             <div>
 

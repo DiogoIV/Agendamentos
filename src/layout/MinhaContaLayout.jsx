@@ -26,9 +26,10 @@ function MinhaContaLayout() {
     return (
 
         <div className="
-        flex flex-col 2 h-full 
+        flex flex-col 2
         flex-1
-        p-2
+        p-4
+          
         ">
 
             <nav aria-label="Breadcrumb" >
@@ -39,21 +40,51 @@ function MinhaContaLayout() {
             </nav>
 
             <article className="
-            flex gap-4 m-auto
+            flex 
+            gap-4 
+            m-auto
+            w-full
+            max-w-3xl
+            bg-[var(--color-primary)]
+            text-[var(--color-secondary)]
+            p-4
             
-            bg-blue-200 p-4
-                       
+            shadow-md
+            rounded-md         
             ">
 
                 <section className="
-                flex flex-col gap-2
+                flex flex-col gap-6
+                border-r
+                
+                border-[var(--color-secondary)]
+                px-2
+                basis-[300px]
+                
                 ">
 
-                    <h1 className="flex items-center gap-2"><User size={20}/>Olá, Diogo</h1>
+                    <h1 className="
+                    
+                    
+                    bg-[var(--color-background)]
+                    rounded-lg
+                    p-2
+                    text-center
+                    text-[var(--color-primary)]
+                    border
+                    border-[var(--color-secondary)]
+                    
+                    pb-2
+                    text-xl
+                    font-[500]
+                    ">Olá, Diogo</h1>
 
                     <ul className="
                         flex flex-col
-                        gap-1
+                        
+                        gap-4
+                        text-lg
+                        
                     ">
                         <li>
                             <NavLink to="/minha-conta" >Minha conta</NavLink>
@@ -62,16 +93,16 @@ function MinhaContaLayout() {
                             <NavLink to="meus-dados">Meus dados</NavLink>
                         </li>
                         <li>
-                            <NavLink to="meus-agendamentos">Meus agendamentos</NavLink>
+                            <NavLink to="meus-agendamentos">Meus Agendamentos</NavLink>
                         </li>
                     </ul>
 
                 </section>
 
-                <section>
+                <section className="w-full">
 
                     <Outlet />
-                    <p>dasdd</p>
+                    
                 </section>
 
             </article>
