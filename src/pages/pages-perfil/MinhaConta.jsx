@@ -32,16 +32,32 @@ function MinhaConta() {
 
     const itemsAgendamentos = itemsEscolhidos.map(item => (
 
-        <div key={item.id}>
+        <div key={item.id} className="
+        flex
+        flex-col gap-3
+        bg-white        
+        rounded
+        px-2
+        py-4
+        ">
 
-            <h4>Consulta</h4>
+            <h4 className="
+            font-bold 
+            text-[var(--color-primary)]">Consulta</h4>
 
-            <p>
+            <p className="text-gray-500">
                 {item.data} às {item.horario}
             </p>
 
-            <button>
-                ver detalhes
+            <button className="
+            text-[var(--color-primary)]
+            text-base
+            hover:underline
+            font-semibold 
+            
+            self-center       
+            ">
+                Ver detalhes
             </button>
         </div>
 
@@ -52,21 +68,32 @@ function MinhaConta() {
         <section className="
         
         flex flex-col
-        gap-2
+        gap-6
         ">
             <h2 className="
-            text-lg
-            font-medium
-            
+            text-xl
+                     
             ">Minha conta</h2>
 
-            <div>
+            <div className="
+            flex
+            flex-col
+            gap-2
+            ">
 
-                <h3>Próximos agendamentos</h3>
+                <h3 className="
+                text-lg 
+                ">Próximos agendamentos</h3>
 
                 {itemsAgendamentos.length > 0 ? (
 
-                    itemsAgendamentos
+                    <div className="
+                    grid grid-cols-[repeat(auto-fit,minmax(140px,1fr))]
+                    gap-4
+                    
+                    ">
+                        {itemsAgendamentos}
+                    </div>
 
                 )
                     :
@@ -82,23 +109,41 @@ function MinhaConta() {
                 }
             </div>
 
-            <div>
+            <div className="
+            flex flex-col gap-2
+            
+            ">
 
-                <h3>Seus dados</h3>
+                <h3 className="
+                 text-lg 
+                ">Seus dados</h3>
                 
-                <div>
+                <div className="flex flex-col gap-2
+                bg-white
+                rounded
+                p-4
+                ">
 
                     <div>
-                        <h3>Nome</h3>
-                        <p>Diogo Rodrigues</p>
+                        <h3 className="font-[600]
+                        text-[var(--color-primary)]">Nome</h3>
+                        <p className="text-gray-500">Diogo Rodrigues</p>
                     </div>
 
                     <div>
-                        <h3>Email</h3>
-                        <p>Diogo@email.com</p>
+                        <h3 className="font-[600]
+                        text-[var(--color-primary)]">Email</h3>
+                        <p className="text-gray-500">Diogo@email.com</p>
                     </div>
 
-                    <Link to="meus-dados">Editar</Link>
+                    <Link to="meus-dados"
+                    className="
+                        text-[var(--color-primary)]
+                        text-base
+                        self-center
+                        hover:underline
+                        font-semibold        
+                    ">Editar</Link>
                 </div>
 
             </div>

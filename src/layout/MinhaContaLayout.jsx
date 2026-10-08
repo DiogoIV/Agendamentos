@@ -55,6 +55,7 @@ function MinhaContaLayout() {
 
                 <section className="
                 flex flex-col gap-6
+                
                 border-r
                 
                 border-[var(--color-secondary)]
@@ -63,17 +64,14 @@ function MinhaContaLayout() {
                 
                 ">
 
-                    <h1 className="
-                    
-                    
+                    <h1 className="      
                     bg-[var(--color-background)]
                     rounded-lg
                     p-2
                     text-center
                     text-[var(--color-primary)]
                     border
-                    border-[var(--color-secondary)]
-                    
+                    border-[var(--color-secondary)]                    
                     pb-2
                     text-xl
                     font-[500]
@@ -81,8 +79,8 @@ function MinhaContaLayout() {
 
                     <ul className="
                         flex flex-col
-                        
-                        gap-4
+                        text-center
+                        gap-6
                         text-lg
                         
                     ">
@@ -93,7 +91,7 @@ function MinhaContaLayout() {
                             <NavLink to="meus-dados">Meus dados</NavLink>
                         </li>
                         <li>
-                            <NavLink to="meus-agendamentos">Meus Agendamentos</NavLink>
+                            <NavLink to="meus-agendamentos">agendamentos</NavLink>
                         </li>
                     </ul>
 
