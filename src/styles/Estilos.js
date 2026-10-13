@@ -50,3 +50,29 @@ const estiloIconeExibir = `absolute
                                 right-2`                    
 
 export {estiloSection, estiloAviso, estiloInputs, estiloIconeExibir};
+
+/*Menu minha Conta*/  
+
+
+const tituloMenu2 = `text-xl`
+
+const tituloMenu3 = `text-lg `
+
+const tituloDados3 = `font-bold text-[var(--color-primary)]`
+
+ const tituloMenuCampo = `font-bold text-[var(--color-primary)]` 
+
+
+const descMenu = `text-gray-500`
+
+const btnMenu = `text-[var(--color-primary)]
+            text-base
+            hover:underline
+            font-semibold 
+            
+            self-center `
+
+
+
+
+export { tituloMenu2, tituloMenu3, tituloDados3, tituloMenuCampo,  descMenu, btnMenu}

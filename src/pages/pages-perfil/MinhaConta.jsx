@@ -1,6 +1,7 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
 
+import { tituloMenu2, tituloMenu3,  tituloMenuCampo, descMenu, btnMenu} from '../../styles/Estilos.js'
 
 
 function MinhaConta() {
@@ -32,31 +33,20 @@ function MinhaConta() {
 
     const itemsAgendamentos = itemsEscolhidos.map(item => (
 
-        <div key={item.id} className="
-        flex
+        <div key={item.id} className="flex
         flex-col gap-3
         bg-white        
         rounded
         px-2
-        py-4
-        ">
+        py-4">
 
-            <h4 className="
-            font-bold 
-            text-[var(--color-primary)]">Consulta</h4>
+            <h4 className={tituloMenuCampo}>Consulta</h4>
 
-            <p className="text-gray-500">
+            <p className={descMenu}>
                 {item.data} às {item.horario}
             </p>
 
-            <button className="
-            text-[var(--color-primary)]
-            text-base
-            hover:underline
-            font-semibold 
-            
-            self-center       
-            ">
+            <button className={btnMenu}>
                 Ver detalhes
             </button>
         </div>
@@ -65,15 +55,11 @@ function MinhaConta() {
 
     return (
 
-        <section className="
-        
+        <section className="      
         flex flex-col
         gap-6
         ">
-            <h2 className="
-            text-xl
-                     
-            ">Minha conta</h2>
+            <h2 className={tituloMenu2}>Minha conta</h2>
 
             <div className="
             flex
@@ -81,9 +67,7 @@ function MinhaConta() {
             gap-2
             ">
 
-                <h3 className="
-                text-lg 
-                ">Próximos agendamentos</h3>
+                <h3 className={tituloMenu3}>Próximos agendamentos</h3>
 
                 {itemsAgendamentos.length > 0 ? (
 
@@ -99,7 +83,7 @@ function MinhaConta() {
                     :
                     (
                         <div>
-                             <p>Você não possui agendamentos.</p>
+                             <p className={descMenu}>Você não possui agendamentos.</p>
                              
                              <Link to='/agendar'>
                                 Agendar agora
@@ -114,9 +98,7 @@ function MinhaConta() {
             
             ">
 
-                <h3 className="
-                 text-lg 
-                ">Seus dados</h3>
+                <h3 className={tituloMenu3}>Seus dados</h3>
                 
                 <div className="flex flex-col gap-2
                 bg-white
@@ -125,25 +107,17 @@ function MinhaConta() {
                 ">
 
                     <div>
-                        <h3 className="font-[600]
-                        text-[var(--color-primary)]">Nome</h3>
-                        <p className="text-gray-500">Diogo Rodrigues</p>
+                        <h4 className={tituloMenuCampo}>Nome</h4>
+                        <p className={descMenu}>Diogo Rodrigues</p>
                     </div>
 
                     <div>
-                        <h3 className="font-[600]
-                        text-[var(--color-primary)]">Email</h3>
-                        <p className="text-gray-500">Diogo@email.com</p>
+                        <h4 className={tituloMenuCampo}>Email</h4>
+                        <p className={descMenu}>Diogo@email.com</p>
                     </div>
 
                     <Link to="meus-dados"
-                    className="
-                        text-[var(--color-primary)]
-                        text-base
-                        self-center
-                        hover:underline
-                        font-semibold        
-                    ">Editar</Link>
+                    className={btnMenu}>Editar</Link>
                 </div>
 
             </div>

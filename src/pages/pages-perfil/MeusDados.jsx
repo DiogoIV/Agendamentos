@@ -1,45 +1,54 @@
 import { useState } from "react"
 
-
+import { tituloMenu2, tituloMenu3, tituloMenuCampo, descMenu, btnMenu} from '../../styles/Estilos.js'
 
 
 function MeusDados() {
+    const estiloEditarDados = `flex flex-col gap-1 border p-4 rounded-lg`
 
     const [editarDados, setEditarDados] = useState(false)
     const [editarSenha, setEditarSenha] = useState(false)
+    
 
     return (
 
-        <section className="flex flex-col gap-4">
+        <section className="flex flex-col 
+        gap-6  ">
 
-            <h2>Dados da Conta</h2>
+            <h2 className={tituloMenu2}>Dados da Conta</h2>
 
             {!editarDados ? (
-                <div>
+                
+                
+                <div className="flex flex-col gap-4
+                bg-white
+                rounded
+                p-4
+                ">
 
-                    <div>
+                    <div className={estiloEditarDados}>
 
-                        <h3>Nome do Usuario</h3>
-                        <p>Diogo Rodrigues</p>
-
-                    </div>
-
-                    <div>
-
-                        <h3>Email</h3>
-                        <p>diogo@gmail.com</p>
-
-                    </div>
-
-                    <div>
-
-                        <h3>Telefone</h3>
-                        <p>11 9999-9999</p>
+                        <h3 className={tituloMenuCampo}>Nome do Usuario</h3>
+                        <p className={descMenu}>Diogo Rodrigues</p>
 
                     </div>
 
-                    <button onClick={()=> setEditarDados(true)}>
-                        EDITAR DADOS
+                    <div className={estiloEditarDados}>
+
+                        <h3 className={tituloMenuCampo}>Email</h3>
+                        <p className={descMenu}>diogorodrigues@gmail.com</p>
+
+                    </div>
+
+                    <div className={estiloEditarDados}>
+
+                        <h3 className={tituloMenuCampo}>Telefone</h3>
+                        <p className={descMenu}>(11) 93090-8226</p>
+
+                    </div>
+
+                    <button onClick={()=> setEditarDados(true)} className={btnMenu}>
+                        Editar Dados
                     </button>
                 </div>
 
@@ -48,7 +57,7 @@ function MeusDados() {
                 (
                     <form >
 
-                        <div>
+                        <div >
 
                             <label htmlFor="nome">Nome</label>
                             <input type="text" id="nome" autoComplete="name" />
@@ -83,16 +92,25 @@ function MeusDados() {
             
             {!editarSenha ? (
 
-                <div>
-                    <div>
+                <div className="">
 
-                        <h3>Senha</h3>
+                    <h3 className={`${tituloMenu3} mb-2`}>Alterar Senha</h3>
 
-                        <p>********</p>
+                    <div className="flex flex-col gap-4
+                bg-white
+                rounded
+                p-4
+                ">
+                        <div className={estiloEditarDados}>
+                            <h4 className={tituloMenuCampo}>Senha</h4>
+                            <p className={descMenu}>********</p>
+                        </div>
+
+                        <button onClick={()=>setEditarSenha(true)} className={btnMenu}>Alterar Senha</button>
 
                     </div>
 
-                      <button onClick={()=>setEditarSenha(true)}>ALTERAR SENHA</button>
+                      
                 </div>
 
                 ) :
