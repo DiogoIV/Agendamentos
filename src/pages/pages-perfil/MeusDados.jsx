@@ -10,7 +10,7 @@ function MeusDados() {
 
     return (
 
-        <section>
+        <section className="flex flex-col gap-4">
 
             <h2>Dados da Conta</h2>
 
