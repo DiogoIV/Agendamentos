@@ -1,29 +1,30 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
+import { CalendarDays } from "lucide-react"
 
-import { tituloMenu2, tituloMenu3,  tituloMenuCampo, descMenu, btnMenu} from '../../styles/Estilos.js'
+import { tituloMenu2, tituloMenu3, tituloMenuCampo, descMenu, btnMenu } from '../../styles/Estilos.js'
 
 
 function MinhaConta() {
 
     const bancoAgendamentos = [
-        {
-            id: 1,
-            data: '15/10/2026',
-            horario: '14:00'
-        },
-
-        {
-            id: 2,
-            data: '20/11/2026',
-            horario: '20:00'
-        },
-
-        {
-            id: 3,
-            data: '16/11/2026',
-            horario: '09:00'
-        }
+        /*  {
+             id: 1,
+             data: '15/10/2026',
+             horario: '14:00'
+         },
+ 
+         {
+             id: 2,
+             data: '20/11/2026',
+             horario: '20:00'
+         },
+ 
+         {
+             id: 3,
+             data: '16/11/2026',
+             horario: '09:00'
+         } */
 
     ]
 
@@ -82,12 +83,41 @@ function MinhaConta() {
                 )
                     :
                     (
-                        <div>
-                             <p className={descMenu}>Você não possui agendamentos.</p>
-                             
-                             <Link to='/agendar'>
+                        <div className="flex flex-col gap-4
+                                      
+                        bg-white
+                        rounded
+                        p-4">
+
+                            <div className="flex gap-3 items-center">
+
+                                <div className=" flex items-center justify-center
+                                bg-[#EDE9FE] p-2 rounded-lg h-12 w-12">
+                                    
+                                    <CalendarDays size={23} className="text-[var(--color-primary)] "/>
+                                </div>
+
+                                <div className="flex flex-col ">
+
+                                    <h4 className={tituloMenuCampo}>Você não possui agendamentos.</h4>
+
+                                    <p className={descMenu}>Que tal marcar seu próximo horário?</p>
+
+                                    
+                                </div>
+
+                                
+                            </div>
+                            <Link to='/agendar' className="text-[var(--color-primary)]
+                            text-base
+                            hover:underline
+                            font-semibold 
+                            self-center
+                            
+                            ">
                                 Agendar agora
-                             </Link>  
+                            </Link>
+                            
                         </div>
                     )
                 }
@@ -99,7 +129,7 @@ function MinhaConta() {
             ">
 
                 <h3 className={tituloMenu3}>Seus dados</h3>
-                
+
                 <div className="flex flex-col gap-2
                 bg-white
                 rounded
@@ -117,7 +147,7 @@ function MinhaConta() {
                     </div>
 
                     <Link to="meus-dados"
-                    className={btnMenu}>Editar</Link>
+                        className={btnMenu}>Editar</Link>
                 </div>
 
             </div>
