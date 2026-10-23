@@ -58,6 +58,7 @@ function MinhaConta() {
 
         <section className="      
         flex flex-col
+        
         gap-6
         ">
             <h2 className={tituloMenu2}>Minha conta</h2>
@@ -89,15 +90,15 @@ function MinhaConta() {
                         rounded
                         p-4">
 
-                            <div className="flex gap-3 items-center">
+                            <div className="flex flex-1 gap-3 ">
 
                                 <div className=" flex items-center justify-center
-                                bg-[#EDE9FE] p-2 rounded-lg h-12 w-12">
+                                bg-[#EDE9FE] p-2 rounded-lg h-12 w-12 ">
                                     
                                     <CalendarDays size={23} className="text-[var(--color-primary)] "/>
                                 </div>
 
-                                <div className="flex flex-col ">
+                                <div className="flex flex-col text-base">
 
                                     <h4 className={tituloMenuCampo}>Você não possui agendamentos.</h4>
 
@@ -113,6 +114,8 @@ function MinhaConta() {
                             hover:underline
                             font-semibold 
                             self-center
+                            md:ml-0
+                            ml-6
                             
                             ">
                                 Agendar agora

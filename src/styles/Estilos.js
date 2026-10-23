@@ -63,7 +63,7 @@ const tituloDados3 = `font-bold text-[var(--color-primary)]`
  const tituloMenuCampo = `font-bold text-[var(--color-primary)]` 
 
 
-const descMenu = `text-gray-500`
+const descMenu = `text-gray-500 text-sm`
 
 const btnMenu = `text-[var(--color-primary)]
             text-base
