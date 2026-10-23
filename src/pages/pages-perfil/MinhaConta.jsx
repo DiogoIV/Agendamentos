@@ -8,7 +8,7 @@ import { tituloMenu2, tituloMenu3, tituloMenuCampo, descMenu, btnMenu } from '..
 function MinhaConta() {
 
     const bancoAgendamentos = [
-        /*  {
+         {
              id: 1,
              data: '15/10/2026',
              horario: '14:00'
@@ -24,7 +24,7 @@ function MinhaConta() {
              id: 3,
              data: '16/11/2026',
              horario: '09:00'
-         } */
+         }
 
     ]
 
@@ -61,12 +61,12 @@ function MinhaConta() {
         
         gap-6
         ">
-            <h2 className={tituloMenu2}>Minha conta</h2>
+            <h2 className={`${tituloMenu2} `}>Minha conta</h2>
 
             <div className="
             flex
             flex-col
-            gap-2
+            gap-4
             ">
 
                 <h3 className={tituloMenu3}>Próximos agendamentos</h3>

@@ -40,31 +40,45 @@ function MinhaContaLayout() {
             </nav>
 
             <article className="
-            flex 
-            gap-4 
+            flex
+            flex-col
+            md:flex-row 
+            md:gap-6
+            gap-8
             m-auto
             w-full
-            max-w-3xl
+            md:max-w-4xl
+            max-w-xl
+
             bg-[var(--color-primary)]
             text-[var(--color-secondary)]
-            p-4
+            px-4
+            py-6
+            md:py-8
             
             shadow-md
             rounded-md         
             ">
 
                 <section className="
-                flex flex-col gap-6
+                flex flex-col gap-4
                 
-                border-r
-                
+                md:border-r
+                md:border-b-0               
                 border-[var(--color-secondary)]
+
+                border-b
+                items-center
                 px-2
-                basis-[300px]
+                md:basis-[300px]
+                
                 
                 ">
 
-                    <h1 className="      
+                    <h1 className="  
+                    w-full
+                    max-w-96
+
                     bg-[var(--color-background)]
                     rounded-lg
                     p-2
@@ -78,10 +92,13 @@ function MinhaContaLayout() {
                     ">Olá, Diogo</h1>
 
                     <ul className="
-                        flex flex-col
+                        flex 
+                        md:flex-col
                         text-center
-                        gap-6
+                        
+                        gap-4
                         text-lg
+                        pb-4
                         
                     ">
                         <li>
@@ -97,7 +114,7 @@ function MinhaContaLayout() {
 
                 </section>
 
-                <section className="w-full">
+                <section className="w-full ">
 
                     <Outlet />
                     
