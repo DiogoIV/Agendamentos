@@ -28,8 +28,10 @@ function MinhaContaLayout() {
         <div className="
         flex flex-col 2
         flex-1
-        p-4
-          
+        px-4
+        pt-4
+        pb-8
+        gap-20  
         ">
 
             <nav aria-label="Breadcrumb" >
@@ -46,6 +48,7 @@ function MinhaContaLayout() {
             md:gap-6
             gap-8
             m-auto
+            
             w-full
             md:max-w-4xl
             max-w-xl
@@ -57,7 +60,7 @@ function MinhaContaLayout() {
             md:py-8
             
             shadow-md
-            rounded-md         
+            rounded-2xl        
             ">
 
                 <section className="
@@ -75,21 +78,25 @@ function MinhaContaLayout() {
                 
                 ">
 
-                    <h1 className="  
-                    w-full
-                    max-w-96
-
-                    bg-[var(--color-background)]
-                    rounded-lg
+                    <div className="
+                    flex
+                    gap-2
+                    items-center
+                    justify-center
+                    
+                   
+                    
+                    
                     p-2
                     text-center
-                    text-[var(--color-primary)]
-                    border
-                    border-[var(--color-secondary)]                    
-                    pb-2
-                    text-xl
-                    font-[500]
-                    ">Olá, Diogo</h1>
+                    font-medium
+                    text-[var(--color-secondary)]
+                    
+                    border-b border-violet-400/50 
+                    text-xl">
+                        <User size={20}/>
+                        <span>Olá, Diogo</span>
+                    </div>
 
                     <ul className="
                         flex 
@@ -117,7 +124,7 @@ function MinhaContaLayout() {
                 <section className="w-full ">
 
                     <Outlet />
-                    
+
                 </section>
 
             </article>

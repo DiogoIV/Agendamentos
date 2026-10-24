@@ -61,7 +61,7 @@ function MinhaConta() {
         
         gap-6
         ">
-            <h2 className={`${tituloMenu2} `}>Minha conta</h2>
+            <h1 className={`${tituloMenu2} `}>Minha conta</h1>
 
             <div className="
             flex
@@ -131,7 +131,7 @@ function MinhaConta() {
             
             ">
 
-                <h3 className={tituloMenu3}>Seus dados</h3>
+                <h2 className={tituloMenu3}>Seus dados</h2>
 
                 <div className="flex flex-col gap-2
                 bg-white
@@ -140,7 +140,7 @@ function MinhaConta() {
                 ">
 
                     <div>
-                        <h4 className={tituloMenuCampo}>Nome</h4>
+                        <h3 className={tituloMenuCampo}>Nome</h3>
                         <p className={descMenu}>Diogo Rodrigues</p>
                     </div>
 

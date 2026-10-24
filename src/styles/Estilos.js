@@ -54,16 +54,16 @@ export {estiloSection, estiloAviso, estiloInputs, estiloIconeExibir};
 /*Menu minha Conta*/  
 
 
-const tituloMenu2 = `text-xl`
+const tituloMenu2 = `text-2xl font-semibold`
 
-const tituloMenu3 = `text-lg `
+const tituloMenu3 = `text-xl font-semibold `
 
 const tituloDados3 = `font-bold text-[var(--color-primary)]`
 
- const tituloMenuCampo = `font-bold text-[var(--color-primary)]` 
+ const tituloMenuCampo = `text-lg font-semibold text-[var(--color-primary)]` 
 
 
-const descMenu = `text-gray-500 text-sm`
+const descMenu = `text-gray-500`
 
 const btnMenu = `text-[var(--color-primary)]
             text-base
