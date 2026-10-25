@@ -4,6 +4,8 @@ Projeto em desenvolvimento para permitir que clientes realizem agendamentos onli
 
 O sistema está sendo desenvolvido para uso real no negócio do meu irmão, permitindo organizar os agendamentos de forma mais prática.
 
+Site: https://agendamentos-sigma.vercel.app
+
 Tecnologias utilizadas
 
 Frontend
