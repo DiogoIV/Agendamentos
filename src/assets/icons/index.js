@@ -17,7 +17,8 @@ export {
     ChevronDown,
     ChevronUp,
     ArrowRight,
-    CalendarDays
+    CalendarDays,
+    ChevronRight
     
 } from "lucide-react";
 

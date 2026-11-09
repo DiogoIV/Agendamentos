@@ -1,5 +1,5 @@
 import { NavLink, Outlet, useLocation } from "react-router-dom";
-import { ArrowRight, User } from "lucide-react";
+import { ArrowRight, User, ChevronRight } from "lucide-react";
 
 function MinhaContaLayout() {
 
@@ -98,7 +98,7 @@ function MinhaContaLayout() {
                     
                     border-b border-violet-400/50 
                     text-xl">
-                        <User size={20}/>
+                        <User size={20} />
                         <span>Olá, Diogo</span>
                     </div>
 
@@ -113,13 +113,56 @@ function MinhaContaLayout() {
                         
                     ">
                         <li>
-                            <NavLink to="/minha-conta" >Minha conta</NavLink>
+                            <NavLink
+                                to="/minha-conta" end
+
+                                className={({ isActive }) =>
+                                    `flex items-center md:gap-2 gap-1 rounded-md
+                                    ${isActive ? "font-semibold" : ""}`
+                                }
+                            >
+                                {({ isActive }) => (
+                                    <>
+                                        {isActive && <ChevronRight size={18} />}
+                                        Minha conta
+                                    </>
+                                )}
+                            </NavLink>
+                        </li>
+
+                        <li>
+                            <NavLink
+                                to="meus-dados"
+
+                                className={({ isActive }) =>
+                                    `flex items-center md:gap-2 gap-1 rounded-md
+                                    ${isActive ? "font-semibold" : ""}`
+                                }
+                            >
+                                {({ isActive }) => (
+                                    <>
+                                        {isActive && <ChevronRight size={18} />}
+                                        Meus dados
+                                    </>
+                                )}
+                            </NavLink>
                         </li>
                         <li>
-                            <NavLink to="meus-dados">Meus dados</NavLink>
-                        </li>
-                        <li>
-                            <NavLink to="meus-agendamentos">agendamentos</NavLink>
+                            <NavLink
+                                to="meus-agendamentos"
+
+                                className={({ isActive }) =>
+                                    `flex items-center md:gap-2 gap-1 rounded-md
+                                    ${isActive ? "font-semibold" : ""}`
+                                }
+                            >
+                                {({ isActive }) => (
+                                    <>
+                                        {isActive && <ChevronRight size={18} />}
+                                       agendamentos
+                                    </>
+                                )}
+                            </NavLink>
                         </li>
                     </ul>
 
