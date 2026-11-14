@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-import { tituloMenu2, tituloMenu3, tituloMenuCampo, descMenu, btnMenu} from '../../styles/Estilos.js'
+import { tituloMenu2, tituloMenu3, tituloMenuCampo, descMenu, btnMenu } from '../../styles/Estilos.js'
 
 
 function MeusDados() {
@@ -8,7 +8,7 @@ function MeusDados() {
 
     const [editarDados, setEditarDados] = useState(false)
     const [editarSenha, setEditarSenha] = useState(false)
-    
+
 
     return (
 
@@ -18,8 +18,8 @@ function MeusDados() {
             <h2 className={tituloMenu2}>Dados da Conta</h2>
 
             {!editarDados ? (
-                
-                
+
+
                 <div className="flex flex-col gap-4
                 bg-white
                 rounded
@@ -47,7 +47,7 @@ function MeusDados() {
 
                     </div>
 
-                    <button onClick={()=> setEditarDados(true)} className={btnMenu}>
+                    <button onClick={() => setEditarDados(true)} className={btnMenu}>
                         Editar Dados
                     </button>
                 </div>
@@ -55,32 +55,50 @@ function MeusDados() {
 
             ) :
                 (
-                    <form >
+                    <form className="flex flex-col gap-4
+                  bg-white
+                    rounded
+                    p-4
+                ">
 
-                        <div >
+                        <div className="flex flex-col gap-2">
 
-                            <label htmlFor="nome">Nome</label>
-                            <input type="text" id="nome" autoComplete="name" />
+                            <label htmlFor="nome" className="text-violet-500" >Nome</label>
 
-                        </div>
-
-                        <div>
-
-                            <label htmlFor="email">Email</label>
-                            <input type="email" id="email" autoComplete="email" />
-
-                        </div>
-
-                        <div>
-
-                            <label htmlFor="telefone">Telefone</label>
-                            <input type="tel" id="telefone" autoComplete="tel" />
+                            <input type="text" id="nome" autoComplete="name" className="border rounded border-gray-300 text-gray-800 w-full 
+                            focus:border-violet-600
+                            text-sm
+                            py-1 px-2" />
 
                         </div>
 
-                        <div>
+                        <div className="flex flex-col gap-2">
 
-                            <button onClick={()=> setEditarDados(false)}>Cancelar</button>
+                            <label htmlFor="email" className="text-violet-500">Email</label>
+
+                            <input type="email" id="email" autoComplete="email" 
+                            className="border rounded border-gray-300 text-gray-800 w-full 
+                            focus:border-violet-600
+                            text-sm
+                            py-1 px-2"/>
+
+                        </div>
+
+                        <div className="flex flex-col gap-2">
+
+                            <label htmlFor="telefone" className="text-violet-500">Telefone</label>
+
+                            <input type="tel" id="telefone" autoComplete="tel" 
+                            className="border rounded border-gray-300 text-gray-800 w-full 
+                            focus:border-violet-600
+                            text-sm
+                            py-1 px-2"/>
+
+                        </div>
+
+                        <div className="flex gap-2">
+
+                            <button onClick={() => setEditarDados(false)}>Cancelar</button>
 
                             <button>Salvar</button>
 
@@ -89,7 +107,7 @@ function MeusDados() {
                     </form>
                 )
             }
-            
+
             {!editarSenha ? (
 
                 <div className="">
@@ -106,14 +124,14 @@ function MeusDados() {
                             <p className={descMenu}>********</p>
                         </div>
 
-                        <button onClick={()=>setEditarSenha(true)} className={btnMenu}>Alterar Senha</button>
+                        <button onClick={() => setEditarSenha(true)} className={btnMenu}>Alterar Senha</button>
 
                     </div>
 
-                      
+
                 </div>
 
-                ) :
+            ) :
 
                 (
                     <form action="">
@@ -121,27 +139,27 @@ function MeusDados() {
                         <div>
 
                             <label htmlFor="senhaatual">Senha atual</label>
-                            <input type="password"  id="senhaatual" autoComplete="current-password"/>
+                            <input type="password" id="senhaatual" autoComplete="current-password" />
 
                         </div>
 
                         <div>
 
                             <label htmlFor="novasenha">Nova senha</label>
-                            <input type="password"  id="novasenha" autoComplete="new-password" />
-                            
+                            <input type="password" id="novasenha" autoComplete="new-password" />
+
                         </div>
 
                         <div>
 
                             <label htmlFor="confirmarsenha">Confirmar nova senha</label>
 
-                            <input type="password"  id="confirmarsenha" autoComplete="new-password"/>
-                            
+                            <input type="password" id="confirmarsenha" autoComplete="new-password" />
+
                         </div>
 
                         <div>
-                            <button onClick={()=> setEditarSenha(false)}>Cancelar</button>
+                            <button onClick={() => setEditarSenha(false)}>Cancelar</button>
                             <button>Salvar</button>
                         </div>
 
