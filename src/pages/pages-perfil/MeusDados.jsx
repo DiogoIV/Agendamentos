@@ -5,13 +5,30 @@ import { tituloMenu2, tituloMenu3, tituloMenuCampo, descMenu, btnMenu } from '..
 
 function MeusDados() {
     const estiloEditarDados = `flex flex-col gap-1 border p-4 rounded-lg`
-    
+
     const LabelInput = `text-violet-600`
-    const estiloInputs = `border rounded border-gray-300 text-gray-800 w-full 
-                            focus:border-violet-600
-                            text-sm
-                            py-1 px-2`
-    const estiloContainerInputs = `flex flex-col gap-2`              
+
+    const estiloInputs = `
+        w-full
+        py-2
+        rounded-lg
+        pl-4
+        pr-4
+
+        border border-gray-300
+        bg-white
+        text-gray-700
+        placeholder:text-gray-400
+        
+
+        outline-none
+        transition-all duration-200
+
+        focus:border-violet-500
+        focus:ring-2
+        focus:ring-violet-500/20
+        `;
+    const estiloContainerInputs = `flex flex-col gap-2`
 
     const [editarDados, setEditarDados] = useState(false)
     const [editarSenha, setEditarSenha] = useState(false)
@@ -20,7 +37,7 @@ function MeusDados() {
     return (
 
         <section className="flex flex-col 
-        gap-6  ">
+        gap-4  ">
 
             <h2 className={tituloMenu2}>Dados da Conta</h2>
 
@@ -72,7 +89,7 @@ function MeusDados() {
 
                             <label htmlFor="nome" className={LabelInput} >Nome</label>
 
-                            <input type="text" id="nome" autoComplete="name" className={estiloInputs}/>
+                            <input type="text" id="nome" autoComplete="name" className={estiloInputs} />
 
                         </div>
 
@@ -80,8 +97,8 @@ function MeusDados() {
 
                             <label htmlFor="email" className={LabelInput}>Email</label>
 
-                            <input type="email" id="email" autoComplete="email" 
-                            className={estiloInputs}/>
+                            <input type="email" id="email" autoComplete="email"
+                                className={estiloInputs} />
 
                         </div>
 
@@ -89,8 +106,8 @@ function MeusDados() {
 
                             <label htmlFor="telefone" className={LabelInput}>Telefone</label>
 
-                            <input type="tel" id="telefone" autoComplete="tel" 
-                            className={estiloInputs}/>
+                            <input type="tel" id="telefone" autoComplete="tel"
+                                className={estiloInputs} />
 
                         </div>
 
@@ -106,11 +123,12 @@ function MeusDados() {
                 )
             }
 
+            <h3 className={`${tituloMenu3} mb-2`}>Alterar Senha</h3>
             {!editarSenha ? (
 
                 <div className="">
 
-                    <h3 className={`${tituloMenu3} mb-2`}>Alterar Senha</h3>
+
 
                     <div className="flex flex-col gap-4
                     bg-white
@@ -134,24 +152,26 @@ function MeusDados() {
             ) :
 
                 (
+
                     <form action="" className="flex flex-col gap-4
                   bg-white
                     rounded
                     p-4">
 
+
                         <div className={estiloContainerInputs}>
 
                             <label htmlFor="senhaatual" className={LabelInput}>Senha atual</label>
 
-                            <input type="password" id="senhaatual" autoComplete="current-password" className={estiloInputs}/>
+                            <input type="password" id="senhaatual" autoComplete="current-password" className={estiloInputs} />
 
                         </div>
 
                         <div className={estiloContainerInputs}>
 
                             <label htmlFor="novasenha" className={LabelInput}> Nova senha</label>
-                            
-                            <input type="password" id="novasenha" autoComplete="new-password" className={estiloInputs}/>
+
+                            <input type="password" id="novasenha" autoComplete="new-password" className={estiloInputs} />
 
                         </div>
 
@@ -159,11 +179,11 @@ function MeusDados() {
 
                             <label htmlFor="confirmarsenha" className={LabelInput}>Confirmar nova senha</label>
 
-                            <input type="password" id="confirmarsenha" autoComplete="new-password" className={estiloInputs}/>
+                            <input type="password" id="confirmarsenha" autoComplete="new-password" className={estiloInputs} />
 
                         </div>
 
-                        <div  className="flex gap-4 ">
+                        <div className="flex gap-4 ">
 
                             <button onClick={() => setEditarSenha(false)} className={btnMenu}>Cancelar</button>
 
