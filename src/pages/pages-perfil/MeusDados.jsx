@@ -5,6 +5,13 @@ import { tituloMenu2, tituloMenu3, tituloMenuCampo, descMenu, btnMenu } from '..
 
 function MeusDados() {
     const estiloEditarDados = `flex flex-col gap-1 border p-4 rounded-lg`
+    
+    const LabelInput = `text-violet-600`
+    const estiloInputs = `border rounded border-gray-300 text-gray-800 w-full 
+                            focus:border-violet-600
+                            text-sm
+                            py-1 px-2`
+    const estiloContainerInputs = `flex flex-col gap-2`              
 
     const [editarDados, setEditarDados] = useState(false)
     const [editarSenha, setEditarSenha] = useState(false)
@@ -61,46 +68,37 @@ function MeusDados() {
                     p-4
                 ">
 
-                        <div className="flex flex-col gap-2">
+                        <div className={estiloContainerInputs}>
 
-                            <label htmlFor="nome" className="text-violet-500" >Nome</label>
+                            <label htmlFor="nome" className={LabelInput} >Nome</label>
 
-                            <input type="text" id="nome" autoComplete="name" className="border rounded border-gray-300 text-gray-800 w-full 
-                            focus:border-violet-600
-                            text-sm
-                            py-1 px-2" />
+                            <input type="text" id="nome" autoComplete="name" className={estiloInputs}/>
 
                         </div>
 
-                        <div className="flex flex-col gap-2">
+                        <div className={estiloContainerInputs}>
 
-                            <label htmlFor="email" className="text-violet-500">Email</label>
+                            <label htmlFor="email" className={LabelInput}>Email</label>
 
                             <input type="email" id="email" autoComplete="email" 
-                            className="border rounded border-gray-300 text-gray-800 w-full 
-                            focus:border-violet-600
-                            text-sm
-                            py-1 px-2"/>
+                            className={estiloInputs}/>
 
                         </div>
 
-                        <div className="flex flex-col gap-2">
+                        <div className={estiloContainerInputs}>
 
-                            <label htmlFor="telefone" className="text-violet-500">Telefone</label>
+                            <label htmlFor="telefone" className={LabelInput}>Telefone</label>
 
                             <input type="tel" id="telefone" autoComplete="tel" 
-                            className="border rounded border-gray-300 text-gray-800 w-full 
-                            focus:border-violet-600
-                            text-sm
-                            py-1 px-2"/>
+                            className={estiloInputs}/>
 
                         </div>
 
-                        <div className="flex gap-2">
+                        <div className="flex gap-4 ">
 
-                            <button onClick={() => setEditarDados(false)}>Cancelar</button>
+                            <button onClick={() => setEditarDados(false)} className={btnMenu}>Cancelar</button>
 
-                            <button>Salvar</button>
+                            <button className={btnMenu}>Salvar</button>
 
                         </div>
 
@@ -115,13 +113,15 @@ function MeusDados() {
                     <h3 className={`${tituloMenu3} mb-2`}>Alterar Senha</h3>
 
                     <div className="flex flex-col gap-4
-                bg-white
-                rounded
-                p-4
-                ">
+                    bg-white
+                    rounded
+                    p-4
+                    ">
                         <div className={estiloEditarDados}>
+
                             <h4 className={tituloMenuCampo}>Senha</h4>
                             <p className={descMenu}>********</p>
+
                         </div>
 
                         <button onClick={() => setEditarSenha(true)} className={btnMenu}>Alterar Senha</button>
@@ -134,33 +134,41 @@ function MeusDados() {
             ) :
 
                 (
-                    <form action="">
+                    <form action="" className="flex flex-col gap-4
+                  bg-white
+                    rounded
+                    p-4">
 
-                        <div>
+                        <div className={estiloContainerInputs}>
 
-                            <label htmlFor="senhaatual">Senha atual</label>
-                            <input type="password" id="senhaatual" autoComplete="current-password" />
+                            <label htmlFor="senhaatual" className={LabelInput}>Senha atual</label>
 
-                        </div>
-
-                        <div>
-
-                            <label htmlFor="novasenha">Nova senha</label>
-                            <input type="password" id="novasenha" autoComplete="new-password" />
+                            <input type="password" id="senhaatual" autoComplete="current-password" className={estiloInputs}/>
 
                         </div>
 
-                        <div>
+                        <div className={estiloContainerInputs}>
 
-                            <label htmlFor="confirmarsenha">Confirmar nova senha</label>
-
-                            <input type="password" id="confirmarsenha" autoComplete="new-password" />
+                            <label htmlFor="novasenha" className={LabelInput}> Nova senha</label>
+                            
+                            <input type="password" id="novasenha" autoComplete="new-password" className={estiloInputs}/>
 
                         </div>
 
-                        <div>
-                            <button onClick={() => setEditarSenha(false)}>Cancelar</button>
-                            <button>Salvar</button>
+                        <div className={estiloContainerInputs}>
+
+                            <label htmlFor="confirmarsenha" className={LabelInput}>Confirmar nova senha</label>
+
+                            <input type="password" id="confirmarsenha" autoComplete="new-password" className={estiloInputs}/>
+
+                        </div>
+
+                        <div  className="flex gap-4 ">
+
+                            <button onClick={() => setEditarSenha(false)} className={btnMenu}>Cancelar</button>
+
+                            <button className={btnMenu}>Salvar</button>
+
                         </div>
 
                     </form>

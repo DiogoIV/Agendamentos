@@ -70,7 +70,7 @@ const btnMenu = `text-[var(--color-primary)]
             hover:underline
             font-semibold 
             
-            self-center `
+            `
 
 
 
