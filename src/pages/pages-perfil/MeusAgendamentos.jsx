@@ -1,6 +1,8 @@
 
 /*Crie a lógica de ver detalhes de cada card agendamentos*/
 
+import { tituloMenu2, tituloMenu3 } from "../../styles/Estilos"
+
 function MeusAgendamentos() {
 
     const dadosAgendamentos = [
@@ -44,22 +46,26 @@ function MeusAgendamentos() {
 
     return (
 
-        <section>
+        <section className="flex flex-col gap-6">
 
-            <h2>Agendamentos</h2>
+            <h2 className={tituloMenu2}>Agendamentos</h2>
 
-            {dadosAgendamentos.length > 0 ? (
-                cardAgendamentos
-            ):
-            (
-                <div>
+            
 
-                    <p>Você ainda não possui Agendamentos!</p>
-                    <button>Agendar Agora</button>
+            <div className="flex flex-col gap-4">
+                <h3 className={tituloMenu3}>Meus agendamentos</h3>
 
-                </div>
-            )
-            }
+                {dadosAgendamentos.length > 0 ? (
+                    cardAgendamentos
+                ):
+                (
+                    <div>
+                        <p>Você ainda não possui Agendamentos!</p>
+                        <button>Agendar Agora</button>
+                    </div>
+                )
+                }
+            </div>
 
         </section>
 

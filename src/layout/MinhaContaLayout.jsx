@@ -142,7 +142,7 @@ function MinhaContaLayout() {
                                 {({ isActive }) => (
                                     <>
                                         {isActive && <ChevronRight size={18} />}
-                                        Meus dados
+                                    Meus dados
                                     </>
                                 )}
                             </NavLink>
