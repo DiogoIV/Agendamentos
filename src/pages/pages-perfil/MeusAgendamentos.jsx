@@ -1,7 +1,8 @@
 
 /*Crie a lógica de ver detalhes de cada card agendamentos*/
 
-import { tituloMenu2, tituloMenu3 } from "../../styles/Estilos"
+import { Clock, Calendar } from  '../../assets/icons/index'
+import { tituloMenu2, tituloMenu3, descMenu, tituloMenuCampo, btnMenu } from "../../styles/Estilos"
 
 function MeusAgendamentos() {
 
@@ -30,16 +31,35 @@ function MeusAgendamentos() {
 
     const cardAgendamentos = dadosAgendamentos.map((item => (
 
-            <div key={item.id}>
+            <div key={item.id} className="
+            flex flex-col gap-2
+            bg-white
+            p-2 rounded
+            ">
 
-                <h2>Consulta</h2>
+                <h2 className={tituloMenuCampo}>Consulta</h2>
 
-                <div>
-                    <span>{item.data}</span>
-                    <span>{item.horas}</span>
+                <div className="flex flex-col gap-3">
+
+                    <div className='flex gap-2 items-center'>
+
+                         <Calendar size={17} className='text-[var(--color-primary)]'/> 
+
+                         <span className={descMenu}>{item.data}</span>
+                         
+                    </div>
+
+                    <div className='flex gap-2 items-center'> 
+
+                        <Clock size={17} className='text-[var(--color-primary)]'/>
+                        
+                        <span className={descMenu}>{item.horas}</span>
+
+                    </div>
+
                 </div>
 
-                <button>DETALHES</button>
+                <button className={`${btnMenu} bg-[#EDE9FE] p-2`}>Ver detalhes</button>
             </div>
         )
     ))
@@ -56,7 +76,11 @@ function MeusAgendamentos() {
                 <h3 className={tituloMenu3}>Meus agendamentos</h3>
 
                 {dadosAgendamentos.length > 0 ? (
-                    cardAgendamentos
+                    <div className='grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-4'>
+
+                        {cardAgendamentos}
+
+                    </div>
                 ):
                 (
                     <div>
