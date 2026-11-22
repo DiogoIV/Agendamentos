@@ -1,30 +1,30 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
-import { CalendarDays } from "lucide-react"
+import { CalendarDays, ArrowRight } from '../../assets/icons/index.js'
 
-import { tituloMenu2, tituloMenu3, tituloMenuCampo, descMenu, btnMenu } from '../../styles/Estilos.js'
+import { tituloMenu2, tituloMenu3, tituloMenuCampo, descMenu, btnMenu} from '../../styles/Estilos.js'
 
 
 function MinhaConta() {
 
     const bancoAgendamentos = [
-         {
-             id: 1,
-             data: '15/10/2026',
-             horario: '14:00'
-         },
- 
-         {
-             id: 2,
-             data: '20/11/2026',
-             horario: '20:00'
-         },
- 
-         {
-             id: 3,
-             data: '16/11/2026',
-             horario: '09:00'
-         }
+        {
+            id: 1,
+            data: '15/10/2026',
+            horario: '14:00'
+        },
+
+        {
+            id: 2,
+            data: '20/11/2026',
+            horario: '20:00'
+        },
+
+        {
+            id: 3,
+            data: '16/11/2026',
+            horario: '09:00'
+        }
 
     ]
 
@@ -39,7 +39,8 @@ function MinhaConta() {
         bg-white        
         rounded
         px-2
-        py-4">
+        pt-4
+        pb-6">
 
             <h4 className={tituloMenuCampo}>Consulta</h4>
 
@@ -47,9 +48,7 @@ function MinhaConta() {
                 {item.data} às {item.horario}
             </p>
 
-            <button className={btnMenu}>
-                Ver detalhes
-            </button>
+
         </div>
 
     ))
@@ -69,17 +68,34 @@ function MinhaConta() {
             gap-4
             ">
 
-                <h3 className={tituloMenu3}>Próximos agendamentos</h3>
+                <div className="flex items-center gap-10 justify-between">
+
+                    <h3 className={tituloMenu3}>Próximos agendamentos</h3>
+
+                    <Link to="meus-agendamentos" className="flex items-center gap-1 self-center
+                    rounded-lg text-sm
+                    text-violet-200 font-medium 
+                    transition-colors
+                    hover:text-white
+                    
+                    whitespace-nowrap
+                     ">Ver todos  <ArrowRight size={15}/></Link>
+                </div>
 
                 {itemsAgendamentos.length > 0 ? (
+                    <>
 
-                    <div className="
-                    grid grid-cols-[repeat(auto-fit,minmax(140px,1fr))]
-                    gap-4
-                    
-                    ">
-                        {itemsAgendamentos}
-                    </div>
+                        <div className="
+                        grid grid-cols-[repeat(auto-fit,minmax(140px,1fr))]
+                        gap-4
+                        
+                        ">
+                            {itemsAgendamentos}
+
+                        </div>
+
+                        
+                    </>
 
                 )
                     :
@@ -94,8 +110,8 @@ function MinhaConta() {
 
                                 <div className=" flex items-center justify-center
                                 bg-[#EDE9FE] p-2 rounded-lg h-12 w-12 ">
-                                    
-                                    <CalendarDays size={23} className="text-[var(--color-primary)] "/>
+
+                                    <CalendarDays size={23} className="text-[var(--color-primary)] " />
                                 </div>
 
                                 <div className="flex flex-col text-base">
@@ -104,10 +120,10 @@ function MinhaConta() {
 
                                     <p className={descMenu}>Que tal marcar seu próximo horário?</p>
 
-                                    
+
                                 </div>
 
-                                
+
                             </div>
                             <Link to='/agendar' className="text-[var(--color-primary)]
                             text-base
@@ -120,7 +136,7 @@ function MinhaConta() {
                             ">
                                 Agendar agora
                             </Link>
-                            
+
                         </div>
                     )
                 }
