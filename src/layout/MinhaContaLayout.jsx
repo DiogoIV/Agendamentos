@@ -84,7 +84,7 @@ function MinhaContaLayout() {
 
                     <div className="
                     flex
-                    gap-2
+                    gap-1
                     items-center
                     justify-center
                     
@@ -98,7 +98,7 @@ function MinhaContaLayout() {
                     
                     border-b border-violet-400/50 
                     text-xl">
-                        <User size={20} />
+                        <User size={26} />
                         <span>Olá, Diogo</span>
                     </div>
 

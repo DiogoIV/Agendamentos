@@ -1,12 +1,14 @@
 import { useState } from "react"
 
+import {Pencil, User} from '../../assets/icons/index.js'
+
 import { tituloMenu2, tituloMenu3, tituloMenuCampo, descMenu, btnMenu } from '../../styles/Estilos.js'
 
 
 function MeusDados() {
     const estiloEditarDados = `flex flex-col gap-1 border p-4 rounded-lg`
 
-    const LabelInput = `text-violet-600`
+    const LabelInput = `text-[var(--color-primary)] font-bold`
 
     const estiloInputs = `
         w-full
@@ -37,9 +39,9 @@ function MeusDados() {
     return (
 
         <section className="flex flex-col 
-        gap-4  ">
+        gap-6  ">
 
-            <h2 className={tituloMenu2}>Dados da Conta</h2>
+            <h2 className={tituloMenu2}>Dados da conta</h2>
 
             {!editarDados ? (
 
@@ -71,8 +73,8 @@ function MeusDados() {
 
                     </div>
 
-                    <button onClick={() => setEditarDados(true)} className={btnMenu}>
-                        Editar Dados
+                    <button onClick={() => setEditarDados(true)} className={`${btnMenu} flex `}>
+                        Editar dados <Pencil size={12}/>
                     </button>
                 </div>
 
@@ -87,7 +89,10 @@ function MeusDados() {
 
                         <div className={estiloContainerInputs}>
 
-                            <label htmlFor="nome" className={LabelInput} >Nome</label>
+                            <label htmlFor="nome" className={`${LabelInput}
+                            flex gap-1 items-center`} >
+                            Nome
+                            </label>
 
                             <input type="text" id="nome" autoComplete="name" className={estiloInputs} />
 
@@ -111,11 +116,12 @@ function MeusDados() {
 
                         </div>
 
-                        <div className="flex gap-4 ">
+                        <div className="flex gap-4 justify-end">
 
                             <button onClick={() => setEditarDados(false)} className={btnMenu}>Cancelar</button>
 
-                            <button className={btnMenu}>Salvar</button>
+                            <button className={`${btnMenu} p-2 bg-[var(--color-primary)] text-white rounded-lg w-[130px]`
+                        }>Salvar</button>
 
                         </div>
 
@@ -123,7 +129,7 @@ function MeusDados() {
                 )
             }
 
-            <h3 className={`${tituloMenu3} mb-2`}>Alterar Senha</h3>
+            <h3 className={`${tituloMenu3} mb-2`}>Alterar senha</h3>
             {!editarSenha ? (
 
                 <div className="">
@@ -142,7 +148,9 @@ function MeusDados() {
 
                         </div>
 
-                        <button onClick={() => setEditarSenha(true)} className={btnMenu}>Alterar Senha</button>
+                        <button onClick={() => setEditarSenha(true)} className={`${btnMenu} flex `}>
+                            Alterar senha <Pencil size={12}/>
+                            </button>
 
                     </div>
 
@@ -183,7 +191,7 @@ function MeusDados() {
 
                         </div>
 
-                        <div className="flex gap-4 ">
+                        <div className="flex gap-4 justify-end w-full">
 
                             <button onClick={() => setEditarSenha(false)} className={btnMenu}>Cancelar</button>
 

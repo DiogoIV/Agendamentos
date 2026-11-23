@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Link } from "react-router-dom"
-import { CalendarDays, ArrowRight } from '../../assets/icons/index.js'
+import { CalendarDays, ArrowRight} from '../../assets/icons/index.js'
 
 import { tituloMenu2, tituloMenu3, tituloMenuCampo, descMenu, btnMenu} from '../../styles/Estilos.js'
 

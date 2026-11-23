@@ -17,6 +17,7 @@ export {
     ChevronDown,
     ChevronUp,
     ArrowRight,
+    Pencil,
     CalendarDays,
     ChevronRight
     
