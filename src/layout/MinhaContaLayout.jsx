@@ -34,7 +34,7 @@ function MinhaContaLayout() {
         flex-1
         px-4
         pt-4
-        pb-8
+        mb-40
         gap-20  
         ">
 

@@ -129,7 +129,7 @@ function MeusDados() {
                 )
             }
 
-            <h3 className={`${tituloMenu3} mb-2`}>Alterar senha</h3>
+            <h3 className={`${tituloMenu3} mt-5`}>Alterar senha</h3>
             {!editarSenha ? (
 
                 <div className="">
@@ -191,13 +191,16 @@ function MeusDados() {
 
                         </div>
 
-                        <div className="flex gap-4 justify-end w-full">
+                        <div className="flex gap-4 justify-end">
 
                             <button onClick={() => setEditarSenha(false)} className={btnMenu}>Cancelar</button>
 
-                            <button className={btnMenu}>Salvar</button>
+                            <button className={`${btnMenu} p-2 bg-[var(--color-primary)] text-white rounded-lg w-[130px]`
+                        }>Salvar</button>
 
                         </div>
+
+                        
 
                     </form>
                 )
