@@ -4,8 +4,13 @@ import {Pencil, User} from '../../assets/icons/index.js'
 
 import { tituloMenu2, tituloMenu3, tituloMenuCampo, descMenu, btnMenu } from '../../styles/Estilos.js'
 
+import { validarEmail, validarNome } from "../../validations/validations.js"
+
 
 function MeusDados() {
+
+    /* Estilos */
+
     const estiloEditarDados = `flex flex-col gap-1 border p-4 rounded-lg`
 
     const LabelInput = `text-[var(--color-primary)] font-bold`
@@ -32,7 +37,27 @@ function MeusDados() {
         `;
     const estiloContainerInputs = `flex flex-col gap-2`
 
+    /*Campo Dados*/
+    /*Coloque o aviso para aparecer assim que vc enviar o form*/
+    const [warm, SetWarm] = useState(false)
+
     const [editarDados, setEditarDados] = useState(false)
+
+    const [usuario, setUsuario] = useState({
+        nome: 'Diogo Rodrigues',
+        email: 'diogorodrigues@gmail.com',
+        telefone: '(11) 95954-93935'
+    })
+
+    function handleEditarDados (e) {
+        e.preventDefault()
+
+    }
+    
+    
+
+    /* Campo Senha */
+
     const [editarSenha, setEditarSenha] = useState(false)
 
 
@@ -55,21 +80,22 @@ function MeusDados() {
                     <div className={estiloEditarDados}>
 
                         <h3 className={tituloMenuCampo}>Nome do Usuario</h3>
-                        <p className={descMenu}>Diogo Rodrigues</p>
+                        <p className={descMenu}>{usuario.nome}</p>
 
                     </div>
 
                     <div className={estiloEditarDados}>
 
                         <h3 className={tituloMenuCampo}>Email</h3>
-                        <p className={descMenu}>diogorodrigues@gmail.com</p>
+
+                        <p className={descMenu}>{usuario.email}</p>
 
                     </div>
 
                     <div className={estiloEditarDados}>
 
                         <h3 className={tituloMenuCampo}>Telefone</h3>
-                        <p className={descMenu}>(11) 93090-8226</p>
+                        <p className={descMenu}>{usuario.telefone}</p>
 
                     </div>
 
@@ -84,8 +110,9 @@ function MeusDados() {
                     <form className="flex flex-col gap-4
                   bg-white
                     rounded
-                    p-4
-                ">
+                    p-6
+                "
+                >
 
                         <div className={estiloContainerInputs}>
 
@@ -120,7 +147,7 @@ function MeusDados() {
 
                             <button onClick={() => setEditarDados(false)} className={btnMenu}>Cancelar</button>
 
-                            <button className={`${btnMenu} p-2 bg-[var(--color-primary)] text-white rounded-lg w-[130px]`
+                            <button className={` font-semibold p-2 bg-[var(--color-primary)] text-white rounded-lg w-[130px] hover:bg-violet-600  transition   `
                         }>Salvar</button>
 
                         </div>
@@ -161,10 +188,10 @@ function MeusDados() {
 
                 (
 
-                    <form action="" className="flex flex-col gap-4
+                    <form  className="flex flex-col gap-4
                   bg-white
                     rounded
-                    p-4">
+                    p-6">
 
 
                         <div className={estiloContainerInputs}>
@@ -195,7 +222,7 @@ function MeusDados() {
 
                             <button onClick={() => setEditarSenha(false)} className={btnMenu}>Cancelar</button>
 
-                            <button className={`${btnMenu} p-2 bg-[var(--color-primary)] text-white rounded-lg w-[130px]`
+                            <button className={` font-semibold p-2 bg-[var(--color-primary)] text-white rounded-lg w-[130px] hover:bg-violet-600  transition   `
                         }>Salvar</button>
 
                         </div>

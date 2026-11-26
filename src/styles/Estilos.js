@@ -54,9 +54,9 @@ export {estiloSection, estiloAviso, estiloInputs, estiloIconeExibir};
 /*Menu minha Conta*/  
 
 
-const tituloMenu2 = `text-2xl font-semibold`
+const tituloMenu2 = `text-2xl font-bold`
 
-const tituloMenu3 = `text-xl font-semibold `
+const tituloMenu3 = `text-xl font-bold `
 
 const tituloDados3 = `font-bold text-[var(--color-primary)]`
 
