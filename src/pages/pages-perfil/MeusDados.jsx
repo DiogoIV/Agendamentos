@@ -38,8 +38,20 @@ function MeusDados() {
     const estiloContainerInputs = `flex flex-col gap-2`
 
     /*Campo Dados*/
-    /*Coloque o aviso para aparecer assim que vc enviar o form*/
-    const [warm, SetWarm] = useState(false)
+    
+    const [valorInput, setValorInput] = useState({
+        inputNome: null,
+        inputEmail: null,
+        inputTel: null
+    })
+
+    console.log(valorInput)
+
+    const [mensagemErro, setMensagemErro] = useState({
+        erroNome: null,
+        erroEmail: null,
+        erroTel: null
+    })
 
     const [editarDados, setEditarDados] = useState(false)
 
@@ -51,6 +63,19 @@ function MeusDados() {
 
     function handleEditarDados (e) {
         e.preventDefault()
+
+        const valCampoNome = validarNome(valorInput)
+        
+        if (valCampoNome !== null) {
+            return setMensagemErro(
+                (el)=> (
+                    {
+                        ...el,
+                        erroNome: valCampoNome
+                    }
+                )
+            )
+        }
 
     }
     
@@ -112,6 +137,7 @@ function MeusDados() {
                     rounded
                     p-6
                 "
+                onSubmit={(e)=> handleEditarDados(e)}
                 >
 
                         <div className={estiloContainerInputs}>
@@ -121,7 +147,14 @@ function MeusDados() {
                             Nome
                             </label>
 
-                            <input type="text" id="nome" autoComplete="name" className={estiloInputs} />
+                            <input type="text" id="nome" autoComplete="name" className={estiloInputs} 
+                            onChange={(e)=>  setValorInput(
+                                (el)=> (
+                                    {...el,
+                                    inputNome: e.target.value
+                                }
+                                )
+                            )}/>
 
                         </div>
 
@@ -130,7 +163,15 @@ function MeusDados() {
                             <label htmlFor="email" className={LabelInput}>Email</label>
 
                             <input type="email" id="email" autoComplete="email"
-                                className={estiloInputs} />
+                            className={estiloInputs} 
+                            onChange={(e)=> setValorInput(
+                                (el)=> (
+                                    {                                ...el,
+                                        inputEmail: e.target.value
+                                    }
+                                )
+                                
+                            )}/>
 
                         </div>
 
@@ -139,7 +180,16 @@ function MeusDados() {
                             <label htmlFor="telefone" className={LabelInput}>Telefone</label>
 
                             <input type="tel" id="telefone" autoComplete="tel"
-                                className={estiloInputs} />
+                            className={estiloInputs} 
+                            onChange={(e)=> setValorInput(
+                                (el)=> (
+                                    {                                ...el,
+                                        inputTel: e.target.value
+                                    }
+                                )
+                                
+                            )}
+                            />
 
                         </div>
 
